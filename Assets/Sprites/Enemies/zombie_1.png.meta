@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 416cc67eb665b174f9c97a266aae6e05
-timeCreated: 1471813918
+timeCreated: 1471817745
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: hand_left
     21300008: foot_right
     21300010: foot_left
+    21300012: mouth
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
