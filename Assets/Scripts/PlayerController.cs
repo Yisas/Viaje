@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private bool isGrounded = false;        // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private Animator anim;					// Reference to the player's animator component.
+	private PlayerSpeechBubble speechBubble;
 
 
 	// Use this for initialization
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 		// Setting up references.
 		groundCheck = transform.Find("groundCheck");
 		anim = GetComponent<Animator>();
+		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 	}
 
 	// Update is called once per frame
@@ -86,6 +89,9 @@ public class PlayerController : MonoBehaviour {
 		Vector3 tempScale = transform.localScale;
 		tempScale.x *= -1;
 		transform.localScale = tempScale;
+
+		// Fix text orientation in speech bubble.
+		speechBubble.ReRotate ();
 	}
 
 	void Jump(){

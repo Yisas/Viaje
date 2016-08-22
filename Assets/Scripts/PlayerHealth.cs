@@ -85,7 +85,6 @@ public class PlayerHealth : MonoBehaviour {
 
 		// Reduce the player's health by 10.
 		health -= damageAmount;
-		Debug.Log (health);
 	}
 
 }
