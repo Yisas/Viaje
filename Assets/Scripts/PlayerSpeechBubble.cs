@@ -37,7 +37,7 @@ public class PlayerSpeechBubble : MonoBehaviour {
 
 		if (timer >= changeTextInterval && !isVisible) {
 			timer = 0f;
-			LoadTextFile ("C:\\Sites\\Viaje\\Assets\\Scripts\\speechBubbleTexts.txt");			 //Load text from text file
+			LoadTextFile ("Assets\\Scripts\\speechBubbleTexts.txt");			 //Load text from text file
 			canvas.enabled = true;
 			isVisible = true;
 		}
@@ -95,7 +95,7 @@ public class PlayerSpeechBubble : MonoBehaviour {
 		// on what didn't work
 		catch (Exception e)
 		{
-			Console.WriteLine("{0}\n", e.Message);
+			Debug.Log("{0}\n" + e.Message);
 			return false;
 		}
 	}
