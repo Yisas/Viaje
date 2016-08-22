@@ -1,17 +1,19 @@
 fileFormatVersion: 2
-guid: e6935752e49c0734c8f476739bb16612
-timeCreated: 1471828928
+guid: 517f3d4e823aa6248acf1fe02976473f
+timeCreated: 1471899884
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head_dead
-    21300002: head
-    21300004: body
-    21300006: hand_right
-    21300008: hand_left
-    21300010: joel_1_5
-    21300012: foot_right
-    21300014: foot_left
+    21300002: head_angry
+    21300004: head
+    21300006: gun
+    21300008: body
+    21300010: hand_right
+    21300012: hand_left
+    21300014: joel_1_7
+    21300016: foot_right
+    21300018: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -74,6 +76,19 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: head_angry
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 1154
+        width: 327
+        height: 428
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: head
       rect:
         serializedVersion: 2
@@ -81,6 +96,19 @@ TextureImporter:
         y: 917
         width: 327
         height: 428
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 656
+        width: 293
+        height: 274
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,7 +154,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: joel_1_5
+      name: joel_1_7
       rect:
         serializedVersion: 2
         x: 586

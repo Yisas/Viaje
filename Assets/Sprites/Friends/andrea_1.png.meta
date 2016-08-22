@@ -1,15 +1,18 @@
 fileFormatVersion: 2
-guid: 2496812a70347c94c9ade5c178f218f9
-timeCreated: 1471825596
+guid: 14fa2e9c10ae8c44793adf5e6ff3c5ed
+timeCreated: 1471900430
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head
-    21300002: body
-    21300004: hand_right
-    21300006: hand_left
-    21300008: foot_right
-    21300010: foot_left
+    21300002: head_angry
+    21300004: body
+    21300006: gun
+    21300008: andrea_1_4
+    21300010: hand_right
+    21300012: hand_left
+    21300014: foot_right
+    21300016: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -72,6 +75,19 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: head_angry
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 1016
+        width: 372
+        height: 482
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: body
       rect:
         serializedVersion: 2
@@ -81,6 +97,32 @@ TextureImporter:
         height: 344
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 593
+        width: 305
+        height: 309
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: andrea_1_4
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 607
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -114,7 +156,7 @@ TextureImporter:
       name: foot_right
       rect:
         serializedVersion: 2
-        x: 162
+        x: 165
         y: 67
         width: 137
         height: 100

@@ -1,15 +1,16 @@
 fileFormatVersion: 2
-guid: f9d36d6ac434fd34591ef02866320de5
-timeCreated: 1471825813
+guid: 64599fe81ba3aae47ab430f8f738b449
+timeCreated: 1471900960
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head
-    21300002: body
-    21300004: hand_right
-    21300006: hand_left
-    21300008: foot_right
-    21300010: foot_left
+    21300002: head_expression
+    21300004: body
+    21300006: hand_right
+    21300008: hand_left
+    21300010: foot_right
+    21300012: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,8 +63,21 @@ TextureImporter:
       name: head
       rect:
         serializedVersion: 2
-        x: 162
+        x: 118
         y: 993
+        width: 400
+        height: 505
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head_expression
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 729
         width: 400
         height: 505
       alignment: 0
@@ -75,7 +89,7 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 256
+        x: 212
         y: 625
         width: 250
         height: 315
@@ -88,7 +102,7 @@ TextureImporter:
       name: hand_right
       rect:
         serializedVersion: 2
-        x: 162
+        x: 118
         y: 375
         width: 94
         height: 78
@@ -101,7 +115,7 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 563
+        x: 519
         y: 358
         width: 87
         height: 95
@@ -114,7 +128,7 @@ TextureImporter:
       name: foot_right
       rect:
         serializedVersion: 2
-        x: 162
+        x: 118
         y: 73
         width: 137
         height: 100
@@ -127,7 +141,7 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 563
+        x: 519
         y: 67
         width: 120
         height: 106

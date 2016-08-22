@@ -1,20 +1,17 @@
 fileFormatVersion: 2
-guid: 1caa1c44e7feba245a77fce7be0251b7
-timeCreated: 1471901288
+guid: ba0730caf7669b042bf2df764882a564
+timeCreated: 1471900895
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: zombi_2_0
-    21300002: head_dead
-    21300004: zombi_2_2
-    21300006: zombi_2_3
-    21300008: head_expression
-    21300010: head
-    21300012: body
-    21300014: hand_right
-    21300016: hand_left
-    21300018: foot_right
-    21300020: foot_left
+    21300000: papa_jesus_1_0
+    21300002: head
+    21300004: body
+    21300006: head_expression
+    21300008: hand_right
+    21300010: hand_left
+    21300012: foot_right
+    21300014: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -64,67 +61,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zombi_2_0
+      name: papa_jesus_1_0
       rect:
         serializedVersion: 2
-        x: 471
-        y: 1885
+        x: 293
+        y: 1525
         width: 36
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: head_dead
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 1446
-        width: 362
-        height: 415
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: zombi_2_2
-      rect:
-        serializedVersion: 2
-        x: 1091
-        y: 1504
-        width: 36
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: zombi_2_3
-      rect:
-        serializedVersion: 2
-        x: 471
-        y: 1356
-        width: 36
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: head_expression
-      rect:
-        serializedVersion: 2
-        x: 785
-        y: 1065
-        width: 362
-        height: 415
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -132,10 +77,10 @@ TextureImporter:
       name: head
       rect:
         serializedVersion: 2
-        x: 165
-        y: 917
-        width: 362
-        height: 415
+        x: 155
+        y: 1114
+        width: 290
+        height: 391
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,10 +90,23 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 211
-        y: 448
+        x: 153
+        y: 586
         width: 269
         height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head_expression
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 712
+        width: 290
+        height: 391
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +116,8 @@ TextureImporter:
       name: hand_right
       rect:
         serializedVersion: 2
-        x: 58
-        y: 309
+        x: 79
+        y: 379
         width: 107
         height: 69
       alignment: 0
@@ -171,8 +129,8 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 649
-        y: 292
+        x: 552
+        y: 362
         width: 79
         height: 103
       alignment: 0
@@ -184,10 +142,10 @@ TextureImporter:
       name: foot_right
       rect:
         serializedVersion: 2
-        x: 57
-        y: 9
-        width: 154
-        height: 118
+        x: 116
+        y: 67
+        width: 150
+        height: 113
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,8 +155,8 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 609
-        y: 9
+        x: 481
+        y: 67
         width: 150
         height: 113
       alignment: 0

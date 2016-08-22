@@ -1,16 +1,17 @@
 fileFormatVersion: 2
-guid: 416cc67eb665b174f9c97a266aae6e05
-timeCreated: 1471817745
+guid: bc157f1fe14aad642a5784d9340f9080
+timeCreated: 1471901592
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: head
-    21300002: body
-    21300004: hand_right
-    21300006: hand_left
-    21300008: foot_right
-    21300010: foot_left
-    21300012: mouth
+    21300000: head_dead
+    21300002: head
+    21300004: head_expression
+    21300006: body
+    21300008: hand_right
+    21300010: hand_left
+    21300012: foot_right
+    21300014: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,11 +61,37 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: head_dead
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1396
+        width: 349
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: head
       rect:
         serializedVersion: 2
-        x: 130
-        y: 1073
+        x: 194
+        y: 911
+        width: 349
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head_expression
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 1077
         width: 349
         height: 406
       alignment: 0
@@ -76,10 +103,10 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 239
-        y: 572
-        width: 230
-        height: 366
+        x: 293
+        y: 475
+        width: 205
+        height: 345
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -89,8 +116,8 @@ TextureImporter:
       name: hand_right
       rect:
         serializedVersion: 2
-        x: 23
-        y: 413
+        x: 66
+        y: 275
         width: 107
         height: 69
       alignment: 0
@@ -102,8 +129,8 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 620
-        y: 430
+        x: 663
+        y: 292
         width: 79
         height: 103
       alignment: 0
@@ -115,8 +142,8 @@ TextureImporter:
       name: foot_right
       rect:
         serializedVersion: 2
-        x: 46
-        y: 42
+        x: 58
+        y: 9
         width: 154
         height: 118
       alignment: 0
@@ -128,8 +155,8 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 590
-        y: 54
+        x: 602
+        y: 21
         width: 150
         height: 113
       alignment: 0

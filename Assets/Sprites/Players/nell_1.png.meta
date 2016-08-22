@@ -1,18 +1,20 @@
 fileFormatVersion: 2
-guid: 2db157732098f9c41ae3543c50af79c7
-timeCreated: 1471829001
+guid: b4875f278c2158e4683e33f4e66ecefc
+timeCreated: 1471899946
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head_dead
-    21300002: head
-    21300004: nell_1_2
-    21300006: body
+    21300002: head_angry
+    21300004: head
+    21300006: gun
     21300008: nell_1_4
-    21300010: hand_right
-    21300012: hand_left
-    21300014: foot_right
-    21300016: foot_left
+    21300010: body
+    21300012: nell_1_6
+    21300014: hand_right
+    21300016: hand_left
+    21300018: foot_right
+    21300020: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -75,6 +77,19 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: head_angry
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1250
+        width: 407
+        height: 427
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: head
       rect:
         serializedVersion: 2
@@ -88,7 +103,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: nell_1_2
+      name: gun
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 808
+        width: 257
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nell_1_4
       rect:
         serializedVersion: 2
         x: 145
@@ -114,7 +142,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: nell_1_4
+      name: nell_1_6
       rect:
         serializedVersion: 2
         x: 137

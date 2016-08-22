@@ -1,15 +1,16 @@
 fileFormatVersion: 2
-guid: 08650a9d1a4561043a0432b7bd6d0b2b
-timeCreated: 1471825712
+guid: defbd43e53461c146aa5aa3e846dc606
+timeCreated: 1471900648
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head
-    21300002: body
-    21300004: hand_right
-    21300006: hand_left
-    21300008: foot_right
-    21300010: foot_left
+    21300002: head_expression
+    21300004: body
+    21300006: hand_right
+    21300008: hand_left
+    21300010: foot_right
+    21300012: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -64,6 +65,19 @@ TextureImporter:
         serializedVersion: 2
         x: 162
         y: 995
+        width: 381
+        height: 545
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head_expression
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 764
         width: 381
         height: 545
       alignment: 0

@@ -1,20 +1,22 @@
 fileFormatVersion: 2
-guid: 3e56adf8408332045b2ded54490a8c38
-timeCreated: 1471828863
+guid: e73d10d5305226b44a3a86e1be482299
+timeCreated: 1471899822
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head_dead
-    21300002: glasses
-    21300004: jesus_1_2
-    21300006: head
-    21300008: jesus_1_4
-    21300010: body
+    21300002: head_angry
+    21300004: glasses
+    21300006: jesus_1_3
+    21300008: head
+    21300010: gun
     21300012: jesus_1_6
-    21300014: hand_right
-    21300016: hand_left
-    21300018: foot_right
-    21300020: foot_left
+    21300014: body
+    21300016: jesus_1_8
+    21300018: hand_right
+    21300020: hand_left
+    21300022: foot_right
+    21300024: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -77,6 +79,19 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: head_angry
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1341
+        width: 337
+        height: 428
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: glasses
       rect:
         serializedVersion: 2
@@ -90,12 +105,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: jesus_1_2
+      name: jesus_1_3
       rect:
         serializedVersion: 2
-        x: 431
+        x: 432
         y: 1523
-        width: 10
+        width: 9
         height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -116,7 +131,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: jesus_1_4
+      name: gun
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 798
+        width: 155
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: jesus_1_6
       rect:
         serializedVersion: 2
         x: 202
@@ -142,7 +170,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: jesus_1_6
+      name: jesus_1_8
       rect:
         serializedVersion: 2
         x: 196
@@ -197,9 +225,9 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 473
+        x: 470
         y: 62
-        width: 151
+        width: 150
         height: 113
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

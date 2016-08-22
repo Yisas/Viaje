@@ -1,18 +1,22 @@
 fileFormatVersion: 2
-guid: 9cd1a4fe8e99eed4dabe5a116833954e
-timeCreated: 1471829056
+guid: 9b6ed82c535fb8041a518bb4597a672e
+timeCreated: 1471900091
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: head_dead
-    21300002: head
-    21300004: nelson_1_2
-    21300006: body
-    21300008: nelson_1_4
-    21300010: hand_right
-    21300012: hand_left
-    21300014: foot_right
-    21300016: foot_left
+    21300000: nelson_1_0
+    21300002: head_dead
+    21300004: gun
+    21300006: nelson_1_3
+    21300008: head
+    21300010: head_angry
+    21300012: nelson_1_6
+    21300014: body
+    21300016: hand_right
+    21300018: nelson_1_9
+    21300020: hand_left
+    21300022: foot_right
+    21300024: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,15 +66,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: nelson_1_0
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 2174
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: head_dead
       rect:
         serializedVersion: 2
         x: 182
-        y: 1450
-        width: 304
-        height: 410
+        y: 1449
+        width: 305
+        height: 412
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1846
+        width: 566
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nelson_1_3
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 1840
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -79,22 +122,35 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 206
-        y: 920
+        y: 919
         width: 304
-        height: 410
+        height: 411
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: nelson_1_2
+      name: head_angry
       rect:
         serializedVersion: 2
-        x: 162
-        y: 488
-        width: 5
-        height: 40
+        x: 714
+        y: 1202
+        width: 304
+        height: 411
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nelson_1_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 487
+        width: 7
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,25 +160,12 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 249
-        y: 499
-        width: 314
-        height: 360
+        x: 247
+        y: 497
+        width: 317
+        height: 362
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: nelson_1_4
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 479
-        width: 5
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -130,12 +173,25 @@ TextureImporter:
       name: hand_right
       rect:
         serializedVersion: 2
-        x: 125
-        y: 368
-        width: 114
-        height: 111
+        x: 124
+        y: 367
+        width: 116
+        height: 112
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nelson_1_9
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 478
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -143,10 +199,10 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 531
-        y: 332
-        width: 108
-        height: 123
+        x: 530
+        y: 331
+        width: 110
+        height: 126
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,7 +228,7 @@ TextureImporter:
         x: 486
         y: 124
         width: 150
-        height: 113
+        height: 114
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

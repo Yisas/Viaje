@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 013377d44d097c042938e1b8efb61a65
-timeCreated: 1471826393
+guid: 1197aa58fd6aa714f87cdf6ba1018811
+timeCreated: 1471901988
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,12 +8,11 @@ TextureImporter:
     21300002: head_dead
     21300004: body
     21300006: body_dead
-    21300008: rokero_1_4
-    21300010: rokero_1_5
-    21300012: hand_right
-    21300014: hand_left
-    21300016: foot_right
-    21300018: foot_left
+    21300008: hand_right
+    21300010: hand_left
+    21300012: rokero_1_6
+    21300014: foot_right
+    21300016: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,10 +65,10 @@ TextureImporter:
       name: head
       rect:
         serializedVersion: 2
-        x: 109
-        y: 872
-        width: 387
-        height: 492
+        x: 67
+        y: 827
+        width: 439
+        height: 557
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -79,7 +78,7 @@ TextureImporter:
       name: head_dead
       rect:
         serializedVersion: 2
-        x: 836
+        x: 864
         y: 879
         width: 387
         height: 492
@@ -92,9 +91,9 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 176
-        y: 467
-        width: 240
+        x: 171
+        y: 469
+        width: 238
         height: 348
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -106,8 +105,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 939
-        y: 436
-        width: 240
+        y: 494
+        width: 238
         height: 348
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -115,37 +114,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: rokero_1_4
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 447
-        width: 4
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: rokero_1_5
-      rect:
-        serializedVersion: 2
-        x: 836
-        y: 416
-        width: 4
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: hand_right
       rect:
         serializedVersion: 2
-        x: 69
-        y: 264
+        x: 153
+        y: 279
         width: 107
         height: 86
       alignment: 0
@@ -157,8 +130,8 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 655
-        y: 290
+        x: 609
+        y: 279
         width: 101
         height: 102
       alignment: 0
@@ -167,11 +140,24 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: rokero_1_6
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 255
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: foot_right
       rect:
         serializedVersion: 2
-        x: 58
-        y: 9
+        x: 183
+        y: 54
         width: 150
         height: 113
       alignment: 0
@@ -183,8 +169,8 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 602
-        y: 20
+        x: 585
+        y: 76
         width: 150
         height: 113
       alignment: 0
