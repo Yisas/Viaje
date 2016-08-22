@@ -32,8 +32,9 @@ public class PlayerController : MonoBehaviour {
 	void Awake()
 	{
 		// Setting up references.
-		groundCheck = transform.Find("groundCheck");
-		anim = GetComponent<Animator>();
+		groundCheck = transform.FindChild("groundCheck");
+		Debug.Log (groundCheck.position);
+		anim = GetComponentsInChildren<Animator>()[0];
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 	}
 
