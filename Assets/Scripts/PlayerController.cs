@@ -4,6 +4,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public enum PlayerType {Tato=1, Joel=2, Nell=3, Nelson=4, Jesus=5};
+
 	//Variables
 
 	[HideInInspector]
@@ -11,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
 
+	public PlayerType playerType;
 	public float maxSpeed = 5f;			    // As fast as player can go
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
