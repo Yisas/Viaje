@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour {
 		
 		// Setting up references.
 		playerControl = GetComponent<PlayerController>();
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 
 	}
 
@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Debug.Log (health);
 	}
 
 	void OnCollisionEnter2D (Collision2D col)
@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour {
 					GetComponent<PlayerController>().enabled = false;
 
 					// ... Trigger the 'Die' animation state
-					//anim.SetTrigger("Die");
+					anim.SetTrigger("Dead");
 				}
 			}
 		}

@@ -4,8 +4,10 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 
 	public float moveSpeed = 2f;		// The speed the enemy moves at.
+	public float deathDespawnInterval;	// Time the character is on the scene after dying.
 
-	private bool dead = false;			// Whether or not the enemy is dead.
+	private float deathTimer = 0f;		// When timer reaches despawn time, destroy object.
+	private bool dead;					// Check for whether enemy is dead, despawn after interval.
 	private Animator anim;				// Reference to the enemy's animator component.
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 
@@ -23,7 +25,13 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		// Destroy object when it should despawn.
+		if (dead) {
+			deathTimer += Time.deltaTime;
+			if (deathTimer >= deathDespawnInterval)
+				Destroy (this.gameObject);
+		}
 	}
 
 	void FixedUpdate() {
@@ -51,14 +59,6 @@ public class EnemyController : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter2D (Collision2D col){
-
-		if (col.gameObject.tag == "Weapon") {
-			anim.SetTrigger ("Dead");
-		}
-
-	}
-
 	public void Flip()
 	{
 		// Multiply the x component of localScale by -1.
@@ -67,7 +67,25 @@ public class EnemyController : MonoBehaviour {
 		transform.localScale = enemyScale;
 	}
 
+	public void Die(){
+		// Find all of the colliders on the gameobject and set them all to be triggers.
+		Collider2D[] cols = GetComponents<Collider2D>();
+		foreach(Collider2D c in cols)
+		{
+			c.isTrigger = true;
+		}
 
+		// Move all sprite parts of the player to the front
+		SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer>();
+		foreach(SpriteRenderer s in spr)
+		{
+			s.sortingLayerName = "UI";
+		}
 
+		// ... Trigger the 'Die' animation state
+		anim.SetTrigger("Dead");
 
+		// Start despawning timer in update.
+		dead = true;
+	}
 }
