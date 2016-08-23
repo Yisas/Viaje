@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour {
 	void Awake() {
 
 		// Setting up references.
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 		frontCheck = transform.Find("frontCheck").transform;
 	}
 

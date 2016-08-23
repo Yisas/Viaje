@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		// Setting up references.
 		groundCheck = transform.FindChild("groundCheck");
-		Debug.Log (groundCheck.position);
 		anim = GetComponentsInChildren<Animator>()[0];
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 	}
