@@ -51,6 +51,14 @@ public class EnemyController : MonoBehaviour {
 
 	}
 
+	void OnCollisionEnter2D (Collision2D col){
+
+		if (col.gameObject.tag == "Weapon") {
+			anim.SetTrigger ("Dead");
+		}
+
+	}
+
 	public void Flip()
 	{
 		// Multiply the x component of localScale by -1.
@@ -58,4 +66,8 @@ public class EnemyController : MonoBehaviour {
 		enemyScale.x *= -1;
 		transform.localScale = enemyScale;
 	}
+
+
+
+
 }
