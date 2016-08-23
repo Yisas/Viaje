@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour {
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && isGrounded)
 			jump = true;
+
+		if (Input.GetButtonDown ("MeleeAttack"))
+			MeleeAttack ();
 	
 	}
 
@@ -105,5 +108,9 @@ public class PlayerController : MonoBehaviour {
 		// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 		jump = false;
 
+	}
+
+	void MeleeAttack(){
+		anim.SetTrigger ("meleeAttack");
 	}
 }
