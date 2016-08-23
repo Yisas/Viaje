@@ -3,6 +3,13 @@ using System.Collections;
 
 public class Weapon : MonoBehaviour {
 
+	private PlayerController playerController;
+
+	void Awake(){
+		//Set up references
+		playerController= GetComponentInParent<PlayerController>();
+	}
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +22,9 @@ public class Weapon : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D col){
 
-		if (col.gameObject.tag=="Enemy")
+		if (col.gameObject.tag == "Enemy") {
 			col.gameObject.GetComponent<EnemyController> ().Die ();
+			playerController.MeleeHit ();
+		}
 	}
 }

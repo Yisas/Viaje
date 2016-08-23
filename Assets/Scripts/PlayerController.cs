@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed = 5f;			    // As fast as player can go
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public AudioClip[] jumpSounds;			// Array of jump sounds to be called randomly
+	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 
 	private bool isGrounded = false;        // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
@@ -108,9 +110,20 @@ public class PlayerController : MonoBehaviour {
 		// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 		jump = false;
 
+		// Play a random jump audio clip.
+		int i = Random.Range(0, jumpSounds.Length);
+		AudioSource.PlayClipAtPoint(jumpSounds[i], transform.position);
+
 	}
 
 	void MeleeAttack(){
 		anim.SetTrigger ("meleeAttack");
+	}
+
+	//Called from gun on succesful hit
+	public void MeleeHit(){
+		// Play a random jump audio clip.
+		int i = Random.Range(0, meleeAttackSounds.Length);
+		AudioSource.PlayClipAtPoint(meleeAttackSounds[i], transform.position);
 	}
 }
