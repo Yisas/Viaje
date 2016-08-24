@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	//Variables
 
 	[HideInInspector]
-	public bool facingRight = false;		// For determining which way the player is currently facing.
+	public bool isFacingLeft = true;		// For determining which way the player is currently facing.
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
 
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed = 5f;			    // As fast as player can go
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public float shotForce;					// Bullet force amount
 	public AudioClip[] jumpSounds;			// Array of jump sounds to be called randomly
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
@@ -87,11 +88,11 @@ public class PlayerController : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
 		// If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
+		if(h > 0 && isFacingLeft)
 			// ... flip the player.
 			FlipCharacter();
 		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
+		else if(h < 0 && !isFacingLeft)
 			// ... flip the player.
 			FlipCharacter();
 
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 	void FlipCharacter() {
 
 		// Switch the way the player is labelled as facing.
-		facingRight = !facingRight;
+		isFacingLeft = !isFacingLeft;
 
 		// Multiply the player's x local scale by -1.
 		Vector3 tempScale = transform.localScale;
@@ -140,6 +141,20 @@ public class PlayerController : MonoBehaviour {
 		// Don't collide player with bullet.
 		GameObject tempBullet = Instantiate (bullet,shotSpawn.transform.position,bullet.transform.rotation) as GameObject;
 		Physics2D.IgnoreCollision(tempBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+		if (!isFacingLeft)
+			tempBullet.transform.Rotate (0, 0, 180);
+
+		Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D> ();
+
+		float directedShotForce;
+
+		if (isFacingLeft)
+			directedShotForce = -shotForce;
+		else
+			directedShotForce = shotForce;
+
+		tempRigidBody.velocity = new Vector2(directedShotForce,0);
 
 		// Play random shooting clip.
 		int i = Random.Range(0, rangeAttackSounds.Length);
