@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+		Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 	
 	}
 
@@ -134,7 +136,12 @@ public class PlayerController : MonoBehaviour {
 	void RangedAttack(){
 		anim.SetTrigger ("rangedAttack");
 		weaponRanged.Shoot ();
-		Instantiate (bullet,shotSpawn.transform.position,bullet.transform.rotation);
+
+		// Don't collide player with bullet.
+		GameObject tempBullet = Instantiate (bullet,shotSpawn.transform.position,bullet.transform.rotation) as GameObject;
+		Physics2D.IgnoreCollision(tempBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+		// Play random shooting clip.
 		int i = Random.Range(0, rangeAttackSounds.Length);
 		audioSource.clip = rangeAttackSounds[i];
 		if (!audioSource.isPlaying)
