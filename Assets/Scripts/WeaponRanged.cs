@@ -3,6 +3,8 @@ using System.Collections;
 
 public class WeaponRanged : MonoBehaviour {
 
+	public ParticleSystem particleEffect;					// Particle effect of the gun when it is fired.
+
 	private PlayerController playerController;
 	private Transform shotSpawn;							// Transform of empty object where the shot is initialized
 
@@ -21,11 +23,9 @@ public class WeaponRanged : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter2D (Collision2D col){
-
-		if (col.gameObject.tag == "Enemy") {
-			col.gameObject.GetComponent<EnemyController> ().Die ();
-			playerController.MeleeHit ();
-		}
+	public void Shoot(){
+		// Enable particle system and fire once.
+		particleEffect.gameObject.SetActive(true);
+		particleEffect.Play ();
 	}
 }
