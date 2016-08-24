@@ -25,7 +25,6 @@ public class WeaponRanged : MonoBehaviour {
 
 	public void Shoot(){
 		// Enable particle system and fire once.
-		particleEffect.gameObject.SetActive(true);
 		particleEffect.Play ();
 	}
 }

@@ -20,12 +20,15 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip[] jumpSounds;			// Array of jump sounds to be called randomly
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
+	public GameObject bullet;				// Bullet for ranged attack
 
 	private bool isGrounded = false;        // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
+	private Transform shotSpawn;			// A position marking where to shoot from.
 	private Animator anim;					// Reference to the player's animator component.
 	private PlayerSpeechBubble speechBubble;
 	private WeaponRanged weaponRanged;		// Reference to ranged weapon script.
+	private AudioSource audioSource;		// Audiosource on object.
 
 
 	// Use this for initialization
@@ -37,9 +40,11 @@ public class PlayerController : MonoBehaviour {
 	{
 		// Setting up references.
 		groundCheck = transform.FindChild("groundCheck");
+		shotSpawn = transform.FindChild ("shotSpawn");
 		anim = GetComponentsInChildren<Animator>()[0];
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 		weaponRanged = GetComponentInChildren<WeaponRanged> ();
+		audioSource = GetComponents<AudioSource> ()[0];
 	}
 
 	// Update is called once per frame
@@ -127,9 +132,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void RangedAttack(){
+		anim.SetTrigger ("rangedAttack");
 		weaponRanged.Shoot ();
+		Instantiate (bullet,shotSpawn.transform.position,bullet.transform.rotation);
 		int i = Random.Range(0, rangeAttackSounds.Length);
-		AudioSource.PlayClipAtPoint(rangeAttackSounds[i], transform.position);
+		audioSource.clip = rangeAttackSounds[i];
+		if (!audioSource.isPlaying)
+			audioSource.Play ();
+		
 	}
 
 	//Called from gun on succesful hit
