@@ -20,7 +20,6 @@ public class CameraTracking : MonoBehaviour
 	{
 		// Setting up the reference.
 		player = GameObject.FindGameObjectWithTag("Player").transform;
-
 	}
 
 

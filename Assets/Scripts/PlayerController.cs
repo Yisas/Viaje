@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	private WeaponRanged weaponRanged;		// Reference to ranged weapon script.
 	private AudioSource audioSource;		// Audiosource on object.
 	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
-
+	public Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour {
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 		weaponRanged = GetComponentInChildren<WeaponRanged> ();
 		audioSource = GetComponents<AudioSource> ()[0];
+		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
 	}
 
 	// Update is called once per frame
@@ -199,6 +200,9 @@ public class PlayerController : MonoBehaviour {
 
 			// ... Trigger the 'Die' animation state
 			anim.SetTrigger ("Dead");
+
+			// trigger die in lifebar
+			healthBarCanvas.GetComponent<Animator> ().SetTrigger ("die");
 
 			isDead = true;
 		}
