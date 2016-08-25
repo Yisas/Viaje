@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 214668795052ddd499a450c73271d682
-timeCreated: 1472101883
+guid: 61a9bc72b8d091143abb1b4e5696f14b
+timeCreated: 1472161088
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: head_space
-    21300002: lifebar
-    21300004: name_bar
+    21300000: head_space_decor
+    21300002: head_space
+    21300004: name_space
+    21300006: lifebar_decor
+    21300008: lifebar
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,15 +58,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: head_space_decor
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 94
+        width: 809
+        height: 820
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: head_space
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1286
         y: 0
-        width: 1079
+        width: 1083
         height: 1063
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: name_space
+      rect:
+        serializedVersion: 2
+        x: 3249
+        y: 772
+        width: 954
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lifebar_decor
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 330
+        width: 1502
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -72,25 +113,12 @@ TextureImporter:
       name: lifebar
       rect:
         serializedVersion: 2
-        x: 874
-        y: 429
-        width: 1481
-        height: 173
+        x: 2726
+        y: 50
+        width: 1449
+        height: 124
       alignment: 4
       pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: name_bar
-      rect:
-        serializedVersion: 2
-        x: 1387
-        y: 651
-        width: 954
-        height: 223
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
