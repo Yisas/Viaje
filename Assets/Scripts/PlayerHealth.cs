@@ -58,6 +58,9 @@ public class PlayerHealth : MonoBehaviour {
 
 	void TakeDamage (Transform enemy)
 	{
+
+		anim.SetTrigger ("angryHeadbob");
+
 		// Make sure the player can't jump.
 		playerControl.jump = false;
 
