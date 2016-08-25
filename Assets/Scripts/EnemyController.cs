@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour {
 	public float deathDespawnInterval;	// Time the character is on the scene after dying.
 
 	private float deathTimer = 0f;		// When timer reaches despawn time, destroy object.
-	private bool dead;					// Check for whether enemy is dead, despawn after interval.
+	private bool isDead=false;			// Check for whether enemy is dead, despawn after interval.
 	private Animator anim;				// Reference to the enemy's animator component.
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 
 		// Destroy object when it should despawn.
-		if (dead) {
+		if (isDead) {
 			deathTimer += Time.deltaTime;
 			if (deathTimer >= deathDespawnInterval)
 				Destroy (this.gameObject);
@@ -68,24 +68,27 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	public void Die(){
-		// Find all of the colliders on the gameobject and set them all to be triggers.
-		Collider2D[] cols = GetComponents<Collider2D>();
-		foreach(Collider2D c in cols)
-		{
-			c.isTrigger = true;
+
+		if (!isDead) {
+
+			// Find all of the colliders on the gameobject and set them all to be triggers.
+			Collider2D[] cols = GetComponents<Collider2D> ();
+			foreach (Collider2D c in cols) {
+				c.isTrigger = true;
+			}
+
+
+			// Move all sprite parts of the player to the front
+			SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer> ();
+			foreach (SpriteRenderer s in spr) {
+				s.sortingLayerName = "UI";
+			}
+
+			// ... Trigger the 'Die' animation state
+			anim.SetTrigger ("Dead");
+
+			// Start despawning timer in update.
+			isDead = true;
 		}
-
-		// Move all sprite parts of the player to the front
-		SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer>();
-		foreach(SpriteRenderer s in spr)
-		{
-			s.sortingLayerName = "UI";
-		}
-
-		// ... Trigger the 'Die' animation state
-		anim.SetTrigger("Dead");
-
-		// Start despawning timer in update.
-		dead = true;
 	}
 }

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 	private PlayerSpeechBubble speechBubble;
 	private WeaponRanged weaponRanged;		// Reference to ranged weapon script.
 	private AudioSource audioSource;		// Audiosource on object.
+	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
 
 
 	// Use this for initialization
@@ -178,11 +179,11 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void Die(){
-		
+
+		if (!isDead) {
 			// Find all of the colliders on the gameobject and set them all to be triggers.
-			Collider2D[] cols = GetComponents<Collider2D>();
-			foreach(Collider2D c in cols)
-			{
+			Collider2D[] cols = GetComponents<Collider2D> ();
+			foreach (Collider2D c in cols) {
 				c.isTrigger = true;
 			}
 			/*
@@ -194,9 +195,12 @@ public class PlayerController : MonoBehaviour {
 			}
 			*/
 			// ... disable user Player Control script
-			GetComponent<PlayerController>().enabled = false;
+			GetComponent<PlayerController> ().enabled = false;
 
 			// ... Trigger the 'Die' animation state
-			anim.SetTrigger("Dead");
+			anim.SetTrigger ("Dead");
+
+			isDead = true;
+		}
 	}
 }
