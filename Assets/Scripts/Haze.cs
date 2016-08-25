@@ -9,10 +9,12 @@ public class Haze : MonoBehaviour {
 	private SpriteRenderer hazeSprite;
 	private float timer = 0;					// Countdown timer for haze effect being visible on screen
 	private bool isDisplaying = false;
+	private PlayerController playerController;
 
 	void Awake(){
 		hazeCanvas = GameObject.FindGameObjectWithTag ("HazeEffectCanvas").GetComponent<Canvas>();
 		hazeSprite = hazeCanvas.GetComponentInChildren<SpriteRenderer> ();
+		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 	}
 
 

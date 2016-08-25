@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour {
 	public float repeatDamagePeriod = 2f;		// How frequently the player can be damaged.
 	public float hurtForce = 10f;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
+	public float lifePowerupDefault;			// Default amount of life the player is healed when picking up health.
 
 	private float lastHitTime;					// The time at which the player was last hit.
 	private PlayerController playerControl;		// Reference to the PlayerControl script.
@@ -82,7 +83,12 @@ public class PlayerHealth : MonoBehaviour {
 		UpdateHealthBar ();
 	}
 
-	public void UpdateHealthBar ()
+	public void Heal(){
+		health += lifePowerupDefault;
+		UpdateHealthBar ();
+	}
+
+	private void UpdateHealthBar ()
 	{
 		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
 		healthBarSprite.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
@@ -93,5 +99,4 @@ public class PlayerHealth : MonoBehaviour {
 
 		healthBarCanvas.GetComponent<Animator> ().SetTrigger ("headBob");
 	}
-
 }
