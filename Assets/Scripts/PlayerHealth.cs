@@ -7,12 +7,13 @@ public class PlayerHealth : MonoBehaviour {
 	public float repeatDamagePeriod = 2f;		// How frequently the player can be damaged.
 	public float hurtForce = 10f;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
-	public SpriteRenderer healthBar;
 
 	private float lastHitTime;					// The time at which the player was last hit.
 	private PlayerController playerControl;		// Reference to the PlayerControl script.
 	private Animator anim;						// Reference to the Animator on the player
 	private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
+	private Canvas healthBarCanvas;				// Canvas object containing lifebar UI elements.
+	private SpriteRenderer healthBarSprite;		// Health bar sprite.
 
 
 	void Awake() {
@@ -21,7 +22,9 @@ public class PlayerHealth : MonoBehaviour {
 		anim = GetComponentInChildren<Animator>();
 
 		// Getting the intial scale of the healthbar (whilst the player has full health).
-		healthScale = healthBar.transform.localScale;
+		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
+		healthBarSprite = healthBarCanvas.transform.FindChild ("lifeBar").GetComponent<SpriteRenderer>();
+		healthScale = healthBarSprite.transform.localScale;
 	}
 
 	// Use this for initialization
@@ -73,10 +76,12 @@ public class PlayerHealth : MonoBehaviour {
 	public void UpdateHealthBar ()
 	{
 		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
-		healthBar.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
+		healthBarSprite.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
 
 		// Set the scale of the health bar to be proportional to the player's health.
-		healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, healthScale.z);
+		healthBarSprite.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, healthScale.z);
+
+		healthBarCanvas.GetComponent<Animator> ().SetTrigger ("headBob");
 	}
 
 }
