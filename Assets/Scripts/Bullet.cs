@@ -23,7 +23,6 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col){
-		Debug.Log ("here");
 		if (col.transform.tag=="Enemy")
 			col.gameObject.GetComponent<EnemyController> ().Die ();
 	}

@@ -102,6 +102,12 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	void OnTriggerEnter2D (Collider2D col){
+		if (col.transform.tag == ("DeadZone"))
+			Die ();
+			
+	}
+
 	void FlipCharacter() {
 
 		// Switch the way the player is labelled as facing.
@@ -169,5 +175,28 @@ public class PlayerController : MonoBehaviour {
 		// Play a random jump audio clip.
 		int i = Random.Range(0, meleeAttackSounds.Length);
 		AudioSource.PlayClipAtPoint(meleeAttackSounds[i], transform.position);
+	}
+
+	public void Die(){
+		
+			// Find all of the colliders on the gameobject and set them all to be triggers.
+			Collider2D[] cols = GetComponents<Collider2D>();
+			foreach(Collider2D c in cols)
+			{
+				c.isTrigger = true;
+			}
+			/*
+			// Move all sprite parts of the player to the front
+			SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer>();
+			foreach(SpriteRenderer s in spr)
+			{
+				s.sortingLayerName = "UI";
+			}
+			*/
+			// ... disable user Player Control script
+			GetComponent<PlayerController>().enabled = false;
+
+			// ... Trigger the 'Die' animation state
+			anim.SetTrigger("Dead");
 	}
 }
