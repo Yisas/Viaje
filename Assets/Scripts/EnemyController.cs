@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour {
 		foreach(Collider2D c in frontHits)
 		{
 			// If any of the colliders is an Obstacle...
-			if(c.tag == "Obstacle")
+			if(c.tag == "Obstacle" || c.tag=="Enemy")
 			{
 				// ... Flip the enemy and stop checking the other colliders.
 				Flip ();
