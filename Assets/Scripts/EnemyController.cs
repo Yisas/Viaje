@@ -10,12 +10,15 @@ public class EnemyController : MonoBehaviour {
 	private bool isDead=false;			// Check for whether enemy is dead, despawn after interval.
 	private Animator anim;				// Reference to the enemy's animator component.
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
+	private GameController gameController;
 
 	void Awake() {
 
 		// Setting up references.
 		anim = GetComponentInChildren<Animator>();
 		frontCheck = transform.Find("frontCheck").transform;
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+		gameController.numberOfEnemies++;
 	}
 
 	// Use this for initialization
@@ -89,6 +92,8 @@ public class EnemyController : MonoBehaviour {
 
 			// Start despawning timer in update.
 			isDead = true;
+
+			gameController.numberOfEnemies--;
 		}
 	}
 }
