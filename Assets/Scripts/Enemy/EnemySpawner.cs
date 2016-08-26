@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Spawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
 	public float maxNumberOfEnemies;	
 	public float spawnTime = 5f;		// The amount of time between each spawn.
@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
 
 	void Start ()
 	{
+		if(gameController.numberOfEnemies <= gameController.maxNumberOfEnemies)
 		// Start calling the Spawn function repeatedly after a delay .
 		InvokeRepeating("Spawn", spawnDelay, spawnTime);
 	}
@@ -28,16 +29,41 @@ public class Spawner : MonoBehaviour
 
 	void Spawn ()
 	{
+		int i = 0;
+
 		if (isActive) {
 			if (gameController.numberOfEnemies <= gameController.maxNumberOfEnemies) {
-				// Instantiate a random enemy.
-				int enemyIndex = Random.Range (0, enemies.Length);
 
-				// Create a random x coordinate for the delivery in the drop range.
-				float dropPosX = Random.Range (dropRangeLeft.position.x, dropRangeRight.position.x);
+				RaycastHit2D hit= new RaycastHit2D();
 
-				// Create a position with the random x coordinate.
-				Vector3 dropPos = new Vector3 (dropPosX, dropRangeLeft.position.y, transform.position.z);
+				int enemyIndex;
+				Vector3 dropPos;
+
+				do {
+					// Instantiate a random enemy.
+					enemyIndex = Random.Range (0, enemies.Length);
+
+					// Create a random x coordinate for the delivery in the drop range.
+					float dropPosX = Random.Range (dropRangeLeft.position.x, dropRangeRight.position.x);
+
+					// Create a position with the random x coordinate.
+					dropPos = new Vector3 (dropPosX, dropRangeLeft.position.y, transform.position.z);
+
+					// Layer nine should be characters, make sure you are not on an character
+					hit = Physics2D.Raycast (dropPos, -Vector2.up,Mathf.Infinity,9);
+
+					i++;
+
+					if(i>=10000){
+						i=0;
+						//Debug.Log("Spawner error");
+						hit= new RaycastHit2D();
+
+					}
+
+				} while (hit.collider!=null);
+
+				hit= new RaycastHit2D();
 
 				Instantiate (enemies [enemyIndex], dropPos, transform.rotation);
 			}
