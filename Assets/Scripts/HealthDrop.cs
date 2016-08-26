@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class HealthDrop : MonoBehaviour {
 
 	public AudioClip[] consumeClips;			// List of clips to play when health drop is consumed by player.
+	public AudioClip landClip;					// Sound that plays when item lands on the ground.
 
 	private Animator anim;
+	private bool hasLanded = false;
 
 	void Awake(){
 		//Set up references
@@ -37,7 +39,11 @@ public class HealthDrop : MonoBehaviour {
 
 		// On collision with ground deactivate disposable landing gear. Layer 8 should be Ground
 		if (col.gameObject.layer == 8) {
-			anim.SetTrigger("landed");
+			if (!hasLanded) {
+				anim.SetTrigger ("landed");
+				AudioSource.PlayClipAtPoint (landClip, transform.position);
+				hasLanded = true;
+			}
 		}
 
 		if (col.gameObject.tag == "Player") {
