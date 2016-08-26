@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
 	public GameObject bullet;				// Bullet for ranged attack
+	public bool isInvulnerable=false;
 
 	private bool isGrounded = false;        // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 	private WeaponRanged weaponRanged;		// Reference to ranged weapon script.
 	private AudioSource audioSource;		// Audiosource on object.
 	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
-	public Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
+	private Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
 
 	// Use this for initialization
 	void Start () {
@@ -138,7 +139,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void MeleeAttack(){
+		isInvulnerable = true;
 		anim.SetTrigger ("meleeAttack");
+	}
+
+	public void FinishAttacking(){
+		isInvulnerable = false;
 	}
 
 	void RangedAttack(){

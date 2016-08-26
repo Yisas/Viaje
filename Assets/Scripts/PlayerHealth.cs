@@ -17,7 +17,6 @@ public class PlayerHealth : MonoBehaviour {
 	private SpriteRenderer healthBarSprite;		// Health bar sprite.
 	private SpriteRenderer healthBarDecor;		// Extra healthbar sprite that needs color changing.
 
-
 	void Awake() {
 		// Setting up references.
 		playerControl = GetComponent<PlayerController>();
@@ -65,22 +64,24 @@ public class PlayerHealth : MonoBehaviour {
 
 	void TakeDamage (Transform enemy)
 	{
+		if (!playerControl.isInvulnerable) {
 
-		anim.SetTrigger ("angryHeadbob");
+			anim.SetTrigger ("angryHeadbob");
 
-		// Make sure the player can't jump.
-		playerControl.jump = false;
+			// Make sure the player can't jump.
+			playerControl.jump = false;
 
-		// Create a vector that's from the enemy to the player with an upwards boost.
-		Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
+			// Create a vector that's from the enemy to the player with an upwards boost.
+			Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
 
-		// Add a force to the player in the direction of the vector and multiply by the hurtForce.
-		GetComponent<Rigidbody2D>().AddForce(hurtVector * hurtForce);
+			// Add a force to the player in the direction of the vector and multiply by the hurtForce.
+			GetComponent<Rigidbody2D> ().AddForce (hurtVector * hurtForce);
 
-		// Reduce the player's health by 10.
-		health -= damageAmount;
+			// Reduce the player's health by 10.
+			health -= damageAmount;
 
-		UpdateHealthBar ();
+			UpdateHealthBar ();
+		}
 	}
 
 	public void Heal(){
