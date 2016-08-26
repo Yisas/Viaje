@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class HealthDrop : MonoBehaviour {
 
+	public AudioClip[] consumeClips;			// List of clips to play when health drop is consumed by player.
+
 	private Animator anim;
 
 	void Awake(){
@@ -24,8 +26,17 @@ public class HealthDrop : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		// On collision with ground deactivate disposable landing gear. Layer 8 should be Ground
 		if (col.gameObject.layer == 8) {
-			//landingGear.ForEach (DeactivateSprite);
 			anim.SetTrigger("landed");
+		}
+
+		if (col.gameObject.tag == "Player") {
+			// Heal player
+			col.gameObject.GetComponent<PlayerHealth> ().Heal ();
+
+			// Play random consume audioclip
+			int i = Random.Range(0, consumeClips.Length);
+			AudioSource.PlayClipAtPoint(consumeClips[i], transform.position);
+			Destroy (this.gameObject);
 		}
 	}
 }
