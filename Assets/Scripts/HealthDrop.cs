@@ -15,7 +15,13 @@ public class HealthDrop : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		/*
+		// Don't collide with enemies
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+		foreach(GameObject enemy in enemies)
+			Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+		*/
 	}
 	
 	// Update is called once per frame
@@ -24,6 +30,11 @@ public class HealthDrop : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
+
+		if (col.gameObject.tag == "Enemy") {
+			Physics2D.IgnoreCollision(col.collider, GetComponent<Collider2D>());
+		}
+
 		// On collision with ground deactivate disposable landing gear. Layer 8 should be Ground
 		if (col.gameObject.layer == 8) {
 			anim.SetTrigger("landed");

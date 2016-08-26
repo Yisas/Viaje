@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public float shotForce;					// Bullet force amount
+	public float bulletsInInventory;		// Remaining bullets
 	public AudioClip[] jumpSounds;			// Array of jump sounds to be called randomly
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
@@ -35,9 +36,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 		Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-	
 	}
 
 	void Awake()
@@ -143,33 +142,36 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void RangedAttack(){
-		anim.SetTrigger ("rangedAttack");
-		weaponRanged.Shoot ();
+		if (bulletsInInventory > 0) {
+			anim.SetTrigger ("rangedAttack");
+			weaponRanged.Shoot ();
 
-		// Don't collide player with bullet.
-		GameObject tempBullet = Instantiate (bullet,shotSpawn.transform.position,bullet.transform.rotation) as GameObject;
-		Physics2D.IgnoreCollision(tempBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+			// Don't collide player with bullet.
+			GameObject tempBullet = Instantiate (bullet, shotSpawn.transform.position, bullet.transform.rotation) as GameObject;
+			Physics2D.IgnoreCollision (tempBullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 
-		if (!isFacingLeft)
-			tempBullet.transform.Rotate (0, 0, 180);
+			if (!isFacingLeft)
+				tempBullet.transform.Rotate (0, 0, 180);
 
-		Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D> ();
+			Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D> ();
 
-		float directedShotForce;
+			float directedShotForce;
 
-		if (isFacingLeft)
-			directedShotForce = -shotForce;
-		else
-			directedShotForce = shotForce;
+			if (isFacingLeft)
+				directedShotForce = -shotForce;
+			else
+				directedShotForce = shotForce;
 
-		tempRigidBody.velocity = new Vector2(directedShotForce,0);
+			tempRigidBody.velocity = new Vector2 (directedShotForce, 0);
 
-		// Play random shooting clip.
-		int i = Random.Range(0, rangeAttackSounds.Length);
-		audioSource.clip = rangeAttackSounds[i];
-		if (!audioSource.isPlaying)
-			audioSource.Play ();
-		
+			// Play random shooting clip.
+			int i = Random.Range (0, rangeAttackSounds.Length);
+			audioSource.clip = rangeAttackSounds [i];
+			if (!audioSource.isPlaying)
+				audioSource.Play ();
+
+			bulletsInInventory--;
+		}
 	}
 
 	//Called from gun on succesful hit
