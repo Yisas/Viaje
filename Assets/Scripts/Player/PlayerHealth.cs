@@ -4,8 +4,9 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 
 	public float health = 100f;					// The player's health.
-	public float repeatDamagePeriod = 2f;		// How frequently the player can be damaged.
-	public float hurtForce = 10f;				// The force with which the player is pushed when hurt.
+	public float repeatDamagePeriod = 0.5f;		// How frequently the player can be damaged.
+	public float hurtForceGrounded ;			// The force with which the player is pushed when hurt.
+	public float hurtForceAirborne;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
 	public float lifePowerupDefault;			// Default amount of life the player is healed when picking up health.
 
@@ -62,8 +63,11 @@ public class PlayerHealth : MonoBehaviour {
 			// Create a vector that's from the enemy to the player with an upwards boost.
 			Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
 
-			// Add a force to the player in the direction of the vector and multiply by the hurtForce.
-			GetComponent<Rigidbody2D> ().AddForce (hurtVector * hurtForce);
+			if(playerControl.isGrounded==true)
+				// Add a force to the player in the direction of the vector and multiply by the hurtForce.
+				GetComponent<Rigidbody2D> ().AddForce (hurtVector * hurtForceGrounded);
+			else
+				GetComponent<Rigidbody2D> ().AddForce (hurtVector * hurtForceAirborne);
 
 			// Reduce the player's health by 10.
 			health -= damageAmount;

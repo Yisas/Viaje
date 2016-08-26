@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public float maxNumberOfEnemies;	
+	public int maxNumberOfEnemies;	
 	public float spawnTime = 5f;		// The amount of time between each spawn.
 	public float spawnDelay = 3f;		// The amount of time before spawning starts.
 	public GameObject[] enemies;		// Array of enemy prefabs.
@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour
 	private bool isActive=false;		// Start spawning on true.
 	private Transform dropRangeLeft;			// Smallest value of x in world coordinates the delivery can happen at.
 	private Transform dropRangeRight;			// Largest value of x in world coordinates the delivery can happen at.
+
+	[HideInInspector]
+	public int numberOfEnemies=0;
 
 	void Awake(){
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
@@ -33,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 		int i = 0;
 
 		if (isActive) {
-			if (gameController.numberOfEnemies <= gameController.maxNumberOfEnemies) {
+			if (gameController.numberOfEnemies < gameController.maxNumberOfEnemies && numberOfEnemies < maxNumberOfEnemies) {
 
 				RaycastHit2D hit= new RaycastHit2D();
 
@@ -70,7 +73,9 @@ public class EnemySpawner : MonoBehaviour
 
 				hit= new RaycastHit2D();
 
-				Instantiate (enemies [enemyIndex], dropPos, transform.rotation);
+				GameObject enemy =(GameObject) Instantiate (enemies [enemyIndex], dropPos, transform.rotation);
+				enemy.GetComponent<EnemyController> ().enemySpawner = GetComponent<EnemySpawner>();
+				numberOfEnemies++;
 			}
 
 			/*

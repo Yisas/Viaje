@@ -12,8 +12,10 @@ public class EnemyController : MonoBehaviour {
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 	private GameController gameController;
 
-	void Awake() {
+	[HideInInspector]
+	public EnemySpawner enemySpawner;
 
+	void Awake() {
 		// Setting up references.
 		anim = GetComponentInChildren<Animator>();
 		frontCheck = transform.Find("frontCheck").transform;
@@ -94,6 +96,8 @@ public class EnemyController : MonoBehaviour {
 			isDead = true;
 
 			gameController.numberOfEnemies--;
+			if (enemySpawner != null)
+				enemySpawner.numberOfEnemies--;
 		}
 	}
 }

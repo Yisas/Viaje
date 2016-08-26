@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour {
 	public GameObject bullet;				// Bullet for ranged attack
 	public bool isInvulnerable=false;
 
-	private bool isGrounded = false;        // Bool for checking if player is grounded, uses 
+	[HideInInspector]
+	public bool isGrounded = false;         // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private Transform shotSpawn;			// A position marking where to shoot from.
 	private Animator anim;					// Reference to the player's animator component.
