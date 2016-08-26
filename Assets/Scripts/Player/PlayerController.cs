@@ -177,6 +177,8 @@ public class PlayerController : MonoBehaviour {
 				audioSource.Play ();
 
 			bulletsInInventory--;
+
+			healthBarCanvas.GetComponent<LifeBar> ().UpdatePowerBar (bulletsInInventory);
 		}
 	}
 

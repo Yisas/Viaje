@@ -12,25 +12,13 @@ public class PlayerHealth : MonoBehaviour {
 	private float lastHitTime;					// The time at which the player was last hit.
 	private PlayerController playerControl;		// Reference to the PlayerControl script.
 	private Animator anim;						// Reference to the Animator on the player
-	private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
-	private Canvas healthBarCanvas;				// Canvas object containing lifebar UI elements.
-	private SpriteRenderer healthBarSprite;		// Health bar sprite.
-	private SpriteRenderer healthBarDecor;		// Extra healthbar sprite that needs color changing.
+	private LifeBar lifeBar;
 
 	void Awake() {
 		// Setting up references.
 		playerControl = GetComponent<PlayerController>();
 		anim = GetComponentInChildren<Animator>();
-
-		// Getting the intial scale of the healthbar (whilst the player has full health).
-		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
-		healthBarSprite = healthBarCanvas.transform.FindChild ("lifeBar").GetComponent<SpriteRenderer>();
-		healthScale = healthBarSprite.transform.localScale;
-		healthBarDecor = healthBarCanvas.transform.FindChild ("head_space_decor").GetComponent<SpriteRenderer>();
-
-		// Set lifebar colors to healthy
-		healthBarSprite.material.color= Color.green;
-		healthBarDecor.material.color = Color.green;
+		lifeBar = GameObject.FindGameObjectWithTag ("LifeBar").GetComponent<LifeBar> ();
 	}
 
 	// Use this for initialization
@@ -80,24 +68,12 @@ public class PlayerHealth : MonoBehaviour {
 			// Reduce the player's health by 10.
 			health -= damageAmount;
 
-			UpdateHealthBar ();
+			lifeBar.UpdateHealthBar (health);
 		}
 	}
 
 	public void Heal(){
 		health += lifePowerupDefault;
-		UpdateHealthBar ();
-	}
-
-	private void UpdateHealthBar ()
-	{
-		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
-		healthBarSprite.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
-		healthBarDecor.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
-
-		// Set the scale of the health bar to be proportional to the player's health.
-		healthBarSprite.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, healthScale.z);
-
-		healthBarCanvas.GetComponent<Animator> ().SetTrigger ("headBob");
+		lifeBar.UpdateHealthBar (health);
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -38,23 +39,27 @@ public class EnemySpawner : MonoBehaviour
 
 				int enemyIndex;
 				Vector3 dropPos;
+				List<int> usedValues = new List<int>();
 
 				do {
 					// Instantiate a random enemy.
 					enemyIndex = Random.Range (0, enemies.Length);
 
 					// Create a random x coordinate for the delivery in the drop range.
-					float dropPosX = Random.Range (dropRangeLeft.position.x, dropRangeRight.position.x);
+					int dropPosX = UniqueRandomInt((int)dropRangeLeft.position.x,(int)dropRangeRight.position.x, usedValues);
+					//float dropPosX = Random.Range(dropRangeLeft.position.x,dropRangeRight.position.x);
+					usedValues.Add(dropPosX);
 
 					// Create a position with the random x coordinate.
 					dropPos = new Vector3 (dropPosX, dropRangeLeft.position.y, transform.position.z);
 
+					hit= new RaycastHit2D();
 					// Layer nine should be characters, make sure you are not on an character
-					hit = Physics2D.Raycast (dropPos, -Vector2.up,Mathf.Infinity,9);
+					hit = Physics2D.Raycast (dropPos, -Vector2.up,10f,9);
 
 					i++;
 
-					if(i>=10000){
+					if(i>=100){
 						i=0;
 						//Debug.Log("Spawner error");
 						hit= new RaycastHit2D();
@@ -81,5 +86,18 @@ public class EnemySpawner : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.transform.tag == "Player")
 			isActive = true;
+	}
+
+
+	public int UniqueRandomInt(int min, int max, List<int> usedValues)
+	{
+		int i = 0;
+		int val = Random.Range(min, max);
+		while(usedValues.Contains(val) && i<=1000)
+		{
+			val = Random.Range(min, max);
+			i++;
+		}
+		return val;
 	}
 }
