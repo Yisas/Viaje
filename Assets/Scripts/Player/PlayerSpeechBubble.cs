@@ -21,8 +21,8 @@ public class PlayerSpeechBubble : MonoBehaviour {
 		// Set up references
 		text = this.GetComponentInChildren<Text>();
 		canvas = this.GetComponentInChildren<Canvas>();
-		PlayerController[] playerController = this.GetComponentsInParent<PlayerController>();
-		playerType = playerController[0].playerType;
+		PlayerController playerController = GetComponentInParent<PlayerController>();
+		playerType = playerController.playerType;
 	}
 
 	// Use this for initialization

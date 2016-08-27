@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour {
 	private Animator anim;				// Reference to the enemy's animator component.
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 	private GameController gameController;
+	private PlayerController playerController;
 
 	[HideInInspector]
 	public EnemySpawner enemySpawner;
@@ -21,11 +22,11 @@ public class EnemyController : MonoBehaviour {
 		frontCheck = transform.Find("frontCheck").transform;
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		gameController.numberOfEnemies++;
+		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 	}
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -72,8 +73,8 @@ public class EnemyController : MonoBehaviour {
 		transform.localScale = enemyScale;
 	}
 
-	public void Die(){
-
+	// killType is 0 when melee, 1 when ranged.
+	public void Die(int killType){
 		if (!isDead) {
 
 			// Find all of the colliders on the gameobject and set them all to be triggers.
@@ -98,6 +99,8 @@ public class EnemyController : MonoBehaviour {
 			gameController.numberOfEnemies--;
 			if (enemySpawner != null)
 				enemySpawner.numberOfEnemies--;
+
+			playerController.EnemyKill (killType);
 		}
 	}
 }
