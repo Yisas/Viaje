@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 	public float headbobSpeedMultiplier;	// To be passed to animator.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public float shotForce;					// Bullet force amount
-	public float bulletsInInventory;		// Remaining bullets
+	public int bulletsInInventory;			// Remaining bullets
 	public int killsForBulletRestock;		// Number of enemies the player hs to kill before he gets an bullet restock
 	public AudioClip[] jumpSounds;			// Array of jump sounds to be called randomly
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour {
 	private AudioSource audioSource;		// Audiosource on object.
 	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
 	private Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
-	private int killCount;					
+	private int killCount;		
+	private int startingBulletsInInventory;
 
 	// Use this for initialization
 	void Start () {
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour {
 		weaponRanged = GetComponentInChildren<WeaponRanged> ();
 		audioSource = GetComponent<AudioSource> ();
 		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
+		startingBulletsInInventory = bulletsInInventory;
 	}
 
 	// Update is called once per frame
@@ -228,7 +230,10 @@ public class PlayerController : MonoBehaviour {
 		killCount++;
 		if (killCount % killsForBulletRestock == 0) {
 			bulletsInInventory++;
-			healthBarCanvas.GetComponent<LifeBar> ().UpdatePowerBar (bulletsInInventory);
+			if (!(bulletsInInventory > startingBulletsInInventory))
+				healthBarCanvas.GetComponent<LifeBar> ().UpdatePowerBar (bulletsInInventory);
+			else
+				bulletsInInventory = startingBulletsInInventory;
 		}
 	}
 }
