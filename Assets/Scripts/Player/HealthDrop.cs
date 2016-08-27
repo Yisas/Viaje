@@ -40,7 +40,13 @@ public class HealthDrop : MonoBehaviour {
 		// On collision with ground deactivate disposable landing gear. Layer 8 should be Ground
 		if (col.gameObject.layer == 8) {
 			if (!hasLanded) {
-				anim.SetTrigger ("landed");
+				// Eliminate disposable landing gear
+				foreach (Transform child in transform)
+					if (child.tag == "HealthDropDispose")
+						child.GetComponent<SpriteRenderer> ().enabled = false;
+				// Deactivate animator
+				anim.enabled=false;
+
 				AudioSource.PlayClipAtPoint (landClip, transform.position);
 				hasLanded = true;
 			}

@@ -14,12 +14,14 @@ public class PlayerHealth : MonoBehaviour {
 	private PlayerController playerControl;		// Reference to the PlayerControl script.
 	private Animator anim;						// Reference to the Animator on the player
 	private LifeBar lifeBar;
+	private float startingHealth;
 
 	void Awake() {
 		// Setting up references.
 		playerControl = GetComponent<PlayerController>();
 		anim = GetComponentInChildren<Animator>();
 		lifeBar = GameObject.FindGameObjectWithTag ("LifeBar").GetComponent<LifeBar> ();
+		startingHealth = health;
 	}
 
 	// Use this for initialization
@@ -72,12 +74,14 @@ public class PlayerHealth : MonoBehaviour {
 			// Reduce the player's health by 10.
 			health -= damageAmount;
 
-			lifeBar.UpdateHealthBar (health);
+			lifeBar.UpdateHealthBar (health,true);
 		}
 	}
 
 	public void Heal(){
 		health += lifePowerupDefault;
-		lifeBar.UpdateHealthBar (health);
+		if(health>startingHealth)
+			health=startingHealth;
+		lifeBar.UpdateHealthBar (health,false);
 	}
 }

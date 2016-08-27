@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	public PlayerType playerType;
 	public float maxSpeed = 5f;			    // As fast as player can go
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
+	public float headbobSpeedMultiplier;	// To be passed to animator.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public float shotForce;					// Bullet force amount
 	public float bulletsInInventory;		// Remaining bullets
@@ -48,10 +49,11 @@ public class PlayerController : MonoBehaviour {
 		// Setting up references.
 		groundCheck = transform.FindChild("groundCheck");
 		shotSpawn = transform.FindChild ("shotSpawn");
-		anim = GetComponentsInChildren<Animator>()[0];
+		anim = GetComponentInChildren<Animator>();
+		anim.SetFloat ("headbobSpeedMultiplier", headbobSpeedMultiplier);
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 		weaponRanged = GetComponentInChildren<WeaponRanged> ();
-		audioSource = GetComponents<AudioSource> ()[0];
+		audioSource = GetComponent<AudioSource> ();
 		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
 	}
 

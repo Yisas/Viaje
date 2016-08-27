@@ -37,7 +37,8 @@ public class LifeBar : MonoBehaviour {
 	
 	}
 
-	public void UpdateHealthBar (float health)
+	// If hurt is true, lifebar icon goes ouch
+	public void UpdateHealthBar (float health, bool hurt)
 	{
 		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
 		healthBarSprite.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
@@ -46,7 +47,8 @@ public class LifeBar : MonoBehaviour {
 		// Set the scale of the health bar to be proportional to the player's health.
 		healthBarSprite.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, healthScale.z);
 
-		GetComponent<Animator> ().SetTrigger ("headBob");
+		if(hurt)
+			GetComponent<Animator> ().SetTrigger ("headBob");
 	}
 
 	public void UpdatePowerBar(float bullets){
