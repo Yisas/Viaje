@@ -3,13 +3,14 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
-	public float moveSpeed = 2f;		// The speed the enemy moves at.
-	public float deathDespawnInterval;	// Time the character is on the scene after dying.
+	public float moveSpeed = 2f;				// The speed the enemy moves at.
+	public float deathDespawnInterval;			// Time the character is on the scene after dying.
+	public float headbobSpeedMultiplier;		// To be passed to animator.
 
-	private float deathTimer = 0f;		// When timer reaches despawn time, destroy object.
-	private bool isDead=false;			// Check for whether enemy is dead, despawn after interval.
-	private Animator anim;				// Reference to the enemy's animator component.
-	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
+	private float deathTimer = 0f;				// When timer reaches despawn time, destroy object.
+	private bool isDead=false;					// Check for whether enemy is dead, despawn after interval.
+	private Animator anim;						// Reference to the enemy's animator component.
+	private Transform frontCheck;				// Reference to the position of the gameobject used for checking if something is in front.
 	private GameController gameController;
 	private PlayerController playerController;
 
@@ -19,6 +20,7 @@ public class EnemyController : MonoBehaviour {
 	void Awake() {
 		// Setting up references.
 		anim = GetComponentInChildren<Animator>();
+		anim.SetFloat ("headbobSpeedMultiplier", headbobSpeedMultiplier);
 		frontCheck = transform.Find("frontCheck").transform;
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		gameController.numberOfEnemies++;

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9eb1dd4a4cf8e194fab0ae78e513c8f3
-timeCreated: 1471826503
+timeCreated: 1472259972
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -79,32 +79,6 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mono_1_1
-      rect:
-        serializedVersion: 2
-        x: 546
-        y: 2079
-        width: 14
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: mono_1_2
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 1727
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: head
       rect:
         serializedVersion: 2
@@ -114,32 +88,6 @@ TextureImporter:
         height: 323
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: mono_1_4
-      rect:
-        serializedVersion: 2
-        x: 595
-        y: 1459
-        width: 14
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: mono_1_5
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 1107
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
