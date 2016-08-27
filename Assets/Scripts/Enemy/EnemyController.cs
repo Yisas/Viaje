@@ -33,7 +33,6 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		// Destroy object when it should despawn.
 		if (isDead) {
 			deathTimer += Time.deltaTime;
@@ -43,7 +42,6 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-
 		// Create an array of all the colliders in front of the enemy.
 		Collider2D[] frontHits = Physics2D.OverlapPointAll(frontCheck.position, 1);
 
@@ -67,6 +65,11 @@ public class EnemyController : MonoBehaviour {
 
 	}
 
+	void OnTriggerEnter2D(Collider2D col){
+		if (col.transform.tag == "DeadZone")
+			Die (3);
+	}
+
 	public void Flip()
 	{
 		// Multiply the x component of localScale by -1.
@@ -75,7 +78,7 @@ public class EnemyController : MonoBehaviour {
 		transform.localScale = enemyScale;
 	}
 
-	// killType is 0 when melee, 1 when ranged.
+	// killType is 0 when melee, 1 when ranged, 3 when suicide
 	public void Die(int killType){
 		if (!isDead) {
 
@@ -102,7 +105,8 @@ public class EnemyController : MonoBehaviour {
 			if (enemySpawner != null)
 				enemySpawner.numberOfEnemies--;
 
-			playerController.EnemyKill (killType);
+			if(killType!=3)
+				playerController.EnemyKill (killType);
 		}
 	}
 }

@@ -143,6 +143,8 @@ public class PlayerController : MonoBehaviour {
 		int i = Random.Range(0, jumpSounds.Length);
 		AudioSource.PlayClipAtPoint(jumpSounds[i], transform.position);
 
+		anim.SetTrigger ("jump");
+
 	}
 
 	void MeleeAttack(){
