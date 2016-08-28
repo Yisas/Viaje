@@ -46,6 +46,10 @@ public class FallingObject : MonoBehaviour {
 				anim.SetFloat ("warningTimer", warningTimer);
 			}
 		}
+
+		if (col.transform.tag == "DeadZone") {
+			StartDespawning ();
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
