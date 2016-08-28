@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	public float health = 100f;					// The player's health.
 	public float repeatDamagePeriod = 0.5f;		// How frequently the player can be damaged.
-	public float hurtForceGrounded ;			// The force with which the player is pushed when hurt.
+	public float hurtForceGrounded;				// The force with which the player is pushed when hurt.
 	public float hurtForceAirborne;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
 	public float lifePowerupDefault;			// Default amount of life the player is healed when picking up health.
@@ -53,6 +53,20 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionStay2D(Collision2D col){
+		if (col.gameObject.tag == "Enemy") {
+			if (Time.time - lastHitTime >= repeatDamagePeriod)
+					// ... and if the player still has health...
+				if (health > 0f) {
+					// ... take damage and reset the lastHitTime.
+					TakeDamage (col.transform); 
+				}
+				// If the player doesn't have health, die.
+				else
+					playerControl.Die ();
+		}
+	}
+
 	public void TakeDamage (Transform enemy)
 	{
 		if (!playerControl.isInvulnerable) {
@@ -63,13 +77,16 @@ public class PlayerHealth : MonoBehaviour {
 			playerControl.jump = false;
 
 			// Create a vector that's from the enemy to the player with an upwards boost.
-			Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
+			Vector3 hurtVectorVertical = transform.position - enemy.position + Vector3.up * 5f;
+			Vector3 hurtVectorHorizontal = transform.position - enemy.position + Vector3.left * 5f;
 
-			if(playerControl.isGrounded==true)
-				// Add a force to the player in the direction of the vector and multiply by the hurtForce.
-				GetComponent<Rigidbody2D> ().AddForce (hurtVector * hurtForceGrounded);
-			else
-				GetComponent<Rigidbody2D> ().AddForce (hurtVector * hurtForceAirborne);
+			if (playerControl.isGrounded == true) {				// Add a force to the player in the direction of the vector and multiply by the hurtForce.
+				GetComponent<Rigidbody2D> ().AddForce (hurtVectorVertical * hurtForceGrounded);
+				GetComponent<Rigidbody2D> ().AddForce (hurtVectorHorizontal * hurtForceGrounded);
+			} else {
+				GetComponent<Rigidbody2D> ().AddForce (hurtVectorVertical * hurtForceAirborne);
+				GetComponent<Rigidbody2D> ().AddForce (hurtVectorHorizontal * hurtForceAirborne);
+			}
 
 			// Reduce the player's health by 10.
 			health -= damageAmount;
