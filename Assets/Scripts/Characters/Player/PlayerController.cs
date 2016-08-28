@@ -151,7 +151,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Jump(){
-		
+
+		Vector3 priorVelocity = GetComponent<Rigidbody2D> ().velocity;
+
+		// Cancel vertical velocity before jumping
+		GetComponent<Rigidbody2D>().velocity = new Vector3(priorVelocity.x,0,priorVelocity.z);
+
 		// Add a vertical force to the player.
 		GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
 
@@ -169,7 +174,6 @@ public class PlayerController : MonoBehaviour {
 		AudioSource.PlayClipAtPoint(jumpSounds[i], transform.position);
 
 		anim.SetTrigger ("jump");
-
 	}
 
 	void MeleeAttack(){
@@ -183,6 +187,7 @@ public class PlayerController : MonoBehaviour {
 
 	void RangedAttack(){
 		if (bulletsInInventory > 0) {
+			
 			anim.SetTrigger ("rangedAttack");
 			weaponRanged.Shoot ();
 
@@ -213,6 +218,8 @@ public class PlayerController : MonoBehaviour {
 			bulletsInInventory--;
 
 			healthBarCanvas.GetComponent<LifeBar> ().UpdatePowerBar (bulletsInInventory);
+
+			healthBarCanvas.GetComponent<Animator> ().SetTrigger ("rangedAttack");
 		}
 	}
 
