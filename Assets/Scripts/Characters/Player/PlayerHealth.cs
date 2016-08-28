@@ -67,8 +67,10 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage (Transform enemy)
-	{
+	public void TakeDamage (Transform enemy){
+
+		HitDirection hitDirection = ReturnDirection (enemy, transform);
+
 		if (!playerControl.isInvulnerable) {
 
 			anim.SetTrigger ("angryHeadbob");
@@ -78,7 +80,17 @@ public class PlayerHealth : MonoBehaviour {
 
 			// Create a vector that's from the enemy to the player with an upwards boost.
 			Vector3 hurtVectorVertical = transform.position - enemy.position + Vector3.up * 5f;
-			Vector3 hurtVectorHorizontal = transform.position - enemy.position + Vector3.left * 5f;
+
+			Vector3 hurtVectorHorizontal;
+			if(hitDirection == HitDirection.Left)
+				hurtVectorHorizontal = transform.position - enemy.position + Vector3.right * 5f;
+			else
+				hurtVectorHorizontal = transform.position - enemy.position + Vector3.left * 5f;
+			
+
+			// Cancel prior velocities
+			GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0 ,0);
+
 
 			if (playerControl.isGrounded == true) {				// Add a force to the player in the direction of the vector and multiply by the hurtForce.
 				GetComponent<Rigidbody2D> ().AddForce (hurtVectorVertical * hurtForceGrounded);
@@ -101,4 +113,27 @@ public class PlayerHealth : MonoBehaviour {
 			health=startingHealth;
 		lifeBar.UpdateHealthBar (health,false);
 	}
+
+	public enum HitDirection { None, Top, Bottom, Forward, Back, Left, Right };
+		public HitDirection ReturnDirection( Transform Object, Transform ObjectHit ){
+		
+		HitDirection hitDirection = HitDirection.None;
+		RaycastHit2D myRayHit;
+		Vector2 direction = ( Object.position - ObjectHit.position).normalized;
+		Vector2 origin = new Vector2 (Object.position.x, Object.position.y);
+
+		myRayHit = Physics2D.Raycast (origin, direction);
+
+		if (myRayHit.collider != null) {
+			Vector3 myNormal = myRayHit.normal;
+			myNormal = myRayHit.transform.TransformDirection (myNormal);
+			if (Mathf.Sign (myNormal.x) == -1.0f)
+				hitDirection = HitDirection.Right;
+			else
+				hitDirection = HitDirection.Left;
+		}
+
+		return hitDirection;
+	}
+
 }
