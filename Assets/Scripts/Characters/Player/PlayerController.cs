@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 priorVelocity = GetComponent<Rigidbody2D> ().velocity;
 
 		// Cancel vertical velocity before jumping
-		GetComponent<Rigidbody2D>().velocity = new Vector3(priorVelocity.x,0,priorVelocity.z);
+		GetComponent<Rigidbody2D>().velocity = new Vector3(priorVelocity.x, 0 ,priorVelocity.z);
 
 		// Add a vertical force to the player.
 		GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
