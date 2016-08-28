@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
 	public GameObject bullet;				// Bullet for ranged attack
 	public bool isInvulnerable=false;
+	public float deathTime;
 
 	[HideInInspector]
 	public bool isGrounded = false;         // Bool for checking if player is grounded, uses 
@@ -39,6 +41,10 @@ public class PlayerController : MonoBehaviour {
 	private Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
 	private int killCount;		
 	private int startingBulletsInInventory;
+	private bool canDoubleJump = false;
+	private bool doubleJump = false;
+	private float deathTimer = 0;
+	private bool hasControl = true;
 
 	// Use this for initialization
 	void Start () {
@@ -65,15 +71,28 @@ public class PlayerController : MonoBehaviour {
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 
-		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump") && isGrounded)
-			jump = true;
+		if (hasControl) {
+			// If the jump button is pressed and the player is grounded then the player should jump.
+			if (Input.GetButtonDown ("Jump"))
+			if (!jump && isGrounded)
+				jump = true;
+			else
+				doubleJump = true;
 
-		if (Input.GetButtonDown ("MeleeAttack"))
-			MeleeAttack ();
+			if (Input.GetButtonDown ("MeleeAttack"))
+				MeleeAttack ();
 
-		if (Input.GetButtonDown ("RangedAttack"))
-			RangedAttack ();
+			if (Input.GetButtonDown ("RangedAttack"))
+				RangedAttack ();
+		}
+
+		if (isDead) {
+			deathTimer -= Time.deltaTime;
+			if (deathTimer <= 0) {
+				Scene scene = SceneManager.GetActiveScene ();
+				SceneManager.LoadScene (scene.name);
+			}
+		}
 	
 	}
 
@@ -106,7 +125,7 @@ public class PlayerController : MonoBehaviour {
 			FlipCharacter();
 
 		// Jump if conditions are met, checks happen in update
-		if (jump)
+		if (jump || (doubleJump && canDoubleJump))
 			Jump ();
 
 	}
@@ -137,7 +156,13 @@ public class PlayerController : MonoBehaviour {
 		GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
 
 		// Make sure the player can't jump again until the jump conditions from Update are satisfied.
+		if (jump)
+			canDoubleJump = true;
+		else
+			canDoubleJump = false;
+		
 		jump = false;
+		doubleJump = false;
 
 		// Play a random jump audio clip.
 		int i = Random.Range(0, jumpSounds.Length);
@@ -208,7 +233,8 @@ public class PlayerController : MonoBehaviour {
 			}
 			*/
 			// ... disable user Player Control script
-			GetComponent<PlayerController> ().enabled = false;
+			//GetComponent<PlayerController> ().enabled = false;
+			hasControl=false;
 
 			// ... Trigger the 'Die' animation state
 			anim.SetTrigger ("Dead");
@@ -217,6 +243,8 @@ public class PlayerController : MonoBehaviour {
 			healthBarCanvas.GetComponent<Animator> ().SetTrigger ("die");
 
 			isDead = true;
+
+			deathTimer = deathTime;
 		}
 	}
 

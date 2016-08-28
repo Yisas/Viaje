@@ -37,7 +37,7 @@ public class PlayerSpeechBubble : MonoBehaviour {
 
 		if (timer >= changeTextInterval && !isVisible) {
 			timer = 0f;
-			LoadTextFile ("Assets\\Scripts\\Player\\speechBubbleTexts.txt");	 //Load text from text file
+			LoadTextFile ("Assets\\Scripts\\Characters\\Player\\speechBubbleTexts.txt");	 //Load text from text file
 			canvas.enabled = true;
 			isVisible = true;
 		}
