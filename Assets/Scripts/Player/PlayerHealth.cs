@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
-	void TakeDamage (Transform enemy)
+	public void TakeDamage (Transform enemy)
 	{
 		if (!playerControl.isInvulnerable) {
 
