@@ -116,11 +116,14 @@ public class EnemyController : MonoBehaviour
 
 	public void Flip ()
 	{
-		// Multiply the x component of localScale by -1.
-		Vector3 enemyScale = transform.localScale;
-		enemyScale.x *= -1;
-		transform.localScale = enemyScale;
-		isFacingLeft = !isFacingLeft;
+		// No flipping when dead
+		if (!isDead) {
+			// Multiply the x component of localScale by -1.
+			Vector3 enemyScale = transform.localScale;
+			enemyScale.x *= -1;
+			transform.localScale = enemyScale;
+			isFacingLeft = !isFacingLeft;
+		}
 	}
 
 	// killType is 0 when melee, 1 when ranged, 3 when suicide

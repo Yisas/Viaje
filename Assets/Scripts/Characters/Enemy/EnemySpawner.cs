@@ -81,14 +81,6 @@ public class EnemySpawner : MonoBehaviour
 				enemy.GetComponent<EnemyController> ().enemySpawner = GetComponent<EnemySpawner>();
 				numberOfEnemies++;
 			}
-
-			/*
-		// Play the spawning effect from all of the particle systems.
-		foreach(ParticleSystem p in GetComponentsInChildren<ParticleSystem>())
-		{
-			p.Play();
-		}
-		*/
 		}
 	}
 
