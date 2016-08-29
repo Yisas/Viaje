@@ -22,7 +22,10 @@ public class EnemyController : MonoBehaviour
 	private GameController gameController;
 	private PlayerController playerController;
 	private bool isFacingLeft = true;
-	private bool isGrounded = false;
+	private bool isGrounded = false;						// Check is now using OnCollisionExit with Ground layer mask
+	private bool hasEnemyBelow = false;						// See EnemyBelow() function
+	private float dismountTime = 3f;						// Wait time when stacked on top of another enemy to unstack
+	private float dismountTimer = 0;						// Countdown initially set to 0
 
 	[HideInInspector]
 	public EnemySpawner enemySpawner;
@@ -53,20 +56,40 @@ public class EnemyController : MonoBehaviour
 			if (deathTimer >= deathDespawnInterval)
 				Destroy (this.gameObject);
 		}
+
+		// Checks should happen in update and movements in Fixed
+		hasEnemyBelow = EnemyBelow ();
+
+		// If just stacked on top of an enemy, start timer.
+		if (hasEnemyBelow && dismountTimer==0)
+			dismountTimer = dismountTime;
+
+		// Reset timer if necessary
+		if (dismountTimer < 0)
+			dismountTimer = 0;
+
 	}
 
 	void FixedUpdate ()
 	{
 		int directionSign = FindPlayer ();
 
-		// Set the enemy's velocity to moveSpeed in the x direction.
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveSpeed * directionSign, GetComponent<Rigidbody2D> ().velocity.y);
+		// If stacked on an enemy cancel horizontal velocity
+		if (dismountTimer > 0) {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, GetComponent<Rigidbody2D> ().velocity.y);
+			dismountTimer -= Time.deltaTime;
+		}
+		else
+			// If not stacked on an enemy, move towards player.
+		if (!hasEnemyBelow)
+				// Set the enemy's velocity to moveSpeed in the x direction.
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveSpeed * directionSign, GetComponent<Rigidbody2D> ().velocity.y);
 
+		// Flip if necessary to look towards the player
 		Reorient (directionSign);
 
 		// The Speed animator parameter is set.
-		anim.SetFloat ("Speed", Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.magnitude));
-
+		anim.SetFloat ("Speed", Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.x));
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
@@ -77,13 +100,8 @@ public class EnemyController : MonoBehaviour
 
 	void OnCollisionEnter2D (Collision2D col)
 	{
-
 		if (col.collider.gameObject.layer == LayerMask.NameToLayer ("Ground"))
 			isGrounded = true;
-
-		// Don't collide with enemies until landig
-		if (col.collider.transform.tag == "Enemy" && !isGrounded)
-			Physics2D.IgnoreCollision (col.collider, GetComponent<Collider2D> ());
 	}
 
 
@@ -93,6 +111,7 @@ public class EnemyController : MonoBehaviour
 		    && isGrounded) {
 			isGrounded = false;
 		}
+			
 	}
 
 	public void Flip ()
@@ -137,6 +156,7 @@ public class EnemyController : MonoBehaviour
 		}
 	}
 
+	// Uses horizontal position diference to return the sign of the offset to the player.
 	private int FindPlayer ()
 	{
 		int direction = 0;
@@ -151,11 +171,26 @@ public class EnemyController : MonoBehaviour
 		return direction;
 	}
 
+	// Flip if not facing the playe. Direction must be the sign of direction towards player.
 	private void Reorient (int direction)
 	{
 		if (direction == -1 && !isFacingLeft)
 			Flip ();
 		else if (direction == 1 && isFacingLeft)
 			Flip ();
+	}
+
+	// Raycast to see if stacked on top of an enemy.
+	private bool EnemyBelow(){
+		
+		GameObject bottomCheckPosition = transform.FindChild ("bottomCheck").gameObject;
+		RaycastHit2D raycastHit;
+
+		raycastHit = Physics2D.Raycast (bottomCheckPosition.transform.position, Vector2.down);
+			if (raycastHit)
+			if (raycastHit.collider.tag == "Enemy")
+				return true;
+
+		return false;
 	}
 }

@@ -114,6 +114,15 @@ public class EnemySpawner : MonoBehaviour
 		RaycastHit2D hit= new RaycastHit2D();
 		Vector3 dropPos;
 		List<int> usedValues = new List<int>();
+
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+
+		foreach(GameObject go in enemies){
+			for(int p= (int)go.transform.position.x - 2; p < (int)go.transform.position.x + 2; p++)
+			usedValues.Add (p);
+				}
+
+
 		int i = 0;
 
 		do {
