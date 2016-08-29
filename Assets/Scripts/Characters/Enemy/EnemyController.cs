@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
 	private GameController gameController;
 	private PlayerController playerController;
 	private bool isFacingLeft = true;
+	private bool isGrounded = false;
 
 	[HideInInspector]
 	public EnemySpawner enemySpawner;
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		
 	}
 	
 	// Update is called once per frame
@@ -55,19 +57,6 @@ public class EnemyController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		// Create an array of all the colliders in front of the enemy.
-		Collider2D[] frontHits = Physics2D.OverlapPointAll (frontCheck.position, 1);
-
-		// Check each of the colliders.
-		foreach (Collider2D c in frontHits) {
-			// If any of the colliders is an Obstacle...
-			if (c.tag == "Obstacle" || c.tag == "Enemy") {
-				// ... Flip the enemy and stop checking the other colliders.
-				Flip ();
-				break;
-			}
-		}
-
 		int directionSign = FindPlayer ();
 
 		// Set the enemy's velocity to moveSpeed in the x direction.
@@ -84,6 +73,26 @@ public class EnemyController : MonoBehaviour
 	{
 		if (col.transform.tag == "DeadZone")
 			Die (3);
+	}
+
+	void OnCollisionEnter2D (Collision2D col)
+	{
+
+		if (col.collider.gameObject.layer == LayerMask.NameToLayer ("Ground"))
+			isGrounded = true;
+
+		// Don't collide with enemies until landig
+		if (col.collider.transform.tag == "Enemy" && !isGrounded)
+			Physics2D.IgnoreCollision (col.collider, GetComponent<Collider2D> ());
+	}
+
+
+	void OnCollisionExit2D (Collision2D col)
+	{
+		if (col.gameObject.layer == 8
+		    && isGrounded) {
+			isGrounded = false;
+		}
 	}
 
 	public void Flip ()
@@ -142,7 +151,8 @@ public class EnemyController : MonoBehaviour
 		return direction;
 	}
 
-	private void Reorient(int direction){
+	private void Reorient (int direction)
+	{
 		if (direction == -1 && !isFacingLeft)
 			Flip ();
 		else if (direction == 1 && isFacingLeft)

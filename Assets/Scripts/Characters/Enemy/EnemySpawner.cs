@@ -30,6 +30,10 @@ public class EnemySpawner : MonoBehaviour
 		spawnTimer = spawnTime;
 	}
 
+	void Start(){
+		
+	}
+
 	void Update(){
 		// Waiting for delay
 		if (spawnDelay > 0)
@@ -61,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
 				spawnTimer -= Time.deltaTime;
 		}
 	}
+
 	}
 
 	void Spawn ()
