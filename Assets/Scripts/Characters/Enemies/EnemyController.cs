@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
 	// When timer reaches despawn time, destroy object.
 	private bool isDead = false;
 	// Check for whether enemy is dead, despawn after interval.
-	private Animator anim;
+	protected Animator anim;
 	// Reference to the enemy's animator component.
 	private Transform frontCheck;
 	// Reference to the position of the gameobject used for checking if something is in front.
@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
 	private bool hasEnemyBelow = false;						// See EnemyBelow() function
 	private float dismountTime = 3f;						// Wait time when stacked on top of another enemy to unstack
 	private float dismountTimer = 0;						// Countdown initially set to 0
+	protected bool lockMovement = false;
 
 	[HideInInspector]
 	public EnemySpawner enemySpawner;
@@ -72,6 +73,9 @@ public class EnemyController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+
+		if(!lockMovement){
+
 		int directionSign = FindPlayer ();
 
 		// If stacked on an enemy cancel horizontal velocity
@@ -90,6 +94,7 @@ public class EnemyController : MonoBehaviour
 
 		// The Speed animator parameter is set.
 		anim.SetFloat ("Speed", Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.x));
+	}
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
