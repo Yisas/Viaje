@@ -6,7 +6,7 @@ public class AuxAnimationComunicator : MonoBehaviour {
 	private PlayerController playerController;
 	private EnemyRanged enemyRangedController;
 
-	void Awake(){
+	void Awake() {
 		playerController = GetComponentInParent<PlayerController> ();
 		enemyRangedController = GetComponentInParent<EnemyRanged> ();
 	}

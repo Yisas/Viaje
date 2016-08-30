@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 	// Check for whether enemy is dead, despawn after interval.
 	protected Animator anim;
 	// Reference to the enemy's animator component.
-	private Transform frontCheck;
+	protected Transform frontCheck;
 	// Reference to the position of the gameobject used for checking if something is in front.
 	private GameController gameController;
 	private PlayerController playerController;
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
 	[HideInInspector]
 	public EnemySpawner enemySpawner;
 
-	void Awake ()
+	protected void Awake ()
 	{
 		// Setting up references.
 		anim = GetComponentInChildren<Animator> ();
@@ -42,14 +42,8 @@ public class EnemyController : MonoBehaviour
 		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 	}
 
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
 	// Update is called once per frame
-	void Update ()
+	protected void Update ()
 	{
 		// Destroy object when it should despawn.
 		if (isDead) {
@@ -165,7 +159,7 @@ public class EnemyController : MonoBehaviour
 	}
 
 	// Uses horizontal position diference to return the sign of the offset to the player.
-	private int FindPlayer ()
+	protected int FindPlayer ()
 	{
 		int direction = 0;
 
