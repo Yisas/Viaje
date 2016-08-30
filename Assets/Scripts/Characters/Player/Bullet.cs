@@ -6,15 +6,10 @@ public class Bullet : MonoBehaviour {
 	public float lifeTime;					// Time interval before destoying object
 	public bool destroyAfterAnimation;		// Whether to ignore life time and destroy after animation loop.
 
-	private float timer=0f;		
-
-	// Use this for initialization
-	void Start () {
-	
-	}
+	private float timer = 0f;		
 
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 		if (!destroyAfterAnimation) {
 			timer += Time.deltaTime;
 			if (timer >= lifeTime)
@@ -24,7 +19,7 @@ public class Bullet : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D col){
 		if (col.transform.tag == "Enemy")
-			col.gameObject.GetComponent<EnemyController> ().Die (1);;
+			col.gameObject.GetComponent<EnemyController> ().Die (1);
 
 		Destroy (this.gameObject);
 	}
