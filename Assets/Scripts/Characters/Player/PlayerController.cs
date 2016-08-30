@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float headbobSpeedMultiplier;	// To be passed to animator.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public float rangedAttackSpeedMultiplier;	// For the animator.
 	public float shotForce;					// Bullet force amount
 	public int bulletsInInventory;			// Remaining bullets
 	public int killsForBulletRestock;		// Number of enemies the player hs to kill before he gets an bullet restock
@@ -32,13 +33,12 @@ public class PlayerController : MonoBehaviour {
 	[HideInInspector]
 	public bool isGrounded = false;         // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private Transform shotSpawn;			// A position marking where to shoot from.
-	private Animator anim;					// Reference to the player's animator component.
+	protected Transform shotSpawn;			// A position marking where to shoot from.
+	protected Animator anim;				// Reference to the player's animator component.
 	private PlayerSpeechBubble speechBubble;
-	private WeaponRanged weaponRanged;		// Reference to ranged weapon script.
-	private AudioSource audioSource;		// Audiosource on object.
+	protected AudioSource audioSource;		// Audiosource on object.
 	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
-	private Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
+	protected Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
 	private int killCount;		
 	private int startingBulletsInInventory;
 	private bool canDoubleJump = false;
@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponentInChildren<Animator>();
 		anim.SetFloat ("headbobSpeedMultiplier", headbobSpeedMultiplier);
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
-		weaponRanged = GetComponentInChildren<WeaponRanged> ();
 		audioSource = GetComponent<AudioSource> ();
 		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
 		startingBulletsInInventory = bulletsInInventory;
@@ -185,42 +184,45 @@ public class PlayerController : MonoBehaviour {
 		isInvulnerable = false;
 	}
 
-	void RangedAttack(){
+	// Method uses animator to call next step of shooting
+ void RangedAttack(){
 		if (bulletsInInventory > 0) {
-			
-			anim.SetTrigger ("rangedAttack");
-			weaponRanged.Shoot ();
-
-			// Don't collide player with bullet.
-			GameObject tempBullet = Instantiate (bullet, shotSpawn.transform.position, bullet.transform.rotation) as GameObject;
-			Physics2D.IgnoreCollision (tempBullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
-
-			if (!isFacingLeft)
-				tempBullet.transform.Rotate (0, 0, 180);
-
-			Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D> ();
-
-			float directedShotForce;
-
-			if (isFacingLeft)
-				directedShotForce = -shotForce;
-			else
-				directedShotForce = shotForce;
-
-			tempRigidBody.velocity = new Vector2 (directedShotForce, 0);
-
 			// Play random shooting clip.
 			int i = Random.Range (0, rangeAttackSounds.Length);
 			audioSource.clip = rangeAttackSounds [i];
 			if (!audioSource.isPlaying)
 				audioSource.Play ();
 
-			bulletsInInventory--;
-
-			healthBarCanvas.GetComponent<LifeBar> ().UpdatePowerBar (bulletsInInventory);
-
-			healthBarCanvas.GetComponent<Animator> ().SetTrigger ("rangedAttack");
+			anim.SetFloat ("rangedAttackSpeedMultiplier", rangedAttackSpeedMultiplier);
+			anim.SetTrigger ("rangedAttack");
 		}
+	}
+
+
+	public void ShootBullet(){
+		// Don't collide player with bullet.
+		GameObject tempBullet = Instantiate (bullet, shotSpawn.transform.position, bullet.transform.rotation) as GameObject;
+		Physics2D.IgnoreCollision (tempBullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
+
+		if (!isFacingLeft)
+			tempBullet.transform.Rotate (0, 0, 180);
+
+		Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D> ();
+
+		float directedShotForce;
+
+		if (isFacingLeft)
+			directedShotForce = -shotForce;
+		else
+			directedShotForce = shotForce;
+
+		tempRigidBody.velocity = new Vector2 (directedShotForce, 0);
+
+		bulletsInInventory--;
+
+		healthBarCanvas.GetComponent<LifeBar> ().UpdatePowerBar (bulletsInInventory);
+
+		healthBarCanvas.GetComponent<Animator> ().SetTrigger ("rangedAttack");
 	}
 
 	public void Die(){

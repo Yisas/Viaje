@@ -22,4 +22,8 @@ public class AuxAnimationComunicator : MonoBehaviour {
 	void ThrowBullet(){
 		enemyRangedController.ThrowBullet ();
 	}
+
+	void ShootBullet(){
+		playerController.ShootBullet ();
+	}
 }
