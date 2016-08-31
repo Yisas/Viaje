@@ -1,18 +1,17 @@
 fileFormatVersion: 2
-guid: e26984bb9297e1740b6791b295addd53
-timeCreated: 1472618138
+guid: 34cac6cb9c451154c8da9bfe88b190c9
+timeCreated: 1472622602
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: head_1
-    21300002: head_eyes_closed
-    21300004: head_2
-    21300006: body
-    21300008: hand_right_1
-    21300010: hand_left_1
-    21300012: hand_right_2
-    21300014: hand_left_2
-    21300016: keyboard
+    21300000: lightning_0_0
+    21300002: lightning_0_1
+    21300004: lightning_0_2
+    21300006: lightning_0_3
+    21300008: lightning_0_4
+    21300010: lightning_0_5
+    21300012: lightning_0_6
+    21300014: lightning_0_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,119 +61,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: head_1
+      name: lightning_0_0
       rect:
         serializedVersion: 2
-        x: 59
-        y: 799
-        width: 1283
-        height: 1706
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 12
+        y: 27
+        width: 102
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: head_eyes_closed
+      name: lightning_0_1
       rect:
         serializedVersion: 2
-        x: 1662
-        y: 838
-        width: 1283
-        height: 1707
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 152
+        y: 27
+        width: 83
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: head_2
+      name: lightning_0_2
       rect:
         serializedVersion: 2
-        x: 3328
-        y: 773
-        width: 1282
-        height: 1704
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 276
+        y: 27
+        width: 94
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: body
+      name: lightning_0_3
       rect:
         serializedVersion: 2
-        x: 4976
-        y: 1246
-        width: 945
-        height: 629
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 406
+        y: 27
+        width: 98
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hand_right_1
+      name: lightning_0_4
       rect:
         serializedVersion: 2
-        x: 266
-        y: 263
-        width: 415
-        height: 270
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 524
+        y: 27
+        width: 102
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hand_left_1
+      name: lightning_0_5
       rect:
         serializedVersion: 2
-        x: 905
-        y: 263
-        width: 328
-        height: 270
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 664
+        y: 27
+        width: 83
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hand_right_2
+      name: lightning_0_6
       rect:
         serializedVersion: 2
-        x: 1938
-        y: 187
-        width: 362
-        height: 249
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 788
+        y: 27
+        width: 98
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hand_left_2
+      name: lightning_0_7
       rect:
         serializedVersion: 2
-        x: 2991
-        y: 190
-        width: 349
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: keyboard
-      rect:
-        serializedVersion: 2
-        x: 4085
-        y: 172
-        width: 1861
-        height: 352
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 918
+        y: 27
+        width: 98
+        height: 485
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
