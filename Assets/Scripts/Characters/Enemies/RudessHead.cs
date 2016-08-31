@@ -8,6 +8,8 @@ public class RudessHead : MonoBehaviour {
 	public Object bolt;
 	public float shootTime;
 	public float shotSprayInterval;
+	public float transformInterval;
+	public GameObject rudessOnFoot;
 
 	private Vector3 leftWaypoint;
 	private Vector3 rightWaypoint;
@@ -18,6 +20,10 @@ public class RudessHead : MonoBehaviour {
 	private float shootTimer;
 	private float shotSprayTimer;
 	private bool isShooting = false;
+	private GameObject[] spawnPoints;
+	private float transformTimer;
+	[HideInInspector]
+	public bool transformed = false;
 
 	void Awake(){
 		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController>();
@@ -27,6 +33,8 @@ public class RudessHead : MonoBehaviour {
 		rightKeyboardSpawnPoint = transform.FindChild ("rightKeyboardSpawnPoint").transform;
 		shootTimer = shootTime;
 		shotSprayTimer = shotSprayInterval;
+		spawnPoints = GameObject.FindGameObjectsWithTag ("RudessSpawner");
+		transformTimer = transformInterval;
 	}
 
 	// Use this for initialization
@@ -36,6 +44,12 @@ public class RudessHead : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transformTimer -= Time.deltaTime;
+		if(transformTimer <= 0 && !transformed) {
+			transformTimer = transformInterval;
+			SpawnRudessOnFoot ();
+		}
+
 		playerDirection = FindPlayer ();
 
 		if (isShooting) {
@@ -95,5 +109,25 @@ public class RudessHead : MonoBehaviour {
 	void ShootBolt(){
 		Vector3 spawnPoint = new Vector3(Random.Range(leftKeyboardSpawnPoint.position.x,rightKeyboardSpawnPoint.position.x),leftKeyboardSpawnPoint.position.y,leftKeyboardSpawnPoint.position.z);
 		Instantiate(bolt,spawnPoint, new Quaternion(0,0,0,1));
+	}
+
+	void SpawnRudessOnFoot(){
+
+		float tempFloat = Random.Range (0f, spawnPoints.Length - 1);
+		int randomSpawnPoint;
+
+		if (tempFloat <= 0.5f)
+			randomSpawnPoint = 0;
+		else if (tempFloat > 0.5f && tempFloat <= 1f)
+			randomSpawnPoint = 1;
+		else
+			randomSpawnPoint = (int)tempFloat;
+
+		rudessOnFoot.SetActive (true);
+		rudessOnFoot.transform.position = spawnPoints [randomSpawnPoint].transform.position;
+		rudessOnFoot.transform.localScale = spawnPoints [randomSpawnPoint].transform.localScale;
+		transformed = true;
+		rudessOnFoot.GetComponent<RudessOnFoot>().transformed = false;
+		gameObject.SetActive (false);
 	}
 }

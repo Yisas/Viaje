@@ -9,6 +9,8 @@ public class RudessOnFoot : MonoBehaviour {
 	public float attackInterval;						// Wait time between attacks
 	public int attacksPerRound;							// Amount of attacks until round is over
 	public GameObject bolt;								// Prefab to fire
+	public GameObject rudessHead;
+	public float transformInterval;
 
 	private GameObject bulletSpawnPoint;
 	private Animator anim;
@@ -16,6 +18,9 @@ public class RudessOnFoot : MonoBehaviour {
 	private bool isAtacking = false;
 	private float attackDelayTimer;
 	private int currentRoundAttacks;
+	private float transformTimer;
+	[HideInInspector]
+	public bool transformed = false;
 
 	void Awake(){
 		attackStartDelayTimer = attackStartDelay;
@@ -23,6 +28,7 @@ public class RudessOnFoot : MonoBehaviour {
 		anim = GetComponentInChildren<Animator> ();
 		bulletSpawnPoint = transform.FindChild ("bulletSpawn").gameObject;
 		currentRoundAttacks = attacksPerRound;
+		transformTimer = transformInterval;
 	}
 
 	// Use this for initialization
@@ -32,6 +38,13 @@ public class RudessOnFoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		transformTimer -= Time.deltaTime;
+		if(transformTimer <= 0 && !transformed) {
+			transformTimer = transformInterval;
+			DespawnToHead ();
+		}
+
 
 		if(!isAtacking)
 			attackStartDelayTimer -= Time.deltaTime;
@@ -70,5 +83,12 @@ public class RudessOnFoot : MonoBehaviour {
 
 	public void TakeDamage(){
 		health -= defaultDamageAmount;
+	}
+
+	void DespawnToHead(){
+		transformed = true;
+		rudessHead.GetComponent<RudessHead> ().transformed = false;
+		rudessHead.SetActive(true);
+		gameObject.SetActive(false);
 	}
 }
