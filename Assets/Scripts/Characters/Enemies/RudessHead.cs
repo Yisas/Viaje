@@ -10,6 +10,8 @@ public class RudessHead : MonoBehaviour {
 	public float shotSprayInterval;
 	public float transformInterval;
 	public GameObject rudessOnFoot;
+	public GameObject teleportEffect;
+	public float teleportDelay;
 
 	private Vector3 leftWaypoint;
 	private Vector3 rightWaypoint;
@@ -22,8 +24,12 @@ public class RudessHead : MonoBehaviour {
 	private bool isShooting = false;
 	private GameObject[] spawnPoints;
 	private float transformTimer;
-	[HideInInspector]
+	//[HideInInspector]
 	public bool transformed = false;
+	private float teleportTimer;
+	//[HideInInspector]
+	public bool isTeleporting = false;
+	private int randomSpawnPoint = 0;
 
 	void Awake(){
 		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController>();
@@ -35,6 +41,8 @@ public class RudessHead : MonoBehaviour {
 		shotSprayTimer = shotSprayInterval;
 		spawnPoints = GameObject.FindGameObjectsWithTag ("RudessSpawner");
 		transformTimer = transformInterval;
+		teleportTimer = teleportDelay;
+		teleportEffect.GetComponent<ParticleSystem>().startLifetime = teleportDelay;
 	}
 
 	// Use this for initialization
@@ -44,10 +52,23 @@ public class RudessHead : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transformTimer -= Time.deltaTime;
+
+		if(!isTeleporting && !transformed)
+			transformTimer -= Time.deltaTime;
+
 		if(transformTimer <= 0 && !transformed) {
 			transformTimer = transformInterval;
-			SpawnRudessOnFoot ();
+			isTeleporting = true;
+			ChooseSpawnPosition ();
+			InstantiatePortals (false);
+		}
+
+		if (isTeleporting) {
+			teleportTimer -= Time.deltaTime;
+			if (teleportTimer <= 0) {
+				teleportTimer = teleportDelay;
+				SpawnRudessOnFoot ();
+			}
 		}
 
 		playerDirection = FindPlayer ();
@@ -70,7 +91,7 @@ public class RudessHead : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (playerDirection != 0) {
+		if (playerDirection != 0 && !isTeleporting) {
 			GetComponent<Rigidbody2D>().AddForce(Vector2.right * playerDirection * moveForce);
 
 			// If the player's horizontal velocity is greater than the maxSpeed...
@@ -112,7 +133,16 @@ public class RudessHead : MonoBehaviour {
 	}
 
 	void SpawnRudessOnFoot(){
+		rudessOnFoot.SetActive (true);
+		rudessOnFoot.transform.position = spawnPoints [randomSpawnPoint].transform.position;
+		rudessOnFoot.transform.localScale = spawnPoints [randomSpawnPoint].transform.localScale;
+		transformed = true;
+		rudessOnFoot.GetComponent<RudessOnFoot>().transformed = false;
+		isTeleporting = false;
+		gameObject.SetActive (false);
+	}
 
+	void ChooseSpawnPosition(){
 		float tempFloat = Random.Range (0f, spawnPoints.Length - 1);
 		int randomSpawnPoint;
 
@@ -122,12 +152,31 @@ public class RudessHead : MonoBehaviour {
 			randomSpawnPoint = 1;
 		else
 			randomSpawnPoint = (int)tempFloat;
-
-		rudessOnFoot.SetActive (true);
-		rudessOnFoot.transform.position = spawnPoints [randomSpawnPoint].transform.position;
-		rudessOnFoot.transform.localScale = spawnPoints [randomSpawnPoint].transform.localScale;
-		transformed = true;
-		rudessOnFoot.GetComponent<RudessOnFoot>().transformed = false;
-		gameObject.SetActive (false);
+		
 	}
+
+	public void InstantiatePortals(bool reappear){
+		// Cancel horizontal velocity
+		GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
+		GameObject headEffect = (GameObject)Instantiate (teleportEffect, transform.position, transform.rotation);
+		headEffect.GetComponent<ParticleSystem> ().Play ();
+		GameObject onFootEfect = (GameObject)Instantiate (teleportEffect, spawnPoints [randomSpawnPoint].transform.position, spawnPoints [randomSpawnPoint].transform.rotation);
+		onFootEfect.GetComponent<ParticleSystem> ().startSize = rudessOnFoot.GetComponent<RudessOnFoot> ().portalScale;
+		onFootEfect.GetComponent<ParticleSystem> ().Play ();
+
+		if (!reappear) {
+			GetComponentInChildren<Animator> ().SetTrigger ("teleport");
+			rudessOnFoot.GetComponentInChildren<Animator> ().SetTrigger ("reappear");
+		} else {
+			GetComponentInChildren<Animator> ().SetTrigger ("reappear");
+			rudessOnFoot.GetComponentInChildren<Animator> ().SetTrigger ("teleport");
+		}
+			
+	}
+
+	public void RescaleSprites(){
+		transform.FindChild ("sprites").localScale = new Vector3 (1f, 1f, 1f);
+	}
+
 }

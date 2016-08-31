@@ -19,7 +19,7 @@ public class RudessHeadAnimatorRandomizer : MonoBehaviour {
 	}
 
 	void Update(){
-		if (counting) {
+		if (counting && !GetComponent<RudessHead> ().isTeleporting) {
 			countdownTimer -= Time.deltaTime;
 			if (countdownTimer <= 0) {
 				if (animationType)

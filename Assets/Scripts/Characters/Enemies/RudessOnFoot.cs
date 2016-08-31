@@ -11,6 +11,7 @@ public class RudessOnFoot : MonoBehaviour {
 	public GameObject bolt;								// Prefab to fire
 	public GameObject rudessHead;
 	public float transformInterval;
+	public float portalScale;
 
 	private GameObject bulletSpawnPoint;
 	private Animator anim;
@@ -91,6 +92,11 @@ public class RudessOnFoot : MonoBehaviour {
 		transformed = true;
 		rudessHead.GetComponent<RudessHead> ().transformed = false;
 		rudessHead.SetActive(true);
+		rudessHead.GetComponent<RudessHead> ().InstantiatePortals (true);
+		//gameObject.SetActive(false);
+	}
+
+	public void Deactivate(){
 		gameObject.SetActive(false);
 	}
 }
