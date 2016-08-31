@@ -83,6 +83,8 @@ public class RudessOnFoot : MonoBehaviour {
 
 	public void TakeDamage(){
 		health -= defaultDamageAmount;
+		Debug.Log (health);
+		DespawnToHead ();
 	}
 
 	void DespawnToHead(){

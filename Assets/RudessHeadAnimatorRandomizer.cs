@@ -35,8 +35,10 @@ public class RudessHeadAnimatorRandomizer : MonoBehaviour {
 
 
 	void ChooseAnimation(){
-		if (Random.value <= 0.5f) 
+		if (Random.value <= 0.5f)
 			animationType = true;
+		else
+			animationType = false;
 
 						if (animationType)
 			countdownTimer = Random.Range (blinkMinInterval, blinkMaxInterval);
