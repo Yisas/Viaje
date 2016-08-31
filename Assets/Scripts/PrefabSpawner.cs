@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PrefabSpawner : MonoBehaviour {
 
+	public GameObject parent;
 	public GameObject prefab;
 
 	void Awake()
@@ -10,6 +11,10 @@ public class PrefabSpawner : MonoBehaviour {
 		Object go = Instantiate(prefab,transform.position,transform.rotation);
 		GameObject temp = (GameObject)go;
 		temp.transform.localScale = transform.localScale;
+
+		if (parent)
+			temp.transform.parent = parent.transform;
+
 		Destroy( gameObject );
 	}
 }
