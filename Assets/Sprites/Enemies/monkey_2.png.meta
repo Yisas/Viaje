@@ -1,22 +1,23 @@
 fileFormatVersion: 2
-guid: 9eb1dd4a4cf8e194fab0ae78e513c8f3
-timeCreated: 1472259972
+guid: 27b792014dbc9464fbe4bdb8742a5730
+timeCreated: 1472610916
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head_dead
-    21300002: mono_1_1
-    21300004: mono_1_2
+    21300002: monkey_2_1
+    21300004: monkey_2_2
     21300006: head
-    21300008: mono_1_4
-    21300010: mono_1_5
-    21300012: nipple_right
+    21300008: monkey_2_4
+    21300010: monkey_2_5
+    21300012: tail
     21300014: nipple_left
-    21300016: body
-    21300018: hand_right
+    21300016: nipple_right
+    21300018: body
     21300020: hand_left
-    21300022: foot_right
+    21300022: hand_right
     21300024: foot_left
+    21300026: foot_right
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -69,10 +70,23 @@ TextureImporter:
       name: head_dead
       rect:
         serializedVersion: 2
-        x: 164
-        y: 1779
-        width: 378
+        x: 167
+        y: 1791
+        width: 377
         height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: monkey_2_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1739
+        width: 6
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -82,8 +96,8 @@ TextureImporter:
       name: head
       rect:
         serializedVersion: 2
-        x: 214
-        y: 1159
+        x: 216
+        y: 1171
         width: 376
         height: 323
       alignment: 0
@@ -92,13 +106,26 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: nipple_right
+      name: monkey_2_5
       rect:
         serializedVersion: 2
-        x: 353
-        y: 961
-        width: 30
-        height: 28
+        x: 192
+        y: 1119
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tail
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 970
+        width: 152
+        height: 312
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -108,10 +135,23 @@ TextureImporter:
       name: nipple_left
       rect:
         serializedVersion: 2
-        x: 417
-        y: 961
-        width: 30
-        height: 30
+        x: 355
+        y: 973
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: nipple_right
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 974
+        width: 31
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,23 +161,10 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 351
-        y: 587
-        width: 179
-        height: 276
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hand_right
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 393
-        width: 80
-        height: 65
+        x: 327
+        y: 665
+        width: 273
+        height: 180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,23 +174,23 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 607
-        y: 380
-        width: 72
-        height: 78
+        x: 115
+        y: 406
+        width: 79
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: foot_right
+      name: hand_right
       rect:
         serializedVersion: 2
-        x: 115
-        y: 55
-        width: 107
-        height: 92
+        x: 610
+        y: 391
+        width: 71
+        height: 79
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +200,21 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 591
-        y: 44
+        x: 117
+        y: 66
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: foot_right
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 56
         width: 104
         height: 113
       alignment: 0
