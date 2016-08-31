@@ -21,6 +21,9 @@ public class Bullet : MonoBehaviour {
 		if (col.transform.tag == "Enemy")
 			col.gameObject.GetComponent<EnemyController> ().Die (1);
 
+		if (col.gameObject.tag == "RudessOnFoot")
+			col.gameObject.GetComponent<RudessOnFoot> ().TakeDamage ();
+
 		Destroy (this.gameObject);
 	}
 

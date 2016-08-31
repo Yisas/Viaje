@@ -23,5 +23,8 @@ public class WeaponMelee : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Enemy") 
 			col.gameObject.GetComponent<EnemyController> ().Die (0);
+
+		if (col.gameObject.tag == "RudessOnFoot")
+			col.gameObject.GetComponent<RudessOnFoot> ().TakeDamage ();
 	}
 }

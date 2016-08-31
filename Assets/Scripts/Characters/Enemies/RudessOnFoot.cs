@@ -4,10 +4,11 @@ using System.Collections;
 public class RudessOnFoot : MonoBehaviour {
 
 	public int health;						
+	public int defaultDamageAmount;
 	public float attackStartDelay;						// Wait time until starting to attack
 	public float attackInterval;						// Wait time between attacks
 	public int attacksPerRound;							// Amount of attacks until round is over
-	public GameObject bolt;							// Prefab to fire
+	public GameObject bolt;								// Prefab to fire
 
 	private GameObject bulletSpawnPoint;
 	private Animator anim;
@@ -67,5 +68,7 @@ public class RudessOnFoot : MonoBehaviour {
 		Instantiate (bolt, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
 	}
 
-
+	public void TakeDamage(){
+		health -= defaultDamageAmount;
+	}
 }
