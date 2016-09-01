@@ -1,19 +1,18 @@
 fileFormatVersion: 2
-guid: 517f3d4e823aa6248acf1fe02976473f
-timeCreated: 1471899884
+guid: 1db110770acf29442bbb961618facfe5
+timeCreated: 1472718728
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: head_dead
-    21300002: head_angry
+    21300000: head_angry
+    21300002: head_dead
     21300004: head
-    21300006: gun
+    21300006: rudess_onfoot_3
     21300008: body
     21300010: hand_right
     21300012: hand_left
-    21300014: joel_1_7
-    21300016: foot_right
-    21300018: foot_left
+    21300014: foot_right
+    21300016: foot_left
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,26 +62,26 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: head_dead
+      name: head_angry
       rect:
         serializedVersion: 2
-        x: 187
-        y: 1465
-        width: 327
-        height: 428
+        x: 96
+        y: 2754
+        width: 598
+        height: 711
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: head_angry
+      name: head_dead
       rect:
         serializedVersion: 2
-        x: 736
-        y: 1154
-        width: 327
-        height: 428
+        x: 96
+        y: 1864
+        width: 598
+        height: 711
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -92,25 +91,25 @@ TextureImporter:
       name: head
       rect:
         serializedVersion: 2
-        x: 187
-        y: 917
-        width: 327
-        height: 428
+        x: 96
+        y: 1002
+        width: 598
+        height: 710
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: gun
+      name: rudess_onfoot_3
       rect:
         serializedVersion: 2
-        x: 770
-        y: 656
-        width: 293
-        height: 274
+        x: 348
+        y: 1000
+        width: 17
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -118,10 +117,10 @@ TextureImporter:
       name: body
       rect:
         serializedVersion: 2
-        x: 237
-        y: 496
-        width: 333
-        height: 358
+        x: 246
+        y: 543
+        width: 335
+        height: 382
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +130,10 @@ TextureImporter:
       name: hand_right
       rect:
         serializedVersion: 2
-        x: 125
-        y: 360
-        width: 126
-        height: 110
+        x: 172
+        y: 328
+        width: 111
+        height: 91
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,25 +143,12 @@ TextureImporter:
       name: hand_left
       rect:
         serializedVersion: 2
-        x: 516
-        y: 322
-        width: 108
-        height: 148
+        x: 524
+        y: 333
+        width: 106
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: joel_1_7
-      rect:
-        serializedVersion: 2
-        x: 586
-        y: 308
-        width: 5
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -170,10 +156,10 @@ TextureImporter:
       name: foot_right
       rect:
         serializedVersion: 2
-        x: 125
-        y: 124
-        width: 172
-        height: 109
+        x: 89
+        y: 92
+        width: 153
+        height: 114
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +169,10 @@ TextureImporter:
       name: foot_left
       rect:
         serializedVersion: 2
-        x: 489
-        y: 124
-        width: 150
-        height: 113
+        x: 541
+        y: 76
+        width: 152
+        height: 116
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

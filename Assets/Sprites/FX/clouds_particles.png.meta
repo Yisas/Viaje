@@ -1,0 +1,276 @@
+fileFormatVersion: 2
+guid: b63b27fe87c8a7340bc2e7278783ae5f
+timeCreated: 1472720818
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: clouds_particles_0
+    21300002: clouds_particles_1
+    21300004: clouds_particles_2
+    21300006: clouds_particles_3
+    21300008: clouds_particles_4
+    21300010: clouds_particles_5
+    21300012: clouds_particles_6
+    21300014: clouds_particles_7
+    21300016: clouds_particles_8
+    21300018: clouds_particles_9
+    21300020: clouds_particles_10
+    21300022: clouds_particles_11
+    21300024: clouds_particles_12
+    21300026: clouds_particles_13
+    21300028: clouds_particles_14
+    21300030: clouds_particles_15
+    21300032: clouds_particles_16
+    21300034: clouds_particles_17
+    21300036: clouds_particles_18
+    21300038: clouds_particles_19
+    21300040: clouds_particles_20
+    21300042: clouds_particles_21
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clouds_particles_0
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 953
+        width: 158
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 945
+        width: 190
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 754
+        width: 162
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_4
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 763
+        width: 165
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_5
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 857
+        width: 136
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412
+        width: 84
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_7
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 422
+        width: 208
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_8
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 406
+        width: 142
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_9
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 453
+        width: 103
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_10
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 146
+        width: 132
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_11
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 197
+        width: 173
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_12
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 191
+        width: 127
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_16
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 17
+        width: 137
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_18
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 23
+        width: 196
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_20
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 0
+        width: 126
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
