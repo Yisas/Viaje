@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 
-		if (hasControl) {
+		if (hasControl && !isUnderWater) {
 			// If the jump button is pressed and the player is grounded then the player should jump.
 			if (Input.GetButtonDown ("Jump"))
 			if (!jump && isGrounded)
@@ -130,10 +130,12 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col){
 
-		if(Mathf.Sign(GetComponent<Rigidbody2D> ().velocity.y) > 0)
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, 0f);
+		if (col.gameObject.layer == LayerMask.NameToLayer ("SwimmableWater")) {
+			if (Mathf.Sign (GetComponent<Rigidbody2D> ().velocity.y) > 0)
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, 0f);
 		
-		GetComponent<Rigidbody2D> ().gravityScale = defaultGravityScale;
+			GetComponent<Rigidbody2D> ().gravityScale = defaultGravityScale;
+		}
 	}
 
 	void FlipCharacter() {
@@ -276,6 +278,12 @@ public class PlayerController : MonoBehaviour {
 
 		// Invert gravity so player swims up
 		GetComponent<Rigidbody2D>().gravityScale = underWaterGravityScale;
+	}
+
+	public void ExitWater(){
+		anim.SetBool ("underWater", false);
+		isUnderWater = false;
+		GetComponent<Rigidbody2D> ().gravityScale = defaultGravityScale;
 	}
 
 	private void MovementOnFoot(){
