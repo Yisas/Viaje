@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour {
 	public bool jump = false;				// Condition for whether the player should jump.
 
 	public PlayerType playerType;
-	public float maxSpeed = 5f;			    // As fast as player can go
-	public float moveForce = 365f;			// Amount of force added to move the player left and right.
+	public float moveForce;					// Amount of force added to move the player left and right.
+	public float maxSpeed;				    // As fast as player can go
 	public float headbobSpeedMultiplier;	// To be passed to animator.
-	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public float jumpForce;					// Amount of force added when the player jumps.
 	public float rangedAttackSpeedMultiplier;	// For the animator.
 	public float shotForce;					// Bullet force amount
 	public int bulletsInInventory;			// Remaining bullets
@@ -30,8 +30,12 @@ public class PlayerController : MonoBehaviour {
 	public bool isInvulnerable=false;
 	public float deathTime;
 
+	// Underwater specific values
 	public float underWaterGravityScale;
-	public float underWaterMoveForce;
+	public float underWaterHorizontalMoveForce;
+	public float underWaterHorizontalMaxSpeed;
+	public float underWaterVerticalMoveForce;
+	public float underWaterVerticalMaxSpeed;
 
 	[HideInInspector]
 	public bool isGrounded = false;         // Bool for checking if player is grounded, uses 
@@ -103,36 +107,16 @@ public class PlayerController : MonoBehaviour {
 
 	// Called each physics step
 	void FixedUpdate(){
-		
-		// Cache the horizontal input.
-		float h = Input.GetAxis("Horizontal");
+		if (hasControl) {
+			if (!isUnderWater) {
+				MovementOnFoot ();
 
-		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		anim.SetFloat("Speed", Mathf.Abs(h));
-
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
-			// ... add a force to the player.
-			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
-
-		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
-			// ... set the player's velocity to the maxSpeed in the x axis.
-			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
-
-		// If the input is moving the player right and the player is facing left...
-		if(h > 0 && isFacingLeft)
-			// ... flip the player.
-			FlipCharacter();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && !isFacingLeft)
-			// ... flip the player.
-			FlipCharacter();
-
-		// Jump if conditions are met, checks happen in update
-		if (jump || (doubleJump && canDoubleJump))
-			Jump ();
-
+				// Jump if conditions are met, checks happen in update
+				if (jump || (doubleJump && canDoubleJump))
+					Jump ();
+			} else
+				MovementUnderWater ();
+		}
 	}
 
 	void OnTriggerEnter2D (Collider2D col){
@@ -145,7 +129,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D col){
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, 0f);
+
+		if(Mathf.Sign(GetComponent<Rigidbody2D> ().velocity.y) > 0)
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, 0f);
+		
 		GetComponent<Rigidbody2D> ().gravityScale = defaultGravityScale;
 	}
 
@@ -247,16 +234,8 @@ public class PlayerController : MonoBehaviour {
 			foreach (Collider2D c in cols) {
 				c.isTrigger = true;
 			}
-			/*
-			// Move all sprite parts of the player to the front
-			SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer>();
-			foreach(SpriteRenderer s in spr)
-			{
-				s.sortingLayerName = "UI";
-			}
-			*/
-			// ... disable user Player Control script
-			//GetComponent<PlayerController> ().enabled = false;
+
+			// Disable control
 			hasControl=false;
 
 			// ... Trigger the 'Die' animation state
@@ -297,5 +276,70 @@ public class PlayerController : MonoBehaviour {
 
 		// Invert gravity so player swims up
 		GetComponent<Rigidbody2D>().gravityScale = underWaterGravityScale;
+	}
+
+	private void MovementOnFoot(){
+		// Cache the horizontal input.
+		float h = Input.GetAxis("Horizontal");
+
+		// The Speed animator parameter is set to the absolute value of the horizontal input.
+		anim.SetFloat("Speed", Mathf.Abs(h));
+
+		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+			// ... add a force to the player.
+			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
+
+		// If the player's horizontal velocity is greater than the maxSpeed...
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
+			// ... set the player's velocity to the maxSpeed in the x axis.
+			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
+		// Check if character needs to flip
+		CheckDirection (h);
+	}
+
+	private void MovementUnderWater(){
+		// Cache the horizontal input.
+		float h = Input.GetAxis("Horizontal");
+		float v = Input.GetAxis ("Vertical");
+		Debug.Log (v);
+
+		// The Speed animator parameter is set to the absolute value of the horizontal input.
+		anim.SetFloat("Speed", Mathf.Abs(h) + Mathf.Abs(v));
+
+		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+		if(h * GetComponent<Rigidbody2D>().velocity.x < underWaterHorizontalMaxSpeed)
+			// ... add a force to the player.
+			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * underWaterHorizontalMoveForce);
+
+		// If the player's horizontal velocity is greater than the maxSpeed...
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > underWaterHorizontalMaxSpeed)
+			// ... set the player's velocity to the maxSpeed in the x axis.
+			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * underWaterHorizontalMaxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
+		// If the player is changing direction (v has a different sign to velocity.y) or hasn't reached maxSpeed yet...
+		if(v * GetComponent<Rigidbody2D>().velocity.y < underWaterVerticalMaxSpeed)
+			// ... add a force to the player.
+			GetComponent<Rigidbody2D>().AddForce(Vector2.up * v * underWaterVerticalMoveForce);
+
+		// If the player's vertical velocity is greater than the maxSpeed...
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) > underWaterVerticalMaxSpeed)
+			// ... set the player's velocity to the maxSpeed in the y axis.
+			GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x , Mathf.Sign(GetComponent<Rigidbody2D>().velocity.y) * underWaterVerticalMaxSpeed);
+
+		// Check if character needs to flip
+		CheckDirection (h);
+	}
+
+	private void CheckDirection(float vel){
+		// If the input is moving the player right and the player is facing left...
+		if(vel > 0 && isFacingLeft)
+			// ... flip the player.
+			FlipCharacter();
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if(vel < 0 && !isFacingLeft)
+			// ... flip the player.
+			FlipCharacter();
 	}
 }
