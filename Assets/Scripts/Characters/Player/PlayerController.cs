@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour {
 	public bool isInvulnerable=false;
 	public float deathTime;
 
+	public float underWaterGravityScale;
+	public float underWaterMoveForce;
+
 	[HideInInspector]
 	public bool isGrounded = false;         // Bool for checking if player is grounded, uses 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 	private bool doubleJump = false;
 	private float deathTimer = 0;
 	private bool hasControl = true;
+	private float defaultGravityScale;
+	private bool isUnderWater = false;
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +67,7 @@ public class PlayerController : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 		healthBarCanvas=GameObject.FindGameObjectWithTag("LifeBar").GetComponent<Canvas>();
 		startingBulletsInInventory = bulletsInInventory;
+		defaultGravityScale = GetComponent<Rigidbody2D> ().gravityScale;
 	}
 
 	// Update is called once per frame
@@ -132,7 +138,15 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col){
 		if (col.transform.tag == ("DeadZone"))
 			Die ();
-			
+
+		if (col.gameObject.layer == LayerMask.NameToLayer ("SwimmableWater")) {
+			GoUnderwater ();
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, 0f);
+		GetComponent<Rigidbody2D> ().gravityScale = defaultGravityScale;
 	}
 
 	void FlipCharacter() {
@@ -274,5 +288,14 @@ public class PlayerController : MonoBehaviour {
 			else
 				bulletsInInventory = startingBulletsInInventory;
 		}
+	}
+
+	private void GoUnderwater(){
+		// Alert flages
+		isUnderWater = true;
+		anim.SetBool ("underWater", true);
+
+		// Invert gravity so player swims up
+		GetComponent<Rigidbody2D>().gravityScale = underWaterGravityScale;
 	}
 }
