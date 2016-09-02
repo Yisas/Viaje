@@ -340,7 +340,7 @@ public class PlayerController : MonoBehaviour {
 		CheckDirection (h);
 	}
 
-	private void CheckDirection(float vel){
+	public void CheckDirection(float vel){
 		// If the input is moving the player right and the player is facing left...
 		if(vel > 0 && isFacingLeft)
 			// ... flip the player.
