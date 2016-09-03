@@ -1,5 +1,6 @@
-# TODO
+# Unity 2D Game Project
 
+## TODO
 - Split clouds particle system
 - Loading screen
 - Swimming floor check

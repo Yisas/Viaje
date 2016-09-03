@@ -4,20 +4,46 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour {
 
+	public GameObject[] visibleDuringLoad;
+	public float loadMinDuration;
+	public float waitBeforeLoad;
+
 	private float timer;
 	private bool loading = false;
+	private float endTime = 100000f;
+	private AsyncOperation ao;
+	private GameController gameController;
+
+	void Awake(){
+		foreach (GameObject go in visibleDuringLoad)
+			DontDestroyOnLoad (go);
+
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+	}
 
 	// Use this for initialization
 	void Start () {
-		timer = 5;
+		timer = waitBeforeLoad;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timer -= Time.deltaTime;
-		if (timer <= 0 && !loading) {
+
+		if (!loading && timer <= 0) {
 			loading = true;
-			SceneManager.LoadScene ("Llovizna");
+			endTime = Time.time + loadMinDuration;
+			StartCoroutine (LoadScene());
 		}
+
+		if (Time.time >= endTime)
+			ao.allowSceneActivation = true;
+			
 	}
+
+	IEnumerator LoadScene(){
+		ao = SceneManager.LoadSceneAsync (gameController.nextLevelName);
+			ao.allowSceneActivation = false;
+			yield return ao;
+		}
 }

@@ -6,14 +6,9 @@ public class GameController : MonoBehaviour {
 	[HideInInspector]
 	public int numberOfEnemies = 0;
 	public int maxNumberOfEnemies;
+	public string nextLevelName;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Awake(){
+		DontDestroyOnLoad (transform.gameObject);
 	}
 }
