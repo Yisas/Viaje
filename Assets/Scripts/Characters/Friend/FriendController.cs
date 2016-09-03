@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class FriendController : MonoBehaviour {
 
 	public bool isSceneChanger;
-	public string leveName;
+	public string levelName;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,9 @@ public class FriendController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.transform.tag == "Player")
-			SceneManager.LoadScene (leveName);
+		if (col.transform.tag == "Player") {
+			GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().nextLevelName = levelName;
+			SceneManager.LoadScene ("LoadingScreen");
+		}
 	}
 }
