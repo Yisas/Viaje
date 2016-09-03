@@ -311,7 +311,6 @@ public class PlayerController : MonoBehaviour {
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis ("Vertical");
-		Debug.Log (v);
 
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		anim.SetFloat("Speed", Mathf.Abs(h) + Mathf.Abs(v));

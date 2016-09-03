@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 14fa2e9c10ae8c44793adf5e6ff3c5ed
-timeCreated: 1471900430
+timeCreated: 1472858118
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: head
     21300002: head_angry
     21300004: body
-    21300006: gun
+    21300006: cupcake
     21300008: andrea_1_4
     21300010: hand_right
     21300012: hand_left
@@ -101,10 +101,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: gun
+      name: cupcake
       rect:
         serializedVersion: 2
-        x: 777
+        x: 775
         y: 593
         width: 305
         height: 309
@@ -122,7 +122,7 @@ TextureImporter:
         width: 7
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

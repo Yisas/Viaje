@@ -7,12 +7,14 @@ public class AuxAnimationComunicator : MonoBehaviour {
 	private EnemyRanged enemyRangedController;
 	private RudessOnFoot rudess;
 	private RudessHead rudessHead;
+	private AnimatorActivator animatorActivator;
 
 	void Awake() {
 		playerController = GetComponentInParent<PlayerController> ();
 		enemyRangedController = GetComponentInParent<EnemyRanged> ();
 		rudess = GetComponentInParent<RudessOnFoot> ();
 		rudessHead = GetComponentInParent<RudessHead> ();
+		animatorActivator = GetComponent<AnimatorActivator> ();
 	}
 
 	void FinishAttacking(){
@@ -45,5 +47,13 @@ public class AuxAnimationComunicator : MonoBehaviour {
 
 	void RudessHeadRescaleSprites(){
 		rudessHead.RescaleSprites ();
+	}
+
+	void DestroyPlayer(){
+		Destroy(GameObject.FindGameObjectWithTag ("Player"));
+	}
+
+	void ActivateReferencedAnimation(){
+		animatorActivator.ActivateReferencedAnimation ();
 	}
 }
