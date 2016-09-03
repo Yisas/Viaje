@@ -2,7 +2,7 @@
 
 ## TODO
 ### Programming
--~~Loading screen~~
+- ~~Loading screen~~
 - Split clouds particle system
 - Swimming floor check
 - Remaining character attacks
@@ -12,7 +12,7 @@
 - Player Switch Scripts
 
 ### Art
-~~Separate loading screen dots, empty background~~
+- ~~Separate loading screen dots, empty background~~
 - Nell house
 - Hurt player faces
 - Game logo
