@@ -1,7 +1,8 @@
 # Unity 2D Game Project
 
 ## TODO
-~~Loading screen~~
+### Programming
+-~~Loading screen~~
 - Split clouds particle system
 - Swimming floor check
 - Remaining character attacks
@@ -9,3 +10,11 @@
 - Select proper background music
 - Cutscenes
 - Player Switch Scripts
+
+### Art
+~~Separate loading screen dots, empty background~~
+- Nell house
+- Hurt player faces
+- Game logo
+- Main menu
+- Plc Enemies (fish?)
