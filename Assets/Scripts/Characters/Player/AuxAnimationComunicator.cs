@@ -8,6 +8,7 @@ public class AuxAnimationComunicator : MonoBehaviour {
 	private RudessOnFoot rudess;
 	private RudessHead rudessHead;
 	private AnimatorActivator animatorActivator;
+	private PlayerSwitch playerSwitch;
 
 	void Awake() {
 		playerController = GetComponentInParent<PlayerController> ();
@@ -55,5 +56,14 @@ public class AuxAnimationComunicator : MonoBehaviour {
 
 	void ActivateReferencedAnimation(){
 		animatorActivator.ActivateReferencedAnimation ();
+	}
+	/*
+	void SwitchPlayers(){
+		playerSwitch.SwitchPlayers ();
+	}
+	*/
+
+	public void Deleteme(bool hey){
+
 	}
 }
