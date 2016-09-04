@@ -57,11 +57,13 @@ public class AuxAnimationComunicator : MonoBehaviour {
 	void ActivateReferencedAnimation(){
 		animatorActivator.ActivateReferencedAnimation ();
 	}
-	/*
-	void SwitchPlayers(){
-		playerSwitch.SwitchPlayers ();
+
+	void ActivateCollider(){
+		Collider2D[] cols = GetComponents<Collider2D> ();
+
+		foreach (Collider2D col in cols)
+			col.enabled = true;
 	}
-	*/
 
 	public void Deleteme(bool hey){
 

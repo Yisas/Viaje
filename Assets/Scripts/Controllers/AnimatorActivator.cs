@@ -3,7 +3,10 @@ using System.Collections;
 
 public class AnimatorActivator : MonoBehaviour {
 
-	public GameObject animatableGameobject;
+	public string trigger;
+
+	private GameObject animatableGameobject;
+	public bool deactivateAfterAnimations = false;
 
 	private Animator anim;
 	private Animator[] childAnimators;
@@ -22,11 +25,13 @@ public class AnimatorActivator : MonoBehaviour {
 	}
 
 	public void ActivateAnimation(){
-		anim.enabled = true;
-		anim.SetTrigger ("start");
+		CommonActivation (anim);
 
 		foreach (Animator tempAnim in childAnimators)
-			tempAnim.enabled = true;
+			CommonActivation (tempAnim);
+
+		if (deactivateAfterAnimations)
+			this.enabled = false;
 	}
 
 	public void ActivateReferencedAnimation( ){
@@ -38,5 +43,19 @@ public class AnimatorActivator : MonoBehaviour {
 
 		foreach (Animator tempAnim in tempChildAnimators)
 			tempAnim.enabled = true;
+	}
+
+
+	private void CommonActivation(Animator anmtr){
+		if (anmtr != null) {
+
+			anmtr.enabled = true;
+
+			if (trigger != null)
+				anmtr.SetTrigger (trigger);
+			else
+				anmtr.SetTrigger ("start");
+		}
+
 	}
 }

@@ -7,6 +7,7 @@
 - ~~Swimming floor check~~
 - ~~Player Switch Scripts~~
 - ~~Split clouds particle system~~
+- ~~Repeating burger drop spawns~~
 - **FIX PIPE LAYER ORDER**
 - Remaining character attacks
 - Rudess boss fight start and end
