@@ -10,6 +10,10 @@
 - Select proper background music
 - Cutscenes
 - Player Switch Scripts
+- Loading screen fade out
+- Level specific loading screens (players on the background)
+- Swaying fish for plc
+- Player sounds (damage, remaining attacks)
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
@@ -18,3 +22,4 @@
 - Game logo
 - Main menu
 - Plc Enemies (fish?)
+- Separate swimsuit playerss

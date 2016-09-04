@@ -6,10 +6,14 @@ public class CharacterCutscenHelper : MonoBehaviour
 	public GameObject[] objectsToDisable;
 
 	private Animator[] anims;
+	private GameObject player;
+	private CameraTracking cameraScript;
 
 	void Awake ()
 	{
 		anims = GetComponentsInChildren<Animator> ();
+		player = GameObject.FindGameObjectWithTag ("Player");
+		cameraScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraTracking> ();
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -36,11 +40,31 @@ public class CharacterCutscenHelper : MonoBehaviour
 			go.SetActive (false);
 	}
 
+	public void TrackNewPlayer(string tag){
+		cameraScript.SetCameraTarget (GetCharacter (tag).transform);
+	}
+
+	public void SwitchPlayers(){
+		player.GetComponent<PlayerSwitch>().SwitchPlayers ();
+	}
+
+	public void HideActivePlayer(){
+		player.GetComponent<PlayerController> ().HideCharacter ();
+	}
+
 	private Animator GetCharacterAnimation (string tag)
 	{
 		foreach (Animator characterAnim in anims)
 			if (characterAnim.gameObject.tag == tag)
 				return characterAnim;
+
+		return null;
+	}
+
+	private GameObject GetCharacter(string tag){
+		foreach (Animator characterAnim in anims)
+			if (characterAnim.gameObject.tag == tag)
+				return characterAnim.gameObject;
 
 		return null;
 	}

@@ -12,6 +12,8 @@ public class CameraTracking : MonoBehaviour
 	public Vector2 maxXAndY;		// The maximum x and y coordinates the camera can have.
 	public Vector2 minXAndY;		// The minimum x and y coordinates the camera can have.
 	public float verticalOffset;
+	[HideInInspector]
+	public bool isInCutscene = false;
 
 
 	private Transform player;		// Reference to the player's transform.
@@ -20,7 +22,7 @@ public class CameraTracking : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the reference.
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		RefreshPlayerReference();
 	}
 
 
@@ -40,7 +42,8 @@ public class CameraTracking : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		TrackPlayer();
+		if(!isInCutscene)
+			TrackPlayer();
 	}
 
 
@@ -66,5 +69,13 @@ public class CameraTracking : MonoBehaviour
 
 		// Set the camera's position to the target position with the same z component.
 		transform.position = new Vector3(targetX, targetY, transform.position.z);
+	}
+
+	public void RefreshPlayerReference(){
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+	}
+
+	public void SetCameraTarget(Transform target){
+		player = target;
 	}
 }

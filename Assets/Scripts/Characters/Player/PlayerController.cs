@@ -349,4 +349,14 @@ public class PlayerController : MonoBehaviour {
 			// ... flip the player.
 			FlipCharacter();
 	}
+
+	// Used by animation events
+	public void HideCharacter(){
+		SpriteRenderer[] sprts = GetComponentsInChildren<SpriteRenderer> ();
+
+		foreach (SpriteRenderer spr in sprts)
+			spr.enabled = false;
+
+		GetComponentInChildren<Animator> ().enabled = false;
+	}
 }
