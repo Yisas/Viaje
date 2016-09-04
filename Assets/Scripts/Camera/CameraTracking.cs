@@ -12,12 +12,8 @@ public class CameraTracking : MonoBehaviour
 	public Vector2 maxXAndY;		// The maximum x and y coordinates the camera can have.
 	public Vector2 minXAndY;		// The minimum x and y coordinates the camera can have.
 	public float verticalOffset;
-	[HideInInspector]
-	public bool isInCutscene = false;
-
 
 	private Transform player;		// Reference to the player's transform.
-
 
 	void Awake ()
 	{
@@ -42,7 +38,6 @@ public class CameraTracking : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if(!isInCutscene)
 			TrackPlayer();
 	}
 

@@ -89,6 +89,7 @@ public class EnemyController : MonoBehaviour
 		// The Speed animator parameter is set.
 		anim.SetFloat ("Speed", Mathf.Abs (GetComponent<Rigidbody2D> ().velocity.x));
 	}
+
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
@@ -195,4 +196,5 @@ public class EnemyController : MonoBehaviour
 
 		return false;
 	}
+
 }

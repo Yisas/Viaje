@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MovingPlatform : MonoBehaviour {
+public class SwayingObject : MonoBehaviour {
 
 	private Transform leftmostPoint;					// Limits of platform trayectory.
 	private Transform rightmostPoint;					// Limits of platform trayectory.
 	private Vector3 leftmostPointPosition;				// Fixed vectors for target positions
 	private Vector3 rightmostPointPosition;				// Fixed vectors for target positions
 	private float journeyLength;
-	private bool isGoingLeft = true;
-	private bool startMoving = false;
+	protected bool isGoingLeft = true;
+	protected bool startMoving = false;
 
 	public float speed;
 	public float startTime;
@@ -29,7 +29,7 @@ public class MovingPlatform : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 
 		if (Time.time >= startTime && !startMoving) {
 			startMoving = true;
@@ -47,7 +47,7 @@ public class MovingPlatform : MonoBehaviour {
 
 			float fracJourney = distCovered / journeyLength;
 	
-			if (isGoingLeft)
+			if (!isGoingLeft)
 				transform.position = Vector3.Lerp (leftmostPointPosition, rightmostPointPosition, fracJourney);
 			else
 				transform.position = Vector3.Lerp (rightmostPointPosition, leftmostPointPosition, fracJourney);

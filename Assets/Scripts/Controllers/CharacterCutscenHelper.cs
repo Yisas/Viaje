@@ -19,6 +19,7 @@ public class CharacterCutscenHelper : MonoBehaviour
 	//-------------------------------------------------------------------------------------
 	public void StartRunning (string tag)
 	{
+		Debug.Log (tag);
 		Animator anim = GetCharacterAnimation (tag);
 		anim.SetBool ("running", true);
 	}

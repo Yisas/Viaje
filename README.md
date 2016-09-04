@@ -3,6 +3,7 @@
 ## TODO
 ### Programming
 - ~~Loading screen~~
+- **FIX PIPE LAYER ORDER**
 - Split clouds particle system
 - Swimming floor check
 - Remaining character attacks
@@ -14,9 +15,11 @@
 - Level specific loading screens (players on the background)
 - Swaying fish for plc
 - Player sounds (damage, remaining attacks)
+- Remaining UI healthbar prefabs
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
+- **Separate pipe (URGENT)**
 - Nell house
 - Hurt player faces
 - Game logo
