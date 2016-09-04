@@ -22,6 +22,7 @@ public class RudessOnFoot : MonoBehaviour {
 	private float transformTimer;
 	[HideInInspector]
 	public bool transformed = false;
+	private bool isDead = false;
 
 	void Awake(){
 		attackStartDelayTimer = attackStartDelay;
@@ -95,6 +96,32 @@ public class RudessOnFoot : MonoBehaviour {
 		rudessHead.GetComponent<RudessHead> ().InstantiatePortals (true);
 		//gameObject.SetActive(false);
 	}
+
+	public void Die (int killType)
+	{
+		if (!isDead) {
+
+			// Find all of the colliders on the gameobject and set them all to be triggers.
+			Collider2D[] cols = GetComponents<Collider2D> ();
+			foreach (Collider2D c in cols) {
+				c.isTrigger = true;
+			}
+
+
+			// Move all sprite parts of the player to the front
+			SpriteRenderer[] spr = GetComponentsInChildren<SpriteRenderer> ();
+			foreach (SpriteRenderer s in spr) {
+				s.sortingLayerName = "UI";
+			}
+
+			// ... Trigger the 'Die' animation state
+			anim.SetTrigger ("die");
+
+			// Start despawning timer in update.
+			isDead = true;
+		}
+	}
+
 
 	public void Deactivate(){
 		gameObject.SetActive(false);

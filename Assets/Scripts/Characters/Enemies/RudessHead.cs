@@ -178,5 +178,4 @@ public class RudessHead : MonoBehaviour {
 	public void RescaleSprites(){
 		transform.FindChild ("sprites").localScale = new Vector3 (1f, 1f, 1f);
 	}
-
 }

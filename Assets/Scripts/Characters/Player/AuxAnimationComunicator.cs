@@ -42,7 +42,7 @@ public class AuxAnimationComunicator : MonoBehaviour {
 		rudess.RudessAnimatorDoneAttacking ();
 	}
 
-	void RudessDeactivate(){
+	void RudessOnFootDeactivate(){
 		rudess.Deactivate ();
 	}
 
@@ -64,8 +64,5 @@ public class AuxAnimationComunicator : MonoBehaviour {
 		foreach (Collider2D col in cols)
 			col.enabled = true;
 	}
-
-	public void Deleteme(bool hey){
-
-	}
+		
 }
