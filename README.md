@@ -8,9 +8,9 @@
 - ~~Player Switch Scripts~~
 - ~~Split clouds particle system~~
 - ~~Repeating burger drop spawns~~
+- ~~Rudess boss fight start and end~~
 - **FIX PIPE LAYER ORDER**
 - Remaining character attacks
-- Rudess boss fight start and end
 - Select proper background music
 - Cutscenes
 - Loading screen fade out
@@ -18,6 +18,7 @@
 - Player sounds (damage, remaining attacks)
 - Remaining UI healthbar prefabs
 - Seagulls
+- Start Rudess with portal
 
 ### Art
 - ~~Separate loading screen dots, empty background~~

@@ -41,6 +41,9 @@ public class RudessOnFoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (isDead)
+			return;
+
 		transformTimer -= Time.deltaTime;
 		if(transformTimer <= 0 && !transformed) {
 			transformTimer = transformInterval;
@@ -85,8 +88,10 @@ public class RudessOnFoot : MonoBehaviour {
 
 	public void TakeDamage(){
 		health -= defaultDamageAmount;
-		Debug.Log (health);
-		DespawnToHead ();
+		if (health <= 0)
+			Die();
+		else
+			DespawnToHead ();
 	}
 
 	void DespawnToHead(){
@@ -97,7 +102,7 @@ public class RudessOnFoot : MonoBehaviour {
 		//gameObject.SetActive(false);
 	}
 
-	public void Die (int killType)
+	public void Die ()
 	{
 		if (!isDead) {
 
@@ -116,6 +121,11 @@ public class RudessOnFoot : MonoBehaviour {
 
 			// ... Trigger the 'Die' animation state
 			anim.SetTrigger ("die");
+
+			// Reopten "gates"
+			GameObject[] gates = GameObject.FindGameObjectsWithTag("SpeakersGate");
+			foreach (GameObject go in gates) 
+				go.GetComponent<Animator> ().SetTrigger ("shrink");
 
 			// Start despawning timer in update.
 			isDead = true;

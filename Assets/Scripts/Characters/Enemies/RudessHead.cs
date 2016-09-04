@@ -24,11 +24,13 @@ public class RudessHead : MonoBehaviour {
 	private bool isShooting = false;
 	private GameObject[] spawnPoints;
 	private float transformTimer;
-	//[HideInInspector]
+	[HideInInspector]
 	public bool transformed = false;
 	private float teleportTimer;
-	//[HideInInspector]
+	[HideInInspector]
 	public bool isTeleporting = false;
+	[HideInInspector]
+	public bool isDead = false;
 	private int randomSpawnPoint = 0;
 
 	void Awake(){
@@ -52,6 +54,9 @@ public class RudessHead : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (isDead)
+			return;
 
 		if(!isTeleporting && !transformed)
 			transformTimer -= Time.deltaTime;

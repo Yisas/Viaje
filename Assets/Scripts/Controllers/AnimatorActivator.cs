@@ -31,7 +31,7 @@ public class AnimatorActivator : MonoBehaviour {
 			CommonActivation (tempAnim);
 
 		if (deactivateAfterAnimations)
-			this.enabled = false;
+			Destroy (this);
 	}
 
 	public void ActivateReferencedAnimation( ){
