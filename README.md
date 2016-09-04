@@ -3,17 +3,17 @@
 ## TODO
 ### Programming
 - ~~Loading screen~~
+-~~Swaying fish for plc~~
+- ~~Swimming floor check~~
+- ~~Player Switch Scripts~~
+- ~~Split clouds particle system~~
 - **FIX PIPE LAYER ORDER**
-- Split clouds particle system
-- Swimming floor check
 - Remaining character attacks
 - Rudess boss fight start and end
 - Select proper background music
 - Cutscenes
-- Player Switch Scripts
 - Loading screen fade out
 - Level specific loading screens (players on the background)
-- Swaying fish for plc
 - Player sounds (damage, remaining attacks)
 - Remaining UI healthbar prefabs
 - Seagulls

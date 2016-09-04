@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: f28c6c07edf42544491cf1bdaea92ec5
-timeCreated: 1472738009
+timeCreated: 1472992272
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: clouds_particles_1_0
+    21300002: clouds_particles_1_1
+    21300004: clouds_particles_1_2
+    21300006: clouds_particles_1_4
+    21300008: clouds_particles_1_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +43,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +56,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: clouds_particles_1_0
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 97
+        width: 162
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_1_1
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 96
+        width: 158
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_1_2
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 101
+        width: 164
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_1_4
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 106
+        width: 189
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clouds_particles_1_5
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 112
+        width: 137
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
