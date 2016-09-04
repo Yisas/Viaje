@@ -9,7 +9,6 @@ public class EnemySwayer : SwayingObject
 	{
 		base.Update ();
 
-		Debug.Log (transform.localScale.x);
 		if (startMoving) {
 			// If going right ...
 			if (!isGoingLeft) 
@@ -21,6 +20,12 @@ public class EnemySwayer : SwayingObject
 				if (transform.localScale.x < 0)
 					Flip ();
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.transform.tag == "Player")
+			col.gameObject.GetComponent<PlayerHealth> ().TakeDamage (transform);
+		
 	}
 
 	private void Flip ()

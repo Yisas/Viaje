@@ -16,6 +16,7 @@
 - Swaying fish for plc
 - Player sounds (damage, remaining attacks)
 - Remaining UI healthbar prefabs
+- Seagulls
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
@@ -25,4 +26,8 @@
 - Game logo
 - Main menu
 - Plc Enemies (fish?)
-- Separate swimsuit playerss
+- Separate swimsuit players
+
+## TENTATIVE TASKS
+
+- Separate fish tails
