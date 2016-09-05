@@ -9,6 +9,7 @@
 - ~~Split clouds particle system~~
 - ~~Repeating burger drop spawns~~
 - ~~Rudess boss fight start and end~~
+- ~~Dead Piranha~~
 - **FIX PIPE LAYER ORDER**
 - Remaining character attacks
 - Select proper background music
@@ -20,7 +21,7 @@
 - Seagulls
 - Start Rudess with portal
 - Finish speech bubble
-- Dead Piranha
+- Fix take damage from ground
 
 ### Art
 - ~~Separate loading screen dots, empty background~~

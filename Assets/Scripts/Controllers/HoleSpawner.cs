@@ -11,7 +11,7 @@ public class HoleSpawner : MonoBehaviour {
 	}
 
 	public void Spawn(){
-		GameObject tempEnemy = (GameObject)Instantiate (enemy, transform.position, transform.rotation);
+		GameObject tempEnemy = (GameObject)Instantiate (enemy, transform);
 		//tempEnemy.GetComponent<Animator> ().SetTrigger ("start");
 		tempEnemy.GetComponent<Animator>().enabled=true;
 	}
