@@ -35,6 +35,16 @@ public class CharacterCutscenHelper : MonoBehaviour
 		anim.SetTrigger ("stopSwimming");
 	}
 
+	public void StartIdle(string tag){
+		Animator anim = GetCharacterAnimation (tag);
+		anim.SetBool ("idle", true);
+	}
+
+	public void StopIdle(string tag){
+		Animator anim = GetCharacterAnimation (tag);
+		anim.SetBool ("idle", false);
+	}
+
 	public void CutsceneCleanup(){
 		foreach (GameObject go in objectsToDisable)
 			go.SetActive (false);
