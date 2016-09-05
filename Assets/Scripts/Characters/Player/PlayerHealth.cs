@@ -67,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
 
 	void OnCollisionStay2D (Collision2D col)
 	{
-		if (col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "EnemyUntracked") {
 			if (Time.time - lastHitTime >= repeatDamagePeriod)
 					// ... and if the player still has health...
 				if (health > 0f) {

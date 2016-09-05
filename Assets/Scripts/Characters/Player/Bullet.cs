@@ -21,6 +21,12 @@ public class Bullet : MonoBehaviour {
 		if (col.transform.tag == "Enemy")
 			col.gameObject.GetComponent<EnemyController> ().Die (1);
 
+		if (col.gameObject.tag == "EnemyUntracked") {
+			// Switch sprite to dead 
+			col.gameObject.GetComponent<SpriteSwitch> ().Switch ();
+			col.gameObject.GetComponent<Animator> ().SetTrigger ("die");
+		}
+
 		if (col.gameObject.tag == "RudessOnFoot")
 			col.gameObject.GetComponent<RudessOnFoot> ().TakeDamage ();
 

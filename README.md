@@ -20,6 +20,7 @@
 - Seagulls
 - Start Rudess with portal
 - Finish speech bubble
+- Dead Piranha
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
@@ -27,11 +28,11 @@
 - ~~Separate pipe~~
 - ~~Plc Enemies (fish?)~~
 - ~~Separate fish tails~~
+- Dead Piranha
 - Select speech bubble and font
 - Nell house
 - Game logo
 - Main menu
-
 - Separate swimsuit players
 - Make more plc hole frame sprites
 - Separate plc floor
