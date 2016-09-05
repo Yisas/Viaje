@@ -19,17 +19,21 @@
 - Remaining UI healthbar prefabs
 - Seagulls
 - Start Rudess with portal
+- Finish speech bubble
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
-- **Separate pipe (URGENT)**
+- ~~Hurt player faces~~
+- ~~Separate pipe~~
+- ~~Plc Enemies (fish?)~~
+- ~~Separate fish tails~~
+- Select speech bubble and font
 - Nell house
-- Hurt player faces
 - Game logo
 - Main menu
-- Plc Enemies (fish?)
+
 - Separate swimsuit players
+- Make more plc hole frame sprites
+- Separate plc floor
 
 ## TENTATIVE TASKS
-
-- Separate fish tails
