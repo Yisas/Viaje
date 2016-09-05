@@ -9,7 +9,6 @@ public class AuxAnimationComunicator : MonoBehaviour {
 	private RudessHead rudessHead;
 	private AnimatorActivator animatorActivator;
 	private PlayerSwitch playerSwitch;
-	private HoleSpawner holeSpawner;
 
 	void Awake() {
 		playerController = GetComponentInParent<PlayerController> ();
@@ -17,7 +16,6 @@ public class AuxAnimationComunicator : MonoBehaviour {
 		rudess = GetComponentInParent<RudessOnFoot> ();
 		rudessHead = GetComponentInParent<RudessHead> ();
 		animatorActivator = GetComponent<AnimatorActivator> ();
-		holeSpawner = GetComponentInParent<HoleSpawner> ();
 	}
 
 	void FinishAttacking(){
@@ -65,10 +63,5 @@ public class AuxAnimationComunicator : MonoBehaviour {
 
 		foreach (Collider2D col in cols)
 			col.enabled = true;
-	}
-
-	void HoleSpawn(){
-		holeSpawner.Spawn ();
-	}
-		
+	}		
 }
