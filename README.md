@@ -10,7 +10,7 @@
 - ~~Repeating burger drop spawns~~
 - ~~Rudess boss fight start and end~~
 - ~~Dead Piranha~~
-- **FIX PIPE LAYER ORDER**
+- ~~Fix pipe layer order~~
 - Remaining character attacks
 - Select proper background music
 - Cutscenes
@@ -29,13 +29,14 @@
 - ~~Separate pipe~~
 - ~~Plc Enemies (fish?)~~
 - ~~Separate fish tails~~
-- Dead Piranha
-- Select speech bubble and font
+- ~~Dead Piranha~~
+- ~~Separate swimsuit players~~
+- ~~Select speech bubble and font~~
+- ~~Separate plc floor~~
+- **Nell baquetas**
 - Nell house
 - Game logo
 - Main menu
-- Separate swimsuit players
 - Make more plc hole frame sprites
-- Separate plc floor
 
 ## TENTATIVE TASKS
