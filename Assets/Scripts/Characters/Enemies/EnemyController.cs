@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
 
 	private float deathTimer = 0f;
 	// When timer reaches despawn time, destroy object.
-	private bool isDead = false;
+	protected bool isDead = false;
 	// Check for whether enemy is dead, despawn after interval.
 	protected Animator anim;
 	// Reference to the enemy's animator component.

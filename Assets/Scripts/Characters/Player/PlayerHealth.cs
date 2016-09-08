@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
 	// Reference to the Animator on the player
 	private LifeBar lifeBar;
 	private float startingHealth;
+	private bool isHurt = false;					// Whether the player should be displaying the hurt face
 
 	void Awake ()
 	{
@@ -104,12 +105,12 @@ public class PlayerHealth : MonoBehaviour
 			// Reduce the player's health by 10.
 			health -= damageAmount;
 
-			if (health <= startingHealth / 2) {
+			if (health <= startingHealth / 2 && !isHurt) {
+				isHurt = true;
 				GetComponent<SpriteSwitch> ().Switch ();
+			}
 
-				lifeBar.UpdateHealthBar (health, true, true);
-			} else
-				lifeBar.UpdateHealthBar (health, true, false);
+			lifeBar.UpdateHealthBar (health, true, isHurt);
 		}
 	}
 
@@ -119,9 +120,11 @@ public class PlayerHealth : MonoBehaviour
 		if (health > startingHealth)
 			health = startingHealth;
 
-		if (health > startingHealth)
-			lifeBar.UpdateHealthBar (health, false, false);
-		else
-			lifeBar.UpdateHealthBar (health, false, true);
+		if (health > startingHealth/2) {
+			isHurt = false;
+			GetComponent<SpriteSwitch> ().SwitchBack ();
+		}
+		
+		lifeBar.UpdateHealthBar (health, false, isHurt);
 	}
 }

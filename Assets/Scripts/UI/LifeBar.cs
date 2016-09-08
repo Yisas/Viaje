@@ -50,11 +50,13 @@ public class LifeBar : MonoBehaviour {
 
 		if (playerHurt && !this.playerHurt) {
 			GetComponent<SpriteSwitch> ().Switch ();
-			playerHurt = true;
+			this.playerHurt = true;
 		}
 
-		if (!playerHurt && this.playerHurt)
-			; // Switch back
+		if (!playerHurt && this.playerHurt) {
+			GetComponent<SpriteSwitch> ().SwitchBack (); 
+			this.playerHurt = false;
+		}
 
 		if(takingDamage)
 			GetComponent<Animator> ().SetTrigger ("headBob");

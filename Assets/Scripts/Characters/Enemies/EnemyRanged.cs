@@ -20,15 +20,18 @@ public class EnemyRanged : EnemyController
 	void Update ()
 	{
 		base.Update ();
-		rangedAttackTimer -= Time.deltaTime;
-		if (rangedAttackTimer <= 0) {
-			rangedAttackTimer = rangedAttackTime;
 
-			RaycastHit2D raycastHit;
-			raycastHit = Physics2D.Raycast (frontCheck.position, Vector2.right * FindPlayer ());
-			if (raycastHit)
-			if (raycastHit.collider.transform.tag == "Player")
-				ThrowSetup ();
+		if (!isDead) {
+			rangedAttackTimer -= Time.deltaTime;
+			if (rangedAttackTimer <= 0) {
+				rangedAttackTimer = rangedAttackTime;
+
+				RaycastHit2D raycastHit;
+				raycastHit = Physics2D.Raycast (frontCheck.position, Vector2.right * FindPlayer ());
+				if (raycastHit)
+				if (raycastHit.collider.transform.tag == "Player")
+					ThrowSetup ();
+			}
 		}
 	}
 
