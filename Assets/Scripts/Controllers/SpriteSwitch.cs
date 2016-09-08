@@ -7,8 +7,18 @@ public class SpriteSwitch : MonoBehaviour {
 	public Sprite newSprite;
 	public Sprite[] spriteSelection;
 
+	private Sprite oldSprite;
+
+	void Awake(){
+		oldSprite = spriteToChange.sprite;
+	}
+
 	public void Switch(){
 		spriteToChange.sprite = newSprite;
+	}
+
+	public void SwitchBack(){
+		spriteToChange.sprite = oldSprite;
 	}
 
 	void SwtichSpriteFromArray(int index){

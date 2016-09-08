@@ -33,7 +33,8 @@
 - ~~Separate swimsuit players~~
 - ~~Select speech bubble and font~~
 - ~~Separate plc floor~~
-- **Nell baquetas**
+- **HURT PLAYER ANGRY FACES**
+- **NELL BAQUETAS**
 - Nell house
 - Game logo
 - Main menu

@@ -9,6 +9,7 @@ public class LifeBar : MonoBehaviour {
 	private SpriteRenderer healthBarSprite;		// Health bar sprite.
 	private SpriteRenderer healthBarDecor;		// Extra healthbar sprite that needs color changing.
 	private SpriteRenderer powerBarSprite;
+	private bool playerHurt = false;			// Whether damageis displayed on head sprite
 
 	void Awake(){
 		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
@@ -38,7 +39,7 @@ public class LifeBar : MonoBehaviour {
 	}
 
 	// If hurt is true, lifebar icon goes ouch
-	public void UpdateHealthBar (float health, bool hurt)
+	public void UpdateHealthBar (float health, bool takingDamage, bool playerHurt)
 	{
 		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
 		healthBarSprite.material.color = Color.Lerp(Color.green, Color.red, 1 - health * 0.01f);
@@ -47,7 +48,15 @@ public class LifeBar : MonoBehaviour {
 		// Set the scale of the health bar to be proportional to the player's health.
 		healthBarSprite.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, healthScale.z);
 
-		if(hurt)
+		if (playerHurt && !this.playerHurt) {
+			GetComponent<SpriteSwitch> ().Switch ();
+			playerHurt = true;
+		}
+
+		if (!playerHurt && this.playerHurt)
+			; // Switch back
+
+		if(takingDamage)
 			GetComponent<Animator> ().SetTrigger ("headBob");
 	}
 

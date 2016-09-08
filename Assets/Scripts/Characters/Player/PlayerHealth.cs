@@ -35,17 +35,6 @@ public class PlayerHealth : MonoBehaviour
 		startingHealth = health;
 	}
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	}
-
 	void OnCollisionEnter2D (Collision2D col)
 	{
 		// If the colliding gameobject is an Enemy...
@@ -101,10 +90,8 @@ public class PlayerHealth : MonoBehaviour
 			else
 				hurtVectorHorizontal = transform.position - enemy.position + Vector3.left * 5f;
 			
-
 			// Cancel prior velocities
 			GetComponent<Rigidbody2D> ().velocity = new Vector3 (0, 0, 0);
-
 
 			if (playerControl.isGrounded == true) {				// Add a force to the player in the direction of the vector and multiply by the hurtForce.
 				GetComponent<Rigidbody2D> ().AddForce (hurtVectorVertical * hurtForceGrounded);
@@ -117,7 +104,12 @@ public class PlayerHealth : MonoBehaviour
 			// Reduce the player's health by 10.
 			health -= damageAmount;
 
-			lifeBar.UpdateHealthBar (health, true);
+			if (health <= startingHealth / 2) {
+				GetComponent<SpriteSwitch> ().Switch ();
+
+				lifeBar.UpdateHealthBar (health, true, true);
+			} else
+				lifeBar.UpdateHealthBar (health, true, false);
 		}
 	}
 
@@ -126,6 +118,10 @@ public class PlayerHealth : MonoBehaviour
 		health += lifePowerupDefault;
 		if (health > startingHealth)
 			health = startingHealth;
-		lifeBar.UpdateHealthBar (health, false);
+
+		if (health > startingHealth)
+			lifeBar.UpdateHealthBar (health, false, false);
+		else
+			lifeBar.UpdateHealthBar (health, false, true);
 	}
 }
