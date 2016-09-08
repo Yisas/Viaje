@@ -11,6 +11,7 @@
 - ~~Rudess boss fight start and end~~
 - ~~Dead Piranha~~
 - ~~Fix pipe layer order~~
+- **SEPARATE PLC FLOOR**
 - Remaining character attacks
 - Select proper background music
 - Cutscenes
@@ -33,11 +34,13 @@
 - ~~Separate swimsuit players~~
 - ~~Select speech bubble and font~~
 - ~~Separate plc floor~~
+- ~~Nell house~~
 - **HURT PLAYER ANGRY FACES**
 - **NELL BAQUETAS**
-- Nell house
 - Game logo
 - Main menu
 - Make more plc hole frame sprites
 
 ## TENTATIVE TASKS
+
+- Custom buttons
