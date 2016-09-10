@@ -49,13 +49,15 @@ public class LifeBar : MonoBehaviour {
 		healthBarSprite.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, healthScale.z);
 
 		if (playerHurt && !this.playerHurt) {
-			GetComponent<SpriteSwitch> ().Switch ();
-			this.playerHurt = true;
+            foreach (SpriteSwitch ss in GetComponents<SpriteSwitch>())
+                ss.Switch();
+            this.playerHurt = true;
 		}
 
 		if (!playerHurt && this.playerHurt) {
-			GetComponent<SpriteSwitch> ().SwitchBack (); 
-			this.playerHurt = false;
+            foreach (SpriteSwitch ss in GetComponents<SpriteSwitch>())
+                ss.SwitchBack();
+            this.playerHurt = false;
 		}
 
 		if(takingDamage)

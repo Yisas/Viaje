@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
 			}
 		}
 	}
-
+    
 	void OnCollisionStay2D (Collision2D col)
 	{
 		if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "EnemyUntracked") {
@@ -107,7 +107,8 @@ public class PlayerHealth : MonoBehaviour
 
 			if (health <= startingHealth / 2 && !isHurt) {
 				isHurt = true;
-				GetComponent<SpriteSwitch> ().Switch ();
+                foreach(SpriteSwitch ss in GetComponents<SpriteSwitch>())
+				    ss.Switch ();
 			}
 
 			lifeBar.UpdateHealthBar (health, true, isHurt);
@@ -122,8 +123,9 @@ public class PlayerHealth : MonoBehaviour
 
 		if (health > startingHealth/2) {
 			isHurt = false;
-			GetComponent<SpriteSwitch> ().SwitchBack ();
-		}
+            foreach (SpriteSwitch ss in GetComponents<SpriteSwitch>())
+                ss.SwitchBack();
+        }
 		
 		lifeBar.UpdateHealthBar (health, false, isHurt);
 	}
