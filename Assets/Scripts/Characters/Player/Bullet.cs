@@ -31,8 +31,12 @@ public class Bullet : MonoBehaviour {
 		if (col.gameObject.tag == "RudessOnFoot")
 			col.gameObject.GetComponent<RudessOnFoot> ().TakeDamage ();
 
-        if(destroyAfterCollision)
-		    Destroy (this.gameObject);
+        if (destroyAfterCollision)
+            Destroy(this.gameObject);
+        else
+            // Stop animation if whatever it hit is not the ground (cancel animation spinning or whatnot)
+            if(col.gameObject.layer != LayerMask.NameToLayer("Ground"))
+            GetComponent<Animator>().enabled = false;
 	}
 
 	public void Destroy (){
