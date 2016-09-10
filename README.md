@@ -35,9 +35,8 @@
 - ~~Select speech bubble and font~~
 - ~~Separate plc floor~~
 - ~~Nell house~~
-- **HURT PLAYER ANGRY FACES**
+- ~~Hurt player faces~~
 - **NELL BAQUETAS**
-- Game logo
 - Main menu
 - Make more plc hole frame sprites
 

@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour {
 
 	public float lifeTime;					// Time interval before destoying object
 	public bool destroyAfterAnimation;		// Whether to ignore life time and destroy after animation loop.
+    public bool destroyAfterCollision = true;
 
 	private float timer = 0f;		
 
@@ -30,7 +31,8 @@ public class Bullet : MonoBehaviour {
 		if (col.gameObject.tag == "RudessOnFoot")
 			col.gameObject.GetComponent<RudessOnFoot> ().TakeDamage ();
 
-		Destroy (this.gameObject);
+        if(destroyAfterCollision)
+		    Destroy (this.gameObject);
 	}
 
 	public void Destroy (){
