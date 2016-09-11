@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4109a8357ea70e94ab6016896adb0678
+timeCreated: 1473612524
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Just Breathe
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7286835bccad67442bcc00f2c36f5149, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
