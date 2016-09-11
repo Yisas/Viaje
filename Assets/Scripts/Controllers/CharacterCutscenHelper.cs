@@ -58,6 +58,17 @@ public class CharacterCutscenHelper : MonoBehaviour
 		player.GetComponent<PlayerSwitch>().SwitchPlayers ();
 	}
 
+    public void LockPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().enabled = false;
+    }
+
+    public void UnlockPlayer()
+    {
+        player.GetComponent<PlayerController>().enabled = true;
+    }
+
 	public void HideActivePlayer(){
 		player.GetComponent<PlayerController> ().HideCharacter ();
 	}
