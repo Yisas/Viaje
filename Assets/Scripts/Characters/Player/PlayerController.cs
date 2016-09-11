@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject bullet;				// Bullet for ranged attack
 	public bool isInvulnerable=false;
 	public float deathTime;
+    public GameObject mainMenu;
 
 	// Underwater specific values
 	public float underWaterGravityScale;
@@ -93,6 +94,11 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetButtonDown ("RangedAttack"))
 				RangedAttack ();
+
+            if (Input.GetButtonDown("Menu"))
+            {
+                mainMenu.GetComponent<Menu>().Open();
+            }
 		}
 
 		if (isDead) {
