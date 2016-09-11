@@ -36,7 +36,7 @@
 - ~~Separate plc floor~~
 - ~~Nell house~~
 - ~~Hurt player faces~~
-- **NELL BAQUETAS**
+- ~~Nell baquetas~~
 - Main menu
 - Make more plc hole frame sprites
 
