@@ -23,6 +23,9 @@
 - Start Rudess with portal
 - Finish speech bubble
 - Fix take damage from ground
+- Underwater death
+- Bushes cities layer order when reloading levels
+- Second drumstick
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
