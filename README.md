@@ -41,7 +41,8 @@
 - ~~Nell house~~
 - ~~Hurt player faces~~
 - ~~Nell baquetas~~
-- Main menu
+- ~~Main menu~~
+- Add "de los amiwitios" to title
 - Make more plc hole frame sprites
 
 ## TENTATIVE TASKS
