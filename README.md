@@ -26,6 +26,7 @@
 - Underwater death
 - Bushes cities layer order when reloading levels
 - Second drumstick
+- verify Rudes on foot randoms spawn location
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
