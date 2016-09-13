@@ -38,8 +38,18 @@ public class Bullet : MonoBehaviour {
             if(col.gameObject.layer != LayerMask.NameToLayer("Ground"))
             GetComponent<Animator>().enabled = false;
 	}
+    /*
+    void OnParticleTrigger(Collision col)
+    {
+        Debug.Log("here");
+        if (col.transform.tag == "Enemy")
+        {
+            col.gameObject.GetComponent<EnemyController>().Die(1);
+        }
+    }
+    */
 
-	public void Destroy (){
+    public void Destroy (){
 		Destroy (this.gameObject);
 	}
 }

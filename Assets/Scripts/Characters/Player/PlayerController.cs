@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
 	public GameObject bullet;				// Bullet for ranged attack
+    public bool rangedParticleSystem =false;// Whether the thrown bullet is a particle system
 	public bool isInvulnerable=false;
 	public float deathTime;
     public GameObject mainMenu;
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour {
 			audioSource.clip = rangeAttackSounds [i];
 			if (!audioSource.isPlaying)
 				audioSource.Play ();
-
+            
 			anim.SetFloat ("rangedAttackSpeedMultiplier", rangedAttackSpeedMultiplier);
 			anim.SetTrigger ("rangedAttack");
 		}
@@ -211,21 +212,40 @@ public class PlayerController : MonoBehaviour {
 	public void ShootBullet(){
 		// Don't collide player with bullet.
 		GameObject tempBullet = Instantiate (bullet, shotSpawn.transform.position, bullet.transform.rotation) as GameObject;
-		Physics2D.IgnoreCollision (tempBullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 
-		if (!isFacingLeft)
-			tempBullet.transform.Rotate (0, 0, 180);
+        // If the shot is not a particle system...
+        if (!rangedParticleSystem)
+        {
 
-		Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D> ();
+            if (!isFacingLeft)
+                tempBullet.transform.Rotate(0, 0, 180);
 
-		float directedShotForce;
+            Physics2D.IgnoreCollision(tempBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            // ... directed shot uset rigid body of the bullet
+            Rigidbody2D tempRigidBody = tempBullet.GetComponent<Rigidbody2D>();
 
-		if (isFacingLeft)
-			directedShotForce = -shotForce;
-		else
-			directedShotForce = shotForce;
+            float directedShotForce;
 
-		tempRigidBody.velocity = new Vector2 (directedShotForce, 0);
+            if (isFacingLeft)
+                directedShotForce = -shotForce;
+            else
+                directedShotForce = shotForce;
+
+            tempRigidBody.velocity = new Vector2(directedShotForce, 0);
+        }
+        else
+        {
+            // ... else instantiate and play particle system
+
+            if (!isFacingLeft)
+            {
+                tempBullet.transform.localScale = new Vector3(-tempBullet.transform.localScale.x, tempBullet.transform.localScale.y, tempBullet.transform.localScale.z);
+                tempBullet.transform.Rotate(Vector3.up, 180);
+                //tempBullet.transform.rotation = new Quaternion(tempBullet.transform.rotation.x, -tempBullet.transform.rotation.y, tempBullet.transform.rotation.z, tempBullet.transform.rotation.w);
+            }
+
+            tempBullet.GetComponent<ParticleSystem>().Play();
+        }
 
 		bulletsInInventory--;
 

@@ -114,7 +114,15 @@ public class EnemyController : MonoBehaviour
 			
 	}
 
-	public void Flip ()
+    void OnParticleCollision(GameObject col)
+    {
+        ParticleSystem.CollisionModule ps;
+
+        ps = col.GetComponent<ParticleSystem>().collision;
+        Die(1);
+    }
+
+    public void Flip ()
 	{
 		// No flipping when dead
 		if (!isDead) {
@@ -134,7 +142,8 @@ public class EnemyController : MonoBehaviour
 			// Find all of the colliders on the gameobject and set them all to be triggers.
 			Collider2D[] cols = GetComponents<Collider2D> ();
 			foreach (Collider2D c in cols) {
-				c.isTrigger = true;
+                //c.isTrigger = true;
+                c.enabled = false;
 			}
 
 
