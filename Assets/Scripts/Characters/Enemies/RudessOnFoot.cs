@@ -132,6 +132,14 @@ public class RudessOnFoot : MonoBehaviour {
 		}
 	}
 
+	void OnParticleCollision(GameObject col)
+	{
+		// Turn off collisions for particle system, so Rudess doesn't keep getting hit.
+		ParticleSystem.CollisionModule cm = col.GetComponent<ParticleSystem> ().collision;
+		cm.enabled = false;
+
+		TakeDamage ();
+	}
 
 	public void Deactivate(){
 		gameObject.SetActive(false);
