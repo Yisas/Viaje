@@ -11,6 +11,7 @@
 - ~~Rudess boss fight start and end~~
 - ~~Dead Piranha~~
 - ~~Fix pipe layer order~~
+- ~~Verify Rudess on foot randoms spawn location~~
 - **SEPARATE PLC FLOOR**
 - Remaining character attacks
 - Select proper background music
@@ -25,8 +26,7 @@
 - Fix take damage from ground
 - Underwater death
 - Bushes cities layer order when reloading levels
-- Second drumstick
-- verify Rudess on foot randoms spawn location
+- Second drumstick body second attack
 
 ### Art
 - ~~Separate loading screen dots, empty background~~
