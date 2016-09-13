@@ -148,7 +148,8 @@ public class RudessHead : MonoBehaviour {
 	}
 
 	void ChooseSpawnPosition(){
-		float tempFloat = Random.Range (0f, spawnPoints.Length - 1);
+		randomSpawnPoint = Random.Range (0, spawnPoints.Length);
+		/*
 		int randomSpawnPoint;
 
 		if (tempFloat <= 0.5f)
@@ -157,6 +158,7 @@ public class RudessHead : MonoBehaviour {
 			randomSpawnPoint = 1;
 		else
 			randomSpawnPoint = (int)tempFloat;
+			*/
 		
 	}
 
