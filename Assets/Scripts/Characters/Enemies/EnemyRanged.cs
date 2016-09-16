@@ -11,13 +11,13 @@ public class EnemyRanged : EnemyController
 
 	private float rangedAttackTimer = 0;
 
-	void Awake ()
+	new void Awake ()
 	{
 		base.Awake ();
 		rangedAttackTimer = rangedAttackTime;
 	}
 
-	void Update ()
+	new void Update ()
 	{
 		base.Update ();
 

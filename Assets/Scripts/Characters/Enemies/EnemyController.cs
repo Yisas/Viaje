@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
 	private float dismountTime = 3f;						// Wait time when stacked on top of another enemy to unstack
 	private float dismountTimer = 0;						// Countdown initially set to 0
 	protected bool lockMovement = false;
+    protected int directionSign = 0;
 
 	[HideInInspector]
 	public EnemySpawner enemySpawner;
@@ -70,18 +71,19 @@ public class EnemyController : MonoBehaviour
 
 		if(!lockMovement){
 
-		int directionSign = FindPlayer ();
+		directionSign = FindPlayer ();
 
-		// If stacked on an enemy cancel horizontal velocity
-		if (dismountTimer > 0) {
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, GetComponent<Rigidbody2D> ().velocity.y);
-			dismountTimer -= Time.deltaTime;
-		}
-		else
-			// If not stacked on an enemy, move towards player.
-		if (!hasEnemyBelow)
-				// Set the enemy's velocity to moveSpeed in the x direction.
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveSpeed * directionSign, GetComponent<Rigidbody2D> ().velocity.y);
+            // If stacked on an enemy cancel horizontal velocity
+            if (dismountTimer > 0)
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+                dismountTimer -= Time.deltaTime;
+            }
+            else
+            // If not stacked on an enemy, move towards player.
+            if (!hasEnemyBelow)
+                // Move towards player
+                Move();
 
 		// Flip if necessary to look towards the player
 		Reorient (directionSign);
@@ -191,6 +193,13 @@ public class EnemyController : MonoBehaviour
 		else if (direction == 1 && isFacingLeft)
 			Flip ();
 	}
+
+    protected virtual void Move()
+    {
+        if(!isDead)
+        // Set the enemy's velocity to moveSpeed in the x direction.
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed * directionSign, GetComponent<Rigidbody2D>().velocity.y);
+    }
 
 	// Raycast to see if stacked on top of an enemy.
 	private bool EnemyBelow(){

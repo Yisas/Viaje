@@ -42,10 +42,9 @@
 - ~~Hurt player faces~~
 - ~~Nell baquetas~~
 - ~~Main menu~~
+- ~~Custom buttons~~
 - Different open mouth for Joel ranged attack
 - Add "de los amiwitios" to title
 - Make more plc hole frame sprites
 
 ## TENTATIVE TASKS
-
-- Custom buttons

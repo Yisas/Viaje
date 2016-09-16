@@ -37,4 +37,14 @@ public class AuxFunctions : MonoBehaviour {
 		return hitDirection;
 	}
 
+    public void DeactivateColliders()
+    {
+        foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
+        {
+            col.GetComponentInParent<Rigidbody2D>().isKinematic = false;
+            col.GetComponentInParent<Animator>().enabled =false;
+            col.isTrigger = true;
+        }
+    }
+
 }
