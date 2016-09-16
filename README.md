@@ -12,7 +12,7 @@
 - ~~Dead Piranha~~
 - ~~Fix pipe layer order~~
 - ~~Verify Rudess on foot randoms spawn location~~
-- **SEPARATE PLC FLOOR**
+- ~~Separate plc floor~~
 - Remaining character attacks
 - Select proper background music
 - Cutscenes
