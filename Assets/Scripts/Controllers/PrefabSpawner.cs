@@ -8,13 +8,22 @@ public class PrefabSpawner : MonoBehaviour {
 
 	void Awake()
 	{
-		Object go = Instantiate(prefab,transform.position,transform.rotation);
-		GameObject temp = (GameObject)go;
+        Object go;
+        GameObject temp;
+
+        if (parent)
+        {
+            go = Instantiate(prefab, parent.transform);
+            temp = (GameObject)go;
+            temp.transform.position = new Vector3(0, 0, 0);
+
+        }
+        else
+            go = Instantiate(prefab, transform.position, transform.rotation);
+
+		temp = (GameObject)go;
 		temp.transform.localScale = transform.localScale;
 
-		if (parent)
-			temp.transform.parent = parent.transform;
-
-		Destroy( gameObject );
+       	Destroy( gameObject );
 	}
 }
