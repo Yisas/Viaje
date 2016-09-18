@@ -27,13 +27,9 @@ public class PlayerHealth : MonoBehaviour
 	private float startingHealth;
 	private bool isHurt = false;					// Whether the player should be displaying the hurt face
 
-	void Awake ()
+	public void Awake ()
 	{
-		// Setting up references.
-		playerControl = GetComponent<PlayerController> ();
-		anim = GetComponentInChildren<Animator> ();
-		lifeBar = GameObject.FindGameObjectWithTag ("LifeBar").GetComponent<LifeBar> ();
-		startingHealth = health;
+        SetupReferences();
 	}
 
 	void OnCollisionEnter2D (Collision2D col)
@@ -131,4 +127,13 @@ public class PlayerHealth : MonoBehaviour
 		
 		lifeBar.UpdateHealthBar (health, false, isHurt);
 	}
+    
+    public void SetupReferences()
+    {
+        // Setting up references.
+        playerControl = GetComponent<PlayerController>();
+        anim = GetComponentInChildren<Animator>();
+        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<LifeBar>();
+        startingHealth = health;
+    }
 }

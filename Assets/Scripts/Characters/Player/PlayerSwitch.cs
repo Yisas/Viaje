@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerSwitch : MonoBehaviour {
 
 	public GameObject nextPlayer;
+    public GameObject lifebarCanvas;
 
 	private CameraTracking cameraScript;
 
@@ -15,6 +16,7 @@ public class PlayerSwitch : MonoBehaviour {
 		nextPlayer.SetActive (true);
 		this.gameObject.SetActive(false);
 		cameraScript.RefreshPlayerReference ();
-	}
+        cameraScript.SwitchLifebar(lifebarCanvas);
+    }
 
 }

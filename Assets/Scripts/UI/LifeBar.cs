@@ -12,20 +12,7 @@ public class LifeBar : MonoBehaviour {
 	private bool playerHurt = false;			// Whether damageis displayed on head sprite
 
 	void Awake(){
-		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
-
-		// Getting the intial scale of the healthbar (whilst the player has full health).
-		healthBarSprite = transform.FindChild ("lifeBar").GetComponent<SpriteRenderer>();
-		healthScale = healthBarSprite.transform.localScale;
-		healthBarDecor = transform.FindChild ("head_space_decor").GetComponent<SpriteRenderer>();
-
-		powerBarSprite = transform.FindChild ("powerBar").GetComponent<SpriteRenderer>();
-		powerScale = powerBarSprite.transform.localScale;
-
-		// Set lifebar colors to healthy
-		healthBarSprite.material.color= Color.green;
-		healthBarDecor.material.color = Color.green;
-		powerBarSprite.material.color = Color.blue;
+        SetupHealthbarReferences();
 	}
 
 	// Use this for initialization
@@ -71,4 +58,22 @@ public class LifeBar : MonoBehaviour {
 		// Set the scale of the health bar to be proportional to the player's health.
 		powerBarSprite.transform.localScale = new Vector3(powerScale.x * bullets * 0.1f, powerScale.y, powerScale.z);
 	}
+
+    public void SetupHealthbarReferences()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        // Getting the intial scale of the healthbar (whilst the player has full health).
+        healthBarSprite = transform.FindChild("lifeBar").GetComponent<SpriteRenderer>();
+        healthScale = healthBarSprite.transform.localScale;
+        healthBarDecor = transform.FindChild("head_space_decor").GetComponent<SpriteRenderer>();
+
+        powerBarSprite = transform.FindChild("powerBar").GetComponent<SpriteRenderer>();
+        powerScale = powerBarSprite.transform.localScale;
+
+        // Set lifebar colors to healthy
+        healthBarSprite.material.color = Color.green;
+        healthBarDecor.material.color = Color.green;
+        powerBarSprite.material.color = Color.blue;
+    }
 }

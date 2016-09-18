@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 	private PlayerSpeechBubble speechBubble;
 	protected AudioSource audioSource;		// Audiosource on object.
 	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
-	protected Canvas healthBarCanvas;			// Canvas object containing lifebar UI elements.
+	protected Canvas healthBarCanvas;		// Canvas object containing lifebar UI elements.
 	private int killCount;		
 	private int startingBulletsInInventory;
 	private bool canDoubleJump = false;
@@ -385,4 +385,9 @@ public class PlayerController : MonoBehaviour {
 
 		GetComponentInChildren<Animator> ().enabled = false;
 	}
+
+    public void SetHealthbarCanvas(Canvas newHealthbar)
+    {
+        healthBarCanvas = newHealthbar;
+    }
 }
