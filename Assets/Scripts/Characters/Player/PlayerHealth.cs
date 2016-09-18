@@ -136,4 +136,9 @@ public class PlayerHealth : MonoBehaviour
         lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<LifeBar>();
         startingHealth = health;
     }
+
+    public void SetLifebar(LifeBar lifeBar)
+    {
+        this.lifeBar = lifeBar;
+    }
 }
