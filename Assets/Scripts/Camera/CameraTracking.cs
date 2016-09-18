@@ -72,20 +72,19 @@ public class CameraTracking : MonoBehaviour
 
     public void SwitchLifebar(GameObject newLifebar)
     {
-        // get old lifebar (unique in scene)
-        GameObject oldLifebar = GameObject.FindGameObjectWithTag("LifeBar");
-        // set old lifebar parent to new lifebar parent
-        GameObject nextLifebar = (GameObject)Instantiate(newLifebar, oldLifebar.transform.parent.gameObject.transform);
+        // deactivate old lifebar
+        GameObject.FindGameObjectWithTag("LifeBar").SetActive(false);
 
-        Destroy(GameObject.FindGameObjectWithTag("LifeBar"));
+        // Activate new lifebar
+        newLifebar.SetActive(true);
 
         // set cavas camera to this one
-        nextLifebar.GetComponent<Canvas>().worldCamera = gameObject.GetComponent<Camera>();
+        newLifebar.GetComponent<Canvas>().worldCamera = gameObject.GetComponent<Camera>();
 
-        player.GetComponent<PlayerController>().SetHealthbarCanvas(nextLifebar.GetComponent<Canvas>());
-        nextLifebar.GetComponent<LifeBar>().SetupHealthbarReferences();
+        player.GetComponent<PlayerController>().SetHealthbarCanvas(newLifebar.GetComponent<Canvas>());
+        newLifebar.GetComponent<LifeBar>().SetupHealthbarReferences();
         player.GetComponent<PlayerHealth>().SetupReferences();
-        player.GetComponent<PlayerHealth>().SetLifebar(nextLifebar.GetComponent<LifeBar>());
+        player.GetComponent<PlayerHealth>().SetLifebar(newLifebar.GetComponent<LifeBar>());
     }
 
 	public void SetCameraTarget(Transform target){
