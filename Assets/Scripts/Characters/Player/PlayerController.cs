@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour {
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	protected Transform shotSpawn;			// A position marking where to shoot from.
 	protected Animator anim;				// Reference to the player's animator component.
+    protected Rigidbody2D rb;
 	private PlayerSpeechBubble speechBubble;
 	protected AudioSource audioSource;		// Audiosource on object.
 	private bool isDead=false;				// Turn on so death animations/protocols don't happen more than once.
@@ -53,7 +54,8 @@ public class PlayerController : MonoBehaviour {
 	private bool canDoubleJump = false;
 	private bool doubleJump = false;
 	private float deathTimer = 0;
-	private bool hasControl = true;
+    [HideInInspector]
+	public bool hasControl = true;
 	private float defaultGravityScale;
 	private bool isUnderWater = false;
 
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour {
 		groundCheck = transform.FindChild("groundCheck");
 		shotSpawn = transform.FindChild ("shotSpawn");
 		anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 		anim.SetFloat ("headbobSpeedMultiplier", headbobSpeedMultiplier);
 		speechBubble = this.GetComponentsInChildren<PlayerSpeechBubble> ()[0];
 		audioSource = GetComponent<AudioSource> ();
@@ -298,7 +301,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void GoUnderwater(){
-		// Alert flages
+        // Alert flags
+        if (!hasControl)
+            hasControl = !hasControl;
+
+        rb.velocity = new Vector2(0, 0);
+        anim.SetFloat("Speed", 0);
+
 		isUnderWater = true;
 		anim.SetBool ("underWater", true);
 
