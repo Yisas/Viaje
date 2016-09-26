@@ -302,9 +302,6 @@ public class PlayerController : MonoBehaviour {
 
 	private void GoUnderwater(){
         // Alert flags
-        if (!hasControl)
-            hasControl = !hasControl;
-
         rb.velocity = new Vector2(0, 0);
         anim.SetFloat("Speed", 0);
 
@@ -313,7 +310,10 @@ public class PlayerController : MonoBehaviour {
 
 		// Invert gravity so player swims up
 		GetComponent<Rigidbody2D>().gravityScale = underWaterGravityScale;
-	}
+
+        if (!hasControl)
+            hasControl = !hasControl;
+    }
 
 	public void ExitWater(){
 		anim.SetBool ("underWater", false);
