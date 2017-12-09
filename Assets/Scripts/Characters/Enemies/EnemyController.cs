@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         // Setup variables
-        idleSoundTimer = idleSoundCountdown;
+        idleSoundTimer = 0;
     }
 
     // Update is called once per frame
