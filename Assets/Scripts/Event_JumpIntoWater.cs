@@ -19,6 +19,13 @@ public class Event_JumpIntoWater : MonoBehaviour {
             {
                 go.SetActive(false);
             }
+
+            // Kill zombies. At this point only EnemyControllers will be zombies
+            EnemyController[] zombies = GameObject.FindObjectsOfType<EnemyController>();
+            foreach(EnemyController zombie in zombies)
+            {
+                zombie.Die(3);
+            }
         }
     }
 
