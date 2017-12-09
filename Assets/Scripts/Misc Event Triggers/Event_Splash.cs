@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Event_Splash : MonoBehaviour {
 
-    public AudioSource audioSource;
+    public AudioSource localAudioSource;
+    public AudioSource backgroundAudioSource;
 
-	private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D()
     {
-        audioSource.Play();
+        localAudioSource.Play();
+        backgroundAudioSource.Play();
     }
 }

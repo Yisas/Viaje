@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterCutscenHelper : MonoBehaviour
 {
 	public GameObject[] objectsToDisable;
+    public AudioSource backgroundAudioSource;
 
 	private Animator[] anims;
 	private GameObject player;
@@ -34,6 +35,11 @@ public class CharacterCutscenHelper : MonoBehaviour
 		Animator anim = GetCharacterAnimation (tag);
 		anim.SetTrigger ("stopSwimming");
 	}
+
+    public void StopSwimmingBackground()
+    {
+        backgroundAudioSource.Stop();
+    }
 
 	public void StartIdle(string tag){
 		Animator anim = GetCharacterAnimation (tag);
