@@ -35,10 +35,10 @@ public class RudessHead : MonoBehaviour {
 
 	void Awake(){
 		playerController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController>();
-		leftWaypoint = transform.FindChild ("leftWaypoint").position;
-		rightWaypoint = transform.FindChild ("rightWaypoint").position;
-		leftKeyboardSpawnPoint = transform.FindChild ("leftKeyboardSpawnPoint").transform;
-		rightKeyboardSpawnPoint = transform.FindChild ("rightKeyboardSpawnPoint").transform;
+		leftWaypoint = transform.Find ("leftWaypoint").position;
+		rightWaypoint = transform.Find ("rightWaypoint").position;
+		leftKeyboardSpawnPoint = transform.Find ("leftKeyboardSpawnPoint").transform;
+		rightKeyboardSpawnPoint = transform.Find ("rightKeyboardSpawnPoint").transform;
 		shootTimer = shootTime;
 		shotSprayTimer = shotSprayInterval;
 		spawnPoints = GameObject.FindGameObjectsWithTag ("RudessSpawner");
@@ -183,6 +183,6 @@ public class RudessHead : MonoBehaviour {
 	}
 
 	public void RescaleSprites(){
-		transform.FindChild ("sprites").localScale = new Vector3 (1f, 1f, 1f);
+		transform.Find ("sprites").localScale = new Vector3 (1f, 1f, 1f);
 	}
 }

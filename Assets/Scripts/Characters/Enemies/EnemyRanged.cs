@@ -56,7 +56,7 @@ public class EnemyRanged : EnemyController
 	public void ThrowBullet ()
 	{
 		// Instantiate object
-		Transform bulletSpawnPoint = transform.FindChild ("bulletSpawnPoint");
+		Transform bulletSpawnPoint = transform.Find ("bulletSpawnPoint");
 		GameObject bulletInstance = (GameObject)Instantiate (bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
 
 		int direction = FindPlayer ();

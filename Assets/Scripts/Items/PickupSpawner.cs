@@ -22,8 +22,8 @@ public class PickupSpawner : MonoBehaviour
 
 	void Awake ()
 	{
-		dropRangeLeft = transform.FindChild ("dropRangeLeft");
-		dropRangeRight = transform.FindChild ("dropRangeRight");
+		dropRangeLeft = transform.Find ("dropRangeLeft");
+		dropRangeRight = transform.Find ("dropRangeRight");
 		remainingPickups = maxPickups;
 	}
 

@@ -53,7 +53,7 @@ public class LifeBar : MonoBehaviour {
 
 	public void UpdatePowerBar(float bullets){
 
-		SpriteRenderer powerBarSprite = transform.FindChild ("powerBar").GetComponent<SpriteRenderer>();
+		SpriteRenderer powerBarSprite = transform.Find ("powerBar").GetComponent<SpriteRenderer>();
 
 		// Set the scale of the health bar to be proportional to the player's health.
 		powerBarSprite.transform.localScale = new Vector3(powerScale.x * bullets * 0.1f, powerScale.y, powerScale.z);
@@ -64,11 +64,11 @@ public class LifeBar : MonoBehaviour {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         // Getting the intial scale of the healthbar (whilst the player has full health).
-        healthBarSprite = transform.FindChild("lifeBar").GetComponent<SpriteRenderer>();
+        healthBarSprite = transform.Find("lifeBar").GetComponent<SpriteRenderer>();
         healthScale = healthBarSprite.transform.localScale;
-        healthBarDecor = transform.FindChild("head_space_decor").GetComponent<SpriteRenderer>();
+        healthBarDecor = transform.Find("head_space_decor").GetComponent<SpriteRenderer>();
 
-        powerBarSprite = transform.FindChild("powerBar").GetComponent<SpriteRenderer>();
+        powerBarSprite = transform.Find("powerBar").GetComponent<SpriteRenderer>();
         powerScale = powerBarSprite.transform.localScale;
 
         // Set lifebar colors to healthy

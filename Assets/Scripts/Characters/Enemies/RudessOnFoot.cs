@@ -28,7 +28,7 @@ public class RudessOnFoot : MonoBehaviour {
 		attackStartDelayTimer = attackStartDelay;
 		attackDelayTimer = attackInterval;
 		anim = GetComponentInChildren<Animator> ();
-		bulletSpawnPoint = transform.FindChild ("bulletSpawn").gameObject;
+		bulletSpawnPoint = transform.Find ("bulletSpawn").gameObject;
 		currentRoundAttacks = attacksPerRound;
 		transformTimer = transformInterval;
 	}

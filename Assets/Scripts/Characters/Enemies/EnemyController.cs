@@ -236,7 +236,7 @@ public class EnemyController : MonoBehaviour
     private bool EnemyBelow()
     {
 
-        GameObject bottomCheckPosition = transform.FindChild("bottomCheck").gameObject;
+        GameObject bottomCheckPosition = transform.Find("bottomCheck").gameObject;
         RaycastHit2D raycastHit;
 
         raycastHit = Physics2D.Raycast(bottomCheckPosition.transform.position, Vector2.down);

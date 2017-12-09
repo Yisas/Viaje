@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour {
 	void Awake()
 	{
 		// Setting up references.
-		groundCheck = transform.FindChild("groundCheck");
-		shotSpawn = transform.FindChild ("shotSpawn");
+		groundCheck = transform.Find("groundCheck");
+		shotSpawn = transform.Find ("shotSpawn");
 		anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
 		anim.SetFloat ("headbobSpeedMultiplier", headbobSpeedMultiplier);

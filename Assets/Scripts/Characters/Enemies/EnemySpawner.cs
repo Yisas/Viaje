@@ -25,8 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
 	void Awake(){
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
-		dropRangeLeft = transform.FindChild ("dropRangeLeft");
-		dropRangeRight = transform.FindChild ("dropRangeRight");
+		dropRangeLeft = transform.Find ("dropRangeLeft");
+		dropRangeRight = transform.Find ("dropRangeRight");
 		spawnTimer = spawnTime;
 	}
 
