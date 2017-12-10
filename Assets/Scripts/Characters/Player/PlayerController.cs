@@ -181,9 +181,8 @@ public class PlayerController : MonoBehaviour {
 		jump = false;
 		doubleJump = false;
 
-		// Play a random jump audio clip.
-		int i = Random.Range(0, jumpSounds.Length);
-		AudioSource.PlayClipAtPoint(jumpSounds[i], transform.position);
+        // Play a random jump audio clip.
+        PlayRandomSound(jumpSounds, transform.position);
 
 		anim.SetTrigger ("jump");
 	}
@@ -200,11 +199,8 @@ public class PlayerController : MonoBehaviour {
 	// Method uses animator to call next step of shooting
  void RangedAttack(){
 		if (bulletsInInventory > 0) {
-			// Play random shooting clip.
-			int i = Random.Range (0, rangeAttackSounds.Length);
-			audioSource.clip = rangeAttackSounds [i];
-			if (!audioSource.isPlaying)
-				audioSource.Play ();
+            // Play random shooting clip.
+            PlayRandomSound(rangeAttackSounds);
             
 			anim.SetFloat ("rangedAttackSpeedMultiplier", rangedAttackSpeedMultiplier);
 			anim.SetTrigger ("rangedAttack");
@@ -398,5 +394,19 @@ public class PlayerController : MonoBehaviour {
     public void SetHealthbarCanvas(Canvas newHealthbar)
     {
         healthBarCanvas = newHealthbar;
+    }
+
+    private void PlayRandomSound(AudioClip[] soundArray)
+    {
+        int i = Random.Range(0, soundArray.Length);
+        audioSource.clip = soundArray[i];
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+    }
+
+    private void PlayRandomSound(AudioClip[] soundArray, Vector3 position)
+    {
+        int i = Random.Range(0, soundArray.Length);
+        AudioSource.PlayClipAtPoint(soundArray[i], position);
     }
 }

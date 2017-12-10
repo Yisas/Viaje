@@ -3,19 +3,27 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
+    // The player's health.
+    public float health = 100f;
 
-	public float health = 100f;
-	// The player's health.
-	public float repeatDamagePeriod = 0.5f;
-	// How frequently the player can be damaged.
-	public float hurtForceGrounded;
-	// The force with which the player is pushed when hurt.
-	public float hurtForceAirborne;
-	// The force with which the player is pushed when hurt.
-	public float damageAmount = 10f;
-	// The amount of damage to take when enemies touch the player
-	public float lifePowerupDefault;
-	// Default amount of life the player is healed when picking up health.
+    // How frequently the player can be damaged.
+    public float repeatDamagePeriod = 0.5f;
+
+    // The force with which the player is pushed when hurt.
+    public float hurtForceGrounded;
+
+    // The force with which the player is pushed when hurt.
+    public float hurtForceAirborne;
+
+    // The amount of damage to take when enemies touch the player
+    public float damageAmount = 10f;
+
+    // Default amount of life the player is healed when picking up health.
+    public float lifePowerupDefault;
+
+    public AudioSource audioSource;
+
+    public AudioClip[] hurtSounds;
 
 	private float lastHitTime;
 	// The time at which the player was last hit.
@@ -110,6 +118,9 @@ public class PlayerHealth : MonoBehaviour
 			}
 
 			lifeBar.UpdateHealthBar (health, true, isHurt);
+
+            // Play random hurt clip
+            PlayRandomSound(hurtSounds);
 		}
 	}
 
@@ -140,5 +151,19 @@ public class PlayerHealth : MonoBehaviour
     public void SetLifebar(LifeBar lifeBar)
     {
         this.lifeBar = lifeBar;
+    }
+
+    private void PlayRandomSound(AudioClip[] soundArray)
+    {
+        int i = Random.Range(0, soundArray.Length);
+        audioSource.clip = soundArray[i];
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+    }
+
+    private void PlayRandomSound(AudioClip[] soundArray, Vector3 position)
+    {
+        int i = Random.Range(0, soundArray.Length);
+        AudioSource.PlayClipAtPoint(soundArray[i], position);
     }
 }
