@@ -18,7 +18,7 @@ public class LoadingScreen : MonoBehaviour {
 		foreach (GameObject go in visibleDuringLoad)
 			DontDestroyOnLoad (go);
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+        gameController = GameController.GetInstance();
 	}
 
 	// Use this for initialization

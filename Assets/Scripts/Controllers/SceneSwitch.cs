@@ -8,15 +8,13 @@ public class SceneSwitch : MonoBehaviour {
 
     // Int instead of bool because I want to call this from the animation component, which doesn't support bool (go figure)
 	public void SwitchScene(int cursorVisible){
-		GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().nextLevelName = sceneName;
-        Cursor.visible = (cursorVisible == 1) ? true : false; 
-		SceneManager.LoadScene ("LoadingScreen");
+        Cursor.visible = (cursorVisible == 1) ? true : false;
+        GameController.GetInstance().LoadNextLevel(sceneName);
 	}
 
     public void SwitchScene(int cursorVisible, string sceneName)
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().nextLevelName = sceneName;
         Cursor.visible = (cursorVisible == 1) ? true : false;
-        SceneManager.LoadScene("LoadingScreen");
+        GameController.GetInstance().LoadNextLevel(sceneName);
     }
 }

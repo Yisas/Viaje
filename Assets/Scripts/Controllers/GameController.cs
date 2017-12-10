@@ -12,18 +12,13 @@ public class GameController : MonoBehaviour
     public int maxNumberOfEnemies;
     public string nextLevelName;
 
-    private void Start()
-    {
-        instance = this;
-    }
-
     public static GameController GetInstance()
     {
         if (instance == null)
         {
             Debug.Log("deleteme before release");
-            GameObject go = (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Controllers/GameController.prefab", typeof(GameObject));
-            instance = Instantiate(go).GetComponent<GameController>();
+            GameObject go = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Controllers/GameController.prefab", typeof(GameObject));
+            Instantiate(go).GetComponent<GameController>();
         }
 
         return instance;
@@ -31,6 +26,11 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         DontDestroyOnLoad(transform.gameObject);
     }
 
