@@ -6,6 +6,7 @@ public class SpawningEnemyBullet : EnemyBullet {
 	public GameObject spawnEffect;
 	public float spawnEffectInterval;
 	public float preDamageInterval;
+    public AudioSource audioSource;
 
 	private float spawnEffectTimer;
 	private float preDamageTimer;
@@ -28,6 +29,7 @@ public class SpawningEnemyBullet : EnemyBullet {
 		spawnEffectTimer -= Time.deltaTime;
 
 		if (spawnEffectTimer <= 0 && !hasSpawned) {
+            audioSource.Play();
 			GetComponent<SpriteRenderer> ().enabled = true;
 			hasSpawned = true;
 		}
