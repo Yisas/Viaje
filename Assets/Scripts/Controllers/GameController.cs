@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class GameController : MonoBehaviour
 {
     private static GameController instance;
 
+    public static GameObject go;
     public int numberOfEnemies = 0;
     public int maxNumberOfEnemies;
     public string nextLevelName;
@@ -19,7 +21,9 @@ public class GameController : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = new GameController();
+            Debug.Log("deleteme before release");
+            GameObject go = (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Controllers/GameController.prefab", typeof(GameObject));
+            instance = Instantiate(go).GetComponent<GameController>();
         }
 
         return instance;

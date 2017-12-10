@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
 	private GameObject currentParticleEffect;
 
 	void Awake(){
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+        gameController = GameController.GetInstance();
 		dropRangeLeft = transform.Find ("dropRangeLeft");
 		dropRangeRight = transform.Find ("dropRangeRight");
 		spawnTimer = spawnTime;
