@@ -401,6 +401,9 @@ public class PlayerController : MonoBehaviour {
 
     private void PlayRandomSound(AudioClip[] soundArray)
     {
+        if (soundArray.Length == 0)
+            return;
+
         int i = Random.Range(0, soundArray.Length);
         audioSource.clip = soundArray[i];
         if (!audioSource.isPlaying)
@@ -409,6 +412,9 @@ public class PlayerController : MonoBehaviour {
 
     private void PlayRandomSound(AudioClip[] soundArray, Vector3 position)
     {
+        if (soundArray.Length == 0)
+            return;
+
         int i = Random.Range(0, soundArray.Length);
         AudioSource.PlayClipAtPoint(soundArray[i], position);
     }

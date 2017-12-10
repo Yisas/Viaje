@@ -70,9 +70,7 @@ public class EnemyController : MonoBehaviour
 
             if (idleSoundTimer <= 0)
             {
-                audioSource.clip = idleClips[Random.Range(0, idleClips.Length)];
-                if (!audioSource.isPlaying)
-                    audioSource.Play();
+                PlayRandomSound(idleClips);
 
                 idleSoundTimer = idleSoundCountdown + Random.Range(0, idleSoundRandom);
             }
@@ -247,4 +245,14 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
+    private void PlayRandomSound(AudioClip[] soundArray)
+    {
+        if (soundArray.Length == 0)
+            return;
+
+        int i = Random.Range(0, soundArray.Length);
+        audioSource.clip = soundArray[i];
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+    }
 }
