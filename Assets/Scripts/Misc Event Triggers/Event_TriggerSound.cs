@@ -5,6 +5,7 @@ using UnityEngine;
 public class Event_TriggerSound : MonoBehaviour {
 
     public AudioSource audioSource;
+    public bool destroyAfterPlaying = true;
 
     private bool playing = false;
 
@@ -25,7 +26,7 @@ public class Event_TriggerSound : MonoBehaviour {
     {
         if (playing)
         {
-            if (!audioSource.isPlaying)
+            if (!audioSource.isPlaying && destroyAfterPlaying)
             {
                 Destroy(gameObject);
             }
