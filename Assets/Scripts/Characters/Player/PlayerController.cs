@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip[] jumpSounds;			// Array of jump sounds to be called randomly
 	public AudioClip[] meleeAttackSounds;	// Array of attack sounds to be called randomly
 	public AudioClip[] rangeAttackSounds;	// Array of attack sounds to be called randomly
+    public AudioClip deathSound;
 	public GameObject bullet;				// Bullet for ranged attack
     public bool rangedParticleSystem =false;// Whether the thrown bullet is a particle system
 	public bool isInvulnerable=false;
@@ -267,6 +268,8 @@ public class PlayerController : MonoBehaviour {
 
 			// ... Trigger the 'Die' animation state
 			anim.SetTrigger ("Dead");
+
+            audioSource.PlayOneShot(deathSound);
 
 			// trigger die in lifebar
 			healthBarCanvas.GetComponent<Animator> ().SetTrigger ("die");
