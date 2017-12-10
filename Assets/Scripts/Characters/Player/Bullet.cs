@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour {
 	public float lifeTime;					// Time interval before destoying object
 	public bool destroyAfterAnimation;		// Whether to ignore life time and destroy after animation loop.
     public bool destroyAfterCollision = true;
+    public AudioClip hitSound;
 
 	private float timer = 0f;		
 
@@ -19,14 +20,22 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col){
-		if (col.transform.tag == "Enemy")
-			col.gameObject.GetComponent<EnemyController> ().Die (1);
+        if (col.transform.tag == "Enemy")
+        {
+            col.gameObject.GetComponent<EnemyController>().Die(1);
+
+            if (hitSound)
+                AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
 
 		if (col.gameObject.tag == "EnemyUntracked") {
 			// Switch sprite to dead 
 			col.gameObject.GetComponent<SpriteSwitch> ().Switch ();
 			col.gameObject.GetComponent<Animator> ().SetTrigger ("die");
-		}
+
+            if (hitSound)
+                AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
 
 		if (col.gameObject.tag == "RudessOnFoot")
 			col.gameObject.GetComponent<RudessOnFoot> ().TakeDamage ();
