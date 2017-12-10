@@ -98,12 +98,15 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetButtonDown ("RangedAttack"))
 				RangedAttack ();
+		}
 
+        if (!isDead)
+        {
             if (Input.GetButtonDown("Menu"))
             {
                 mainMenu.GetComponent<Menu>().Open();
             }
-		}
+        }
 
 		if (isDead) {
 			deathTimer -= Time.deltaTime;
