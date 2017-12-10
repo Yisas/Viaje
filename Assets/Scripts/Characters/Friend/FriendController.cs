@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class FriendController : MonoBehaviour {
 
@@ -19,8 +17,7 @@ public class FriendController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.transform.tag == "Player") {
-			GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().nextLevelName = levelName;
-			SceneManager.LoadScene ("LoadingScreen");
+            GameController.GetInstance().LoadNextLevel(levelName);
 		}
 	}
 }

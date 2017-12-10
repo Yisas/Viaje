@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         anim.SetFloat("headbobSpeedMultiplier", headbobSpeedMultiplier);
         frontCheck = transform.Find("frontCheck").transform;
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController = GameController.GetInstance();
         gameController.numberOfEnemies++;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         audioSource = GetComponent<AudioSource>();

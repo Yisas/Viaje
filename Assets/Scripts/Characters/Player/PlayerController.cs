@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -109,8 +108,7 @@ public class PlayerController : MonoBehaviour {
 		if (isDead) {
 			deathTimer -= Time.deltaTime;
 			if (deathTimer <= 0) {
-				Scene scene = SceneManager.GetActiveScene ();
-				SceneManager.LoadScene (scene.name);
+                GameController.GetInstance().ReloadLevel();
 			}
 		}
 	
