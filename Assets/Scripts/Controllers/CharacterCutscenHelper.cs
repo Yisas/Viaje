@@ -5,6 +5,7 @@ public class CharacterCutscenHelper : MonoBehaviour
 {
 	public GameObject[] objectsToDisable;
     public AudioSource backgroundAudioSource;
+    public AudioSource busAudioSource;
 
 	private Animator[] anims;
 	private GameObject player;
@@ -39,6 +40,11 @@ public class CharacterCutscenHelper : MonoBehaviour
     public void StopSwimmingBackground()
     {
         backgroundAudioSource.Stop();
+    }
+
+    public void PlayBusSound()
+    {
+        busAudioSource.Play();
     }
 
 	public void StartIdle(string tag){
