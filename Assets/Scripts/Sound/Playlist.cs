@@ -10,6 +10,7 @@ public class Playlist : MonoBehaviour
 
     protected int clipIndex = -1;
     protected int volumeIndex = -1;
+    protected bool paused = false;
 
     // Update is called once per frame
     void Update()
@@ -20,8 +21,23 @@ public class Playlist : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        paused = true;
+        audioSource.Pause();
+    }
+
+    public void UnPause()
+    {
+        paused = false;
+        audioSource.UnPause();
+    }
+
     protected virtual void PlayClip()
     {
+        if (paused)
+            return;
+
         clipIndex++;
         volumeIndex++;
 

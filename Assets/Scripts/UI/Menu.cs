@@ -12,6 +12,10 @@ public class Menu : MonoBehaviour {
         AudioSource[] audioS = Object.FindObjectsOfType<AudioSource>();
         foreach (AudioSource audio in audioS)
             audio.Pause();
+
+        Playlist[] playLists = Object.FindObjectsOfType<Playlist>();
+        foreach (Playlist pl in playLists)
+            pl.Pause();
     }
 
     public void Close()
@@ -23,5 +27,9 @@ public class Menu : MonoBehaviour {
         AudioSource[] audioS = Object.FindObjectsOfType<AudioSource>();
         foreach (AudioSource audio in audioS)
             audio.UnPause();
+
+        Playlist[] playLists = Object.FindObjectsOfType<Playlist>();
+        foreach (Playlist pl in playLists)
+            pl.UnPause();
     }
 }

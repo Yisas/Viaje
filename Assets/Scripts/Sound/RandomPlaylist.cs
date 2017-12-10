@@ -6,6 +6,9 @@ public class RandomPlaylist : Playlist
 {
     protected override void PlayClip()
     {
+        if (paused)
+            return;
+
         // Choose randomly
         int randomIndex = Random.Range(0, clips.Length - 1);
 
