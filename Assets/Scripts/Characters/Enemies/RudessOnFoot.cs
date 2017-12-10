@@ -127,6 +127,9 @@ public class RudessOnFoot : MonoBehaviour {
 			foreach (GameObject go in gates) 
 				go.GetComponent<Animator> ().SetTrigger ("shrink");
 
+            // Destroy Rudess Head
+            Destroy(GameObject.FindGameObjectWithTag("RudessHead"));
+
 			// Start despawning timer in update.
 			isDead = true;
 		}
