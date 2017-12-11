@@ -40,7 +40,15 @@ public class PlayerHealth : MonoBehaviour
         SetupReferences();
 	}
 
-	void OnCollisionEnter2D (Collision2D col)
+    private void Update()
+    {
+        if(health <= 0)
+        {
+            playerControl.Die();
+        }
+    }
+
+    void OnCollisionEnter2D (Collision2D col)
 	{
 		// If the colliding gameobject is an Enemy...
 		if (col.gameObject.tag == "Enemy") {
