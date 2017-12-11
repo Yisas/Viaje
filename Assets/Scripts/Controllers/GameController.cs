@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class GameController : MonoBehaviour
 {
@@ -14,13 +13,6 @@ public class GameController : MonoBehaviour
 
     public static GameController GetInstance()
     {
-        if (instance == null)
-        {
-            Debug.Log("deleteme before release");
-            GameObject go = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Controllers/GameController.prefab", typeof(GameObject));
-            Instantiate(go).GetComponent<GameController>();
-        }
-
         return instance;
     }
 
