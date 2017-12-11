@@ -12,6 +12,8 @@ public class RudessOnFoot : MonoBehaviour {
 	public GameObject rudessHead;
 	public float transformInterval;
 	public float portalScale;
+    public AudioSource audioSource;
+    public RudessHead rudessHeadScript;
 
 	private GameObject bulletSpawnPoint;
 	private Animator anim;
@@ -22,7 +24,7 @@ public class RudessOnFoot : MonoBehaviour {
 	private float transformTimer;
 	[HideInInspector]
 	public bool transformed = false;
-	private bool isDead = false;
+	public bool isDead = false;
 
 	void Awake(){
 		attackStartDelayTimer = attackStartDelay;
@@ -88,6 +90,10 @@ public class RudessOnFoot : MonoBehaviour {
 
 	public void TakeDamage(){
 		health -= defaultDamageAmount;
+
+        // Play hurt sound
+        audioSource.Play();
+
 		if (health <= 0)
 			Die();
 		else
@@ -128,7 +134,12 @@ public class RudessOnFoot : MonoBehaviour {
 				go.GetComponent<Animator> ().SetTrigger ("shrink");
 
             // Destroy Rudess Head
-            Destroy(GameObject.FindGameObjectWithTag("RudessHead"));
+            if (rudessHead)
+            {
+                rudessHead.SetActive(true);
+                rudessHeadScript.isDead = true;
+                Destroy(rudessHead.gameObject);
+            }
 
 			// Start despawning timer in update.
 			isDead = true;

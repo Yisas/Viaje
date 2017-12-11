@@ -10,6 +10,7 @@ public class RudessHead : MonoBehaviour {
 	public float shotSprayInterval;
 	public float transformInterval;
 	public GameObject rudessOnFoot;
+    public RudessOnFoot rudessOnFootScript;
 	public GameObject teleportEffect;
 	public float teleportDelay;
 
@@ -29,7 +30,7 @@ public class RudessHead : MonoBehaviour {
 	private float teleportTimer;
 	[HideInInspector]
 	public bool isTeleporting = false;
-	[HideInInspector]
+	
 	public bool isDead = false;
 	private int randomSpawnPoint = 0;
 
@@ -55,8 +56,11 @@ public class RudessHead : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (isDead)
-			return;
+        if (isDead || rudessOnFootScript.isDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
 		if(!isTeleporting && !transformed)
 			transformTimer -= Time.deltaTime;
