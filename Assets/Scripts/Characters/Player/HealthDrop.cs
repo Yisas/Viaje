@@ -6,9 +6,11 @@ public class HealthDrop : MonoBehaviour {
 
 	public AudioClip[] consumeClips;			// List of clips to play when health drop is consumed by player.
 	public AudioClip landClip;					// Sound that plays when item lands on the ground.
+    public AudioSource audioSource;
 
 	private Animator anim;
 	private bool hasLanded = false;
+    private bool startDestroy = false;
 
 	void Awake(){
 		//Set up references
@@ -24,11 +26,6 @@ public class HealthDrop : MonoBehaviour {
 		foreach(GameObject enemy in enemies)
 			Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		*/
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
@@ -47,7 +44,8 @@ public class HealthDrop : MonoBehaviour {
 				// Deactivate animator
 				anim.enabled=false;
 
-				AudioSource.PlayClipAtPoint (landClip, transform.position);
+                audioSource.clip = landClip;
+                audioSource.Play();
 				hasLanded = true;
 			}
 		}
@@ -58,7 +56,11 @@ public class HealthDrop : MonoBehaviour {
 
 			// Play random consume audioclip
 			int i = Random.Range(0, consumeClips.Length);
-			AudioSource.PlayClipAtPoint(consumeClips[i], transform.position);
+
+            AudioSource source = col.gameObject.GetComponent<AudioSource>();
+
+            source.clip = consumeClips[i];
+            source.Play();
 			Destroy (this.gameObject);
 		}
 	}
