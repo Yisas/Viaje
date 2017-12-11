@@ -6,6 +6,9 @@ public class CharacterCutscenHelper : MonoBehaviour
 	public GameObject[] objectsToDisable;
     public AudioSource backgroundAudioSource;
     public AudioSource busAudioSource;
+    public AudioSource musicAudioSource;
+    public AudioClip postCutsceneAudioClip;
+    public float postCutsceneAudioClipVolume;
 
 	private Animator[] anims;
 	private GameObject player;
@@ -58,6 +61,11 @@ public class CharacterCutscenHelper : MonoBehaviour
 	}
 
 	public void CutsceneCleanup(){
+
+        musicAudioSource.clip = postCutsceneAudioClip;
+        musicAudioSource.volume = postCutsceneAudioClipVolume;
+        musicAudioSource.Play();
+
 		foreach (GameObject go in objectsToDisable)
 			go.SetActive (false);
 	}
