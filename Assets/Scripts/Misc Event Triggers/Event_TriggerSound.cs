@@ -16,9 +16,7 @@ public class Event_TriggerSound : MonoBehaviour {
 
         if (collision.transform.tag == "Player")
         {
-            audioSource.Play();
-
-            playing = true;
+            Play();
         }
     }
 
@@ -31,5 +29,12 @@ public class Event_TriggerSound : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void Play()
+    {
+        audioSource.Play();
+
+        playing = true;
     }
 }

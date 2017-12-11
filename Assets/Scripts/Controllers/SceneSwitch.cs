@@ -17,4 +17,9 @@ public class SceneSwitch : MonoBehaviour {
         Cursor.visible = (cursorVisible == 1) ? true : false;
         GameController.GetInstance().LoadNextLevel(sceneName);
     }
+
+    public void SplashCreenSwitch()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }
