@@ -11,7 +11,6 @@ public class LoadingScreen : MonoBehaviour {
 	private float timer;
 	private bool loading = false;
 	private float endTime = 100000f;
-	private AsyncOperation ao;
 	private GameController gameController;
 
 	void Awake(){
@@ -33,17 +32,26 @@ public class LoadingScreen : MonoBehaviour {
 		if (!loading && timer <= 0) {
 			loading = true;
 			endTime = Time.time + loadMinDuration;
-			StartCoroutine (LoadScene());
+			StartCoroutine (LoadNextSceneAsync());
 		}
 
+        /*
 		if (Time.time >= endTime)
 			ao.allowSceneActivation = true;
+        */
 			
 	}
 
-	IEnumerator LoadScene(){
-		ao = SceneManager.LoadSceneAsync (gameController.nextLevelName);
-			ao.allowSceneActivation = false;
-			yield return ao;
-		}
+    IEnumerator LoadNextSceneAsync()
+    {
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(gameController.nextLevelName);
+
+        //Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
 }
