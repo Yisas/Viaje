@@ -8,9 +8,4 @@ public class CursorResetter : MonoBehaviour {
 	void Start () {
         Cursor.visible = true;		
 	}
-
-    void Update()
-    {
-        Debug.Log(Cursor.visible);
-    }
 }
